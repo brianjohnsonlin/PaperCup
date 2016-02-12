@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainMenu));
             this.masterTable = new System.Windows.Forms.TableLayoutPanel();
             this.buttonsTable = new System.Windows.Forms.TableLayoutPanel();
             this.createButton = new System.Windows.Forms.Button();
@@ -54,7 +55,7 @@
             this.masterTable.RowCount = 2;
             this.masterTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 90.46243F));
             this.masterTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.537572F));
-            this.masterTable.Size = new System.Drawing.Size(956, 534);
+            this.masterTable.Size = new System.Drawing.Size(1670, 947);
             this.masterTable.TabIndex = 3;
             // 
             // buttonsTable
@@ -65,21 +66,21 @@
             this.buttonsTable.Controls.Add(this.createButton, 0, 0);
             this.buttonsTable.Controls.Add(this.joinButton, 1, 0);
             this.buttonsTable.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.buttonsTable.Location = new System.Drawing.Point(50, 50);
-            this.buttonsTable.Margin = new System.Windows.Forms.Padding(50);
+            this.buttonsTable.Location = new System.Drawing.Point(100, 96);
+            this.buttonsTable.Margin = new System.Windows.Forms.Padding(100, 96, 100, 96);
             this.buttonsTable.Name = "buttonsTable";
             this.buttonsTable.RowCount = 1;
             this.buttonsTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.buttonsTable.Size = new System.Drawing.Size(856, 383);
+            this.buttonsTable.Size = new System.Drawing.Size(1470, 664);
             this.buttonsTable.TabIndex = 2;
             // 
             // createButton
             // 
             this.createButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.createButton.Location = new System.Drawing.Point(30, 30);
-            this.createButton.Margin = new System.Windows.Forms.Padding(30);
+            this.createButton.Location = new System.Drawing.Point(60, 58);
+            this.createButton.Margin = new System.Windows.Forms.Padding(60, 58, 60, 58);
             this.createButton.Name = "createButton";
-            this.createButton.Size = new System.Drawing.Size(368, 323);
+            this.createButton.Size = new System.Drawing.Size(615, 548);
             this.createButton.TabIndex = 1;
             this.createButton.Text = "Create a Room";
             this.createButton.UseVisualStyleBackColor = true;
@@ -87,10 +88,10 @@
             // joinButton
             // 
             this.joinButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.joinButton.Location = new System.Drawing.Point(458, 30);
-            this.joinButton.Margin = new System.Windows.Forms.Padding(30);
+            this.joinButton.Location = new System.Drawing.Point(795, 58);
+            this.joinButton.Margin = new System.Windows.Forms.Padding(60, 58, 60, 58);
             this.joinButton.Name = "joinButton";
-            this.joinButton.Size = new System.Drawing.Size(368, 323);
+            this.joinButton.Size = new System.Drawing.Size(615, 548);
             this.joinButton.TabIndex = 2;
             this.joinButton.Text = "Join a Room";
             this.joinButton.UseVisualStyleBackColor = true;
@@ -100,17 +101,17 @@
             this.bottomTable.ColumnCount = 3;
             this.bottomTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.51495F));
             this.bottomTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 83.48505F));
-            this.bottomTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 166F));
+            this.bottomTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 334F));
             this.bottomTable.Controls.Add(this.nicknameLabel, 0, 0);
             this.bottomTable.Controls.Add(this.settingsButton, 2, 0);
             this.bottomTable.Controls.Add(this.nicknameBox, 1, 0);
             this.bottomTable.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.bottomTable.Location = new System.Drawing.Point(10, 493);
-            this.bottomTable.Margin = new System.Windows.Forms.Padding(10);
+            this.bottomTable.Location = new System.Drawing.Point(20, 875);
+            this.bottomTable.Margin = new System.Windows.Forms.Padding(20, 19, 20, 19);
             this.bottomTable.Name = "bottomTable";
             this.bottomTable.RowCount = 1;
             this.bottomTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.bottomTable.Size = new System.Drawing.Size(936, 31);
+            this.bottomTable.Size = new System.Drawing.Size(1630, 53);
             this.bottomTable.TabIndex = 3;
             this.bottomTable.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel3_Paint);
             // 
@@ -119,9 +120,10 @@
             this.nicknameLabel.AutoSize = true;
             this.nicknameLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.nicknameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.nicknameLabel.Location = new System.Drawing.Point(3, 0);
+            this.nicknameLabel.Location = new System.Drawing.Point(6, 0);
+            this.nicknameLabel.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.nicknameLabel.Name = "nicknameLabel";
-            this.nicknameLabel.Size = new System.Drawing.Size(121, 31);
+            this.nicknameLabel.Size = new System.Drawing.Size(202, 53);
             this.nicknameLabel.TabIndex = 2;
             this.nicknameLabel.Text = "Nickname:";
             this.nicknameLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -129,9 +131,10 @@
             // settingsButton
             // 
             this.settingsButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.settingsButton.Location = new System.Drawing.Point(772, 3);
+            this.settingsButton.Location = new System.Drawing.Point(1301, 6);
+            this.settingsButton.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.settingsButton.Name = "settingsButton";
-            this.settingsButton.Size = new System.Drawing.Size(161, 25);
+            this.settingsButton.Size = new System.Drawing.Size(323, 41);
             this.settingsButton.TabIndex = 0;
             this.settingsButton.Text = "button3";
             this.settingsButton.UseVisualStyleBackColor = true;
@@ -139,17 +142,20 @@
             // nicknameBox
             // 
             this.nicknameBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.nicknameBox.Location = new System.Drawing.Point(130, 3);
+            this.nicknameBox.Location = new System.Drawing.Point(220, 6);
+            this.nicknameBox.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.nicknameBox.Name = "nicknameBox";
-            this.nicknameBox.Size = new System.Drawing.Size(636, 20);
+            this.nicknameBox.Size = new System.Drawing.Size(1069, 31);
             this.nicknameBox.TabIndex = 1;
             // 
             // MainMenu
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(956, 534);
+            this.ClientSize = new System.Drawing.Size(1670, 947);
             this.Controls.Add(this.masterTable);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.Name = "MainMenu";
             this.Text = "PaperCup";
             this.Load += new System.EventHandler(this.Form1_Load);
