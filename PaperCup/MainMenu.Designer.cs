@@ -37,6 +37,7 @@
             this.nicknameLabel = new System.Windows.Forms.Label();
             this.settingsButton = new System.Windows.Forms.Button();
             this.nicknameBox = new System.Windows.Forms.TextBox();
+            this.titleLabel = new System.Windows.Forms.Label();
             this.masterTable.SuspendLayout();
             this.buttonsTable.SuspendLayout();
             this.bottomTable.SuspendLayout();
@@ -46,13 +47,15 @@
             // 
             this.masterTable.ColumnCount = 1;
             this.masterTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.masterTable.Controls.Add(this.buttonsTable, 0, 0);
-            this.masterTable.Controls.Add(this.bottomTable, 0, 1);
+            this.masterTable.Controls.Add(this.buttonsTable, 0, 1);
+            this.masterTable.Controls.Add(this.bottomTable, 0, 2);
+            this.masterTable.Controls.Add(this.titleLabel, 0, 0);
             this.masterTable.Dock = System.Windows.Forms.DockStyle.Fill;
             this.masterTable.Location = new System.Drawing.Point(0, 0);
             this.masterTable.Margin = new System.Windows.Forms.Padding(0);
             this.masterTable.Name = "masterTable";
-            this.masterTable.RowCount = 2;
+            this.masterTable.RowCount = 3;
+            this.masterTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
             this.masterTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.masterTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
             this.masterTable.Size = new System.Drawing.Size(614, 311);
@@ -66,12 +69,12 @@
             this.buttonsTable.Controls.Add(this.createButton, 0, 0);
             this.buttonsTable.Controls.Add(this.joinButton, 1, 0);
             this.buttonsTable.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.buttonsTable.Location = new System.Drawing.Point(0, 0);
+            this.buttonsTable.Location = new System.Drawing.Point(0, 50);
             this.buttonsTable.Margin = new System.Windows.Forms.Padding(0);
             this.buttonsTable.Name = "buttonsTable";
             this.buttonsTable.RowCount = 1;
             this.buttonsTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.buttonsTable.Size = new System.Drawing.Size(614, 261);
+            this.buttonsTable.Size = new System.Drawing.Size(614, 211);
             this.buttonsTable.TabIndex = 2;
             // 
             // createButton
@@ -81,7 +84,7 @@
             this.createButton.Location = new System.Drawing.Point(30, 30);
             this.createButton.Margin = new System.Windows.Forms.Padding(30, 30, 30, 30);
             this.createButton.Name = "createButton";
-            this.createButton.Size = new System.Drawing.Size(247, 201);
+            this.createButton.Size = new System.Drawing.Size(247, 151);
             this.createButton.TabIndex = 1;
             this.createButton.Text = "Create a Room";
             this.createButton.UseVisualStyleBackColor = true;
@@ -93,7 +96,7 @@
             this.joinButton.Location = new System.Drawing.Point(337, 30);
             this.joinButton.Margin = new System.Windows.Forms.Padding(30, 30, 30, 30);
             this.joinButton.Name = "joinButton";
-            this.joinButton.Size = new System.Drawing.Size(247, 201);
+            this.joinButton.Size = new System.Drawing.Size(247, 151);
             this.joinButton.TabIndex = 2;
             this.joinButton.Text = "Join a Room";
             this.joinButton.UseVisualStyleBackColor = true;
@@ -148,6 +151,19 @@
             this.nicknameBox.Size = new System.Drawing.Size(458, 20);
             this.nicknameBox.TabIndex = 1;
             // 
+            // titleLabel
+            // 
+            this.titleLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.titleLabel.AutoSize = true;
+            this.titleLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.titleLabel.Location = new System.Drawing.Point(213, 4);
+            this.titleLabel.Name = "titleLabel";
+            this.titleLabel.Size = new System.Drawing.Size(187, 42);
+            this.titleLabel.TabIndex = 4;
+            this.titleLabel.Text = "PaperCup";
+            this.titleLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.titleLabel.Click += new System.EventHandler(this.label1_Click);
+            // 
             // MainMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -161,6 +177,7 @@
             this.Text = "PaperCup";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.masterTable.ResumeLayout(false);
+            this.masterTable.PerformLayout();
             this.buttonsTable.ResumeLayout(false);
             this.bottomTable.ResumeLayout(false);
             this.bottomTable.PerformLayout();
@@ -178,6 +195,7 @@
         private System.Windows.Forms.Button settingsButton;
         private System.Windows.Forms.TextBox nicknameBox;
         private System.Windows.Forms.Label nicknameLabel;
+        private System.Windows.Forms.Label titleLabel;
     }
 }
 
