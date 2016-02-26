@@ -63,6 +63,7 @@ namespace PaperCup.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+<<<<<<< HEAD
         internal static System.Drawing.Bitmap connecting_icon {
             get {
                 object obj = ResourceManager.GetObject("connecting icon", resourceCulture);
@@ -76,6 +77,11 @@ namespace PaperCup.Properties {
         internal static System.Drawing.Bitmap connecting_icon1 {
             get {
                 object obj = ResourceManager.GetObject("connecting icon1", resourceCulture);
+=======
+        internal static System.Drawing.Bitmap icon_ios7_gear_128 {
+            get {
+                object obj = ResourceManager.GetObject("icon-ios7-gear-128", resourceCulture);
+>>>>>>> refs/remotes/origin/mainmenu
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

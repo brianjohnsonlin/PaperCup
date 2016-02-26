@@ -117,10 +117,14 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+<<<<<<< HEAD
     <None Include="Resources\connecting icon.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\connecting icon1.png" />
+=======
+    <None Include="Resources\icon-ios7-gear-128.png" />
+>>>>>>> refs/remotes/origin/mainmenu
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
