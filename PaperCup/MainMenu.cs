@@ -31,5 +31,10 @@ namespace PaperCup
         {
 
         }
+
+        private void settingsButton_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

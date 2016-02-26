@@ -82,7 +82,7 @@
             this.createButton.Dock = System.Windows.Forms.DockStyle.Fill;
             this.createButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.createButton.Location = new System.Drawing.Point(30, 30);
-            this.createButton.Margin = new System.Windows.Forms.Padding(30, 30, 30, 30);
+            this.createButton.Margin = new System.Windows.Forms.Padding(30);
             this.createButton.Name = "createButton";
             this.createButton.Size = new System.Drawing.Size(247, 151);
             this.createButton.TabIndex = 1;
@@ -94,7 +94,7 @@
             this.joinButton.Dock = System.Windows.Forms.DockStyle.Fill;
             this.joinButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.joinButton.Location = new System.Drawing.Point(337, 30);
-            this.joinButton.Margin = new System.Windows.Forms.Padding(30, 30, 30, 30);
+            this.joinButton.Margin = new System.Windows.Forms.Padding(30);
             this.joinButton.Name = "joinButton";
             this.joinButton.Size = new System.Drawing.Size(247, 151);
             this.joinButton.TabIndex = 2;
@@ -104,15 +104,9 @@
             // bottomTable
             // 
             this.bottomTable.ColumnCount = 3;
-<<<<<<< HEAD
-            this.bottomTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.51495F));
-            this.bottomTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 83.48505F));
-            this.bottomTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 338F));
-=======
             this.bottomTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
             this.bottomTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.bottomTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 50F));
->>>>>>> refs/remotes/origin/mainmenu
             this.bottomTable.Controls.Add(this.nicknameLabel, 0, 0);
             this.bottomTable.Controls.Add(this.settingsButton, 2, 0);
             this.bottomTable.Controls.Add(this.nicknameBox, 1, 0);
@@ -140,32 +134,21 @@
             // 
             // settingsButton
             // 
-            this.settingsButton.BackgroundImage = global::PaperCup.Properties.Resources.icon_ios7_gear_128;
             this.settingsButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.settingsButton.Dock = System.Windows.Forms.DockStyle.Fill;
-<<<<<<< HEAD
-            this.settingsButton.Location = new System.Drawing.Point(1297, 6);
-            this.settingsButton.Margin = new System.Windows.Forms.Padding(6);
-            this.settingsButton.Name = "settingsButton";
-            this.settingsButton.Size = new System.Drawing.Size(327, 41);
-=======
             this.settingsButton.Location = new System.Drawing.Point(567, 3);
             this.settingsButton.Name = "settingsButton";
             this.settingsButton.Size = new System.Drawing.Size(44, 44);
->>>>>>> refs/remotes/origin/mainmenu
             this.settingsButton.TabIndex = 0;
             this.settingsButton.UseVisualStyleBackColor = true;
+            this.settingsButton.Click += new System.EventHandler(this.settingsButton_Click);
             // 
             // nicknameBox
             // 
             this.nicknameBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.nicknameBox.Location = new System.Drawing.Point(103, 15);
             this.nicknameBox.Name = "nicknameBox";
-<<<<<<< HEAD
-            this.nicknameBox.Size = new System.Drawing.Size(1066, 31);
-=======
             this.nicknameBox.Size = new System.Drawing.Size(458, 20);
->>>>>>> refs/remotes/origin/mainmenu
             this.nicknameBox.TabIndex = 1;
             // 
             // titleLabel
@@ -185,6 +168,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImage = global::PaperCup.Properties.Resources.icon_ios7_gear_128;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.ClientSize = new System.Drawing.Size(614, 311);
             this.Controls.Add(this.masterTable);
