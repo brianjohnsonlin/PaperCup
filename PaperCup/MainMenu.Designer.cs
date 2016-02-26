@@ -101,7 +101,7 @@
             this.bottomTable.ColumnCount = 3;
             this.bottomTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.51495F));
             this.bottomTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 83.48505F));
-            this.bottomTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 334F));
+            this.bottomTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 335F));
             this.bottomTable.Controls.Add(this.nicknameLabel, 0, 0);
             this.bottomTable.Controls.Add(this.settingsButton, 2, 0);
             this.bottomTable.Controls.Add(this.nicknameBox, 1, 0);
@@ -123,7 +123,7 @@
             this.nicknameLabel.Location = new System.Drawing.Point(6, 0);
             this.nicknameLabel.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.nicknameLabel.Name = "nicknameLabel";
-            this.nicknameLabel.Size = new System.Drawing.Size(202, 53);
+            this.nicknameLabel.Size = new System.Drawing.Size(201, 53);
             this.nicknameLabel.TabIndex = 2;
             this.nicknameLabel.Text = "Nickname:";
             this.nicknameLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -131,10 +131,10 @@
             // settingsButton
             // 
             this.settingsButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.settingsButton.Location = new System.Drawing.Point(1301, 6);
-            this.settingsButton.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.settingsButton.Location = new System.Drawing.Point(1300, 6);
+            this.settingsButton.Margin = new System.Windows.Forms.Padding(6);
             this.settingsButton.Name = "settingsButton";
-            this.settingsButton.Size = new System.Drawing.Size(323, 41);
+            this.settingsButton.Size = new System.Drawing.Size(324, 41);
             this.settingsButton.TabIndex = 0;
             this.settingsButton.Text = "button3";
             this.settingsButton.UseVisualStyleBackColor = true;
@@ -142,8 +142,8 @@
             // nicknameBox
             // 
             this.nicknameBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.nicknameBox.Location = new System.Drawing.Point(220, 6);
-            this.nicknameBox.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.nicknameBox.Location = new System.Drawing.Point(219, 6);
+            this.nicknameBox.Margin = new System.Windows.Forms.Padding(6);
             this.nicknameBox.Name = "nicknameBox";
             this.nicknameBox.Size = new System.Drawing.Size(1069, 31);
             this.nicknameBox.TabIndex = 1;
@@ -155,7 +155,7 @@
             this.ClientSize = new System.Drawing.Size(1670, 947);
             this.Controls.Add(this.masterTable);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.Margin = new System.Windows.Forms.Padding(6);
             this.Name = "MainMenu";
             this.Text = "PaperCup";
             this.Load += new System.EventHandler(this.Form1_Load);
