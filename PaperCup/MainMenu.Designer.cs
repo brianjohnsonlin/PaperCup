@@ -134,6 +134,7 @@
             // 
             // settingsButton
             // 
+            this.settingsButton.BackgroundImage = global::PaperCup.Properties.Resources.icon_ios7_gear_128;
             this.settingsButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.settingsButton.Dock = System.Windows.Forms.DockStyle.Fill;
             this.settingsButton.Location = new System.Drawing.Point(567, 3);
