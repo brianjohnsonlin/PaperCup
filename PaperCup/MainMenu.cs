@@ -14,7 +14,9 @@ namespace PaperCup
     {
         //makes new videoplayer form so that the create a room button opens up the videoplayer screen
         private VideoPlayer video;
-
+        private HostIP join_host;
+        private string nickname;
+        
         public MainMenu()
         {
             InitializeComponent();
@@ -32,9 +34,25 @@ namespace PaperCup
 
         private void createButton_Click(object sender, EventArgs e)
         {
-            video = new VideoPlayer();
+            video = new VideoPlayer(nickname);
             this.Hide();
             video.Show();
+        }
+
+        private void nicknameBox_TextChanged(object sender, EventArgs e)
+        {
+            nickname = nicknameBox.Text;
+        }
+
+        private void settingsButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void joinButton_Click(object sender, EventArgs e)
+        {
+            join_host = new HostIP(nickname);
+            join_host.Show();
         }
     }
 }

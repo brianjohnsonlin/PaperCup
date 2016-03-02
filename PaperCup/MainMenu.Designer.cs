@@ -96,13 +96,14 @@
             this.joinButton.TabIndex = 2;
             this.joinButton.Text = "Join a Room";
             this.joinButton.UseVisualStyleBackColor = true;
+            this.joinButton.Click += new System.EventHandler(this.joinButton_Click);
             // 
             // bottomTable
             // 
             this.bottomTable.ColumnCount = 3;
             this.bottomTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.51495F));
             this.bottomTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 83.48505F));
-            this.bottomTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 255F));
+            this.bottomTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 257F));
             this.bottomTable.Controls.Add(this.nicknameLabel, 0, 0);
             this.bottomTable.Controls.Add(this.settingsButton, 2, 0);
             this.bottomTable.Controls.Add(this.nicknameBox, 1, 0);
@@ -132,12 +133,13 @@
             // settingsButton
             // 
             this.settingsButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.settingsButton.Location = new System.Drawing.Point(970, 5);
+            this.settingsButton.Location = new System.Drawing.Point(968, 5);
             this.settingsButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.settingsButton.Name = "settingsButton";
-            this.settingsButton.Size = new System.Drawing.Size(248, 33);
+            this.settingsButton.Size = new System.Drawing.Size(250, 33);
             this.settingsButton.TabIndex = 0;
             this.settingsButton.UseVisualStyleBackColor = true;
+            this.settingsButton.Click += new System.EventHandler(this.settingsButton_Click);
             // 
             // nicknameBox
             // 
@@ -145,8 +147,9 @@
             this.nicknameBox.Location = new System.Drawing.Point(163, 5);
             this.nicknameBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.nicknameBox.Name = "nicknameBox";
-            this.nicknameBox.Size = new System.Drawing.Size(799, 26);
+            this.nicknameBox.Size = new System.Drawing.Size(797, 26);
             this.nicknameBox.TabIndex = 1;
+            this.nicknameBox.TextChanged += new System.EventHandler(this.nicknameBox_TextChanged);
             // 
             // MainMenu
             // 

@@ -12,9 +12,26 @@ namespace PaperCup
 {
     public partial class HostIP : Form
     {
-        public HostIP()
+        private string localname;
+        private VideoPlayer video;
+        private string hostIP;
+
+        public HostIP(string localNickName)
         {
             InitializeComponent();
+            localname = localNickName;            
+        }
+
+        private void IP_TextChanged(object sender, EventArgs e)
+        {
+            hostIP = IP.Text;            
+        }
+        //joining a room
+        private void button1_Click(object sender, EventArgs e)
+        {
+            video = new VideoPlayer(localname, hostIP);
+            this.Hide();
+            video.Show();
         }
     }
 }

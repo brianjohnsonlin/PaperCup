@@ -179,7 +179,7 @@
             // 
             // VideoPlayer
             // 
-            this.ClientSize = new System.Drawing.Size(1205, 587);
+            this.ClientSize = new System.Drawing.Size(720, 514);
             this.Controls.Add(this.sendButton);
             this.Controls.Add(this.Chat);
             this.Controls.Add(this.sendMessage);
