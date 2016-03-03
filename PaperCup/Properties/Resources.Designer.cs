@@ -79,5 +79,15 @@ namespace PaperCup.Properties {
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
+		
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icon_ios7_gear_128 {
+            get {
+                object obj = ResourceManager.GetObject("icon-ios7-gear-128", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
     }
 }

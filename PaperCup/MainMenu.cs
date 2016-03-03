@@ -20,16 +20,10 @@ namespace PaperCup
         public MainMenu()
         {
             InitializeComponent();
-        }
-
-        private void tableLayoutPanel3_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
+            List<String> fruit = new List<String> { "Banana", "Apple", "Strawberry", "Guava", "Peach", "Pineapple", "Grape", "Avocado" };
+            List<String> bug = new List<String> { "Slug", "Butterfly", "Spider", "Ladybug", "Bee", "Roach", "Ant", "Mosquito" };
+            Random rand = new Random();
+            nicknameBox.Text = fruit[rand.Next(fruit.Count)] + bug[rand.Next(bug.Count)] + rand.Next(1000).ToString("D3");
         }
 
         private void createButton_Click(object sender, EventArgs e)
@@ -42,11 +36,6 @@ namespace PaperCup
         private void nicknameBox_TextChanged(object sender, EventArgs e)
         {
             nickname = nicknameBox.Text;
-        }
-
-        private void settingsButton_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void joinButton_Click(object sender, EventArgs e)

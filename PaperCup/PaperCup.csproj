@@ -123,6 +123,9 @@
     <None Include="Resources\connecting icon1.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\icon-ios7-gear-128.png" />
+  </ItemGroup>
+  <ItemGroup>
     <COMReference Include="AxWMPLib">
       <Guid>{6BF52A50-394A-11D3-B153-00C04F79FAA6}</Guid>
       <VersionMajor>1</VersionMajor>
