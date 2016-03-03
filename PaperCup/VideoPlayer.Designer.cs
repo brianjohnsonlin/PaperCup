@@ -132,6 +132,7 @@
             this.mediaPlayer.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("mediaPlayer.OcxState")));
             this.mediaPlayer.Size = new System.Drawing.Size(501, 350);
             this.mediaPlayer.TabIndex = 6;
+            this.mediaPlayer.PlayStateChange += new AxWMPLib._WMPOCXEvents_PlayStateChangeEventHandler(this.mediaPlayer_OnClick);
             // 
             // chooseMedia
             // 

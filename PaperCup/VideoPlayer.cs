@@ -83,6 +83,93 @@ namespace PaperCup
             sck.BeginReceiveFrom(buffer, 0, buffer.Length, SocketFlags.None, ref epRemote, new AsyncCallback(MessageCallBack), buffer);
         }
 
+        //----------- Check Media Player Events ----------
+        //Senses and deciphers which mediaplayer button the user pressed
+        //then sends that information to the other user
+        private void mediaPlayer_OnClick(object sender, AxWMPLib._WMPOCXEvents_PlayStateChangeEvent e)
+        {
+            int state_change = 0;
+            switch (e.newState)
+            {
+                case 1:    // Stopped
+                    state_change = 1;
+                    break;
+
+                case 2:    // Paused
+                    state_change = 2;
+                    break;
+
+                case 3:    // Playing
+                    state_change = 3;
+                    break;
+
+                case 4:    // ScanForward
+                    state_change = 4;
+                    break;
+
+                case 5:    // ScanReverse
+                    state_change = 5;
+                    break;
+                case 8:    // MediaEnded
+                    state_change = 8;
+                    break;
+
+                case 9:    // Transitioning
+                    state_change = 9;
+                    break;
+
+                case 12:   // Last
+                    state_change = 12;
+                    break;
+
+                default:
+                    break;
+            }
+            if (state_change != 0)
+            {
+                //if the state has actually been changed, then send that information to 
+                //the other user, so then their state will also be changed
+                //convert string to byte
+                ASCIIEncoding a = new ASCIIEncoding();
+
+                byte[] send = new byte[1500];
+                send = a.GetBytes("statechanged" + state_change);
+
+                //sending the sent message
+                sck.Send(send);
+                sck.BeginReceiveFrom(buffer, 0, buffer.Length, SocketFlags.None, ref epRemote, new AsyncCallback(MessageCallBack), buffer);
+            }
+        }
+        
+        //------ Changes Media Player's State -------
+        private void change_state(int new_state)
+        {
+            switch (new_state)
+            {
+                case 1:
+                    mediaPlayer.Ctlcontrols.stop();
+                    break;
+                case 2:
+                    mediaPlayer.Ctlcontrols.pause();
+                    break;
+                case 3:
+                    mediaPlayer.Ctlcontrols.play();
+                    break;
+                case 4:
+                    break;
+                case 5:
+                    break;
+                case 8:
+                    break;
+                case 9:
+                    break;
+                case 12:
+                    break;
+                default:
+                    break;
+            }
+        }
+
         //------ Pick & Send Media ------
         //user chooses media file to play
         //the address of the file is sent to the other user(s)
@@ -118,10 +205,17 @@ namespace PaperCup
                 //converting byte[] to string
                 ASCIIEncoding a = new ASCIIEncoding();
                 string message = a.GetString(receivedData);
-
+                
                 if (message.Contains("@fileaddress")) {
-                    message.Replace("@fileaddress", "");
+                    //the message received is the media sent from the other user
+                    //the received media is then played
+                    message = message.Replace("@fileaddress", "");
                     mediaPlayer.URL = @message;
+                } else if (message.Contains("statechanged"))
+                {
+                    message = message.Replace("statechanged", "");
+                    int new_state = Int32.Parse(message);
+                    change_state(new_state);
                 }
                 else
                 {
