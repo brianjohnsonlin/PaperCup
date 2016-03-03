@@ -29,102 +29,126 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(HostIP));
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.masterTable = new System.Windows.Forms.TableLayoutPanel();
+            this.instructionsLabel = new System.Windows.Forms.Label();
+            this.enterInfoTable = new System.Windows.Forms.TableLayoutPanel();
+            this.joinButton = new System.Windows.Forms.Button();
+            this.cancelButton = new System.Windows.Forms.Button();
             this.IP = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.tableLayoutPanel1.SuspendLayout();
-            this.tableLayoutPanel2.SuspendLayout();
+            this.masterTable.SuspendLayout();
+            this.enterInfoTable.SuspendLayout();
             this.SuspendLayout();
             // 
-            // tableLayoutPanel1
+            // masterTable
             // 
-            this.tableLayoutPanel1.ColumnCount = 1;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Controls.Add(this.label1, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 0, 1);
-            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 2;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 48F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(525, 101);
-            this.tableLayoutPanel1.TabIndex = 1;
+            this.masterTable.ColumnCount = 1;
+            this.masterTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.masterTable.Controls.Add(this.instructionsLabel, 0, 0);
+            this.masterTable.Controls.Add(this.enterInfoTable, 0, 1);
+            this.masterTable.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.masterTable.Location = new System.Drawing.Point(0, 0);
+            this.masterTable.Margin = new System.Windows.Forms.Padding(1);
+            this.masterTable.Name = "masterTable";
+            this.masterTable.RowCount = 2;
+            this.masterTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.masterTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
+            this.masterTable.Size = new System.Drawing.Size(326, 76);
+            this.masterTable.TabIndex = 1;
             // 
-            // label1
+            // instructionsLabel
             // 
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.06283F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(1, 0);
-            this.label1.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(523, 40);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Enter the I.P. Address of the user who is hosting the room you would like to join" +
+            this.instructionsLabel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.instructionsLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.06283F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.instructionsLabel.Location = new System.Drawing.Point(1, 0);
+            this.instructionsLabel.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
+            this.instructionsLabel.Name = "instructionsLabel";
+            this.instructionsLabel.Size = new System.Drawing.Size(324, 41);
+            this.instructionsLabel.TabIndex = 0;
+            this.instructionsLabel.Text = "Enter the I.P. Address of the user who is hosting the room you would like to join" +
     ":";
             // 
-            // tableLayoutPanel2
+            // enterInfoTable
             // 
-            this.tableLayoutPanel2.ColumnCount = 2;
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 79.80861F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20.19139F));
-            this.tableLayoutPanel2.Controls.Add(this.IP, 0, 0);
-            this.tableLayoutPanel2.Controls.Add(this.button1, 1, 0);
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(1, 54);
-            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
-            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
-            this.tableLayoutPanel2.RowCount = 1;
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(523, 37);
-            this.tableLayoutPanel2.TabIndex = 1;
+            this.enterInfoTable.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.enterInfoTable.ColumnCount = 3;
+            this.enterInfoTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.enterInfoTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 60F));
+            this.enterInfoTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 60F));
+            this.enterInfoTable.Controls.Add(this.joinButton, 1, 0);
+            this.enterInfoTable.Controls.Add(this.cancelButton, 2, 0);
+            this.enterInfoTable.Controls.Add(this.IP, 0, 0);
+            this.enterInfoTable.Location = new System.Drawing.Point(1, 42);
+            this.enterInfoTable.Margin = new System.Windows.Forms.Padding(1);
+            this.enterInfoTable.Name = "enterInfoTable";
+            this.enterInfoTable.RowCount = 1;
+            this.enterInfoTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.enterInfoTable.Size = new System.Drawing.Size(324, 33);
+            this.enterInfoTable.TabIndex = 1;
+            // 
+            // joinButton
+            // 
+            this.joinButton.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.joinButton.Location = new System.Drawing.Point(209, 5);
+            this.joinButton.Margin = new System.Windows.Forms.Padding(5);
+            this.joinButton.Name = "joinButton";
+            this.joinButton.Size = new System.Drawing.Size(50, 23);
+            this.joinButton.TabIndex = 1;
+            this.joinButton.Text = "Join!";
+            this.joinButton.UseVisualStyleBackColor = true;
+            this.joinButton.Click += new System.EventHandler(this.joinButton_Click);
+            // 
+            // cancelButton
+            // 
+            this.cancelButton.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cancelButton.Location = new System.Drawing.Point(269, 5);
+            this.cancelButton.Margin = new System.Windows.Forms.Padding(5);
+            this.cancelButton.Name = "cancelButton";
+            this.cancelButton.Size = new System.Drawing.Size(50, 23);
+            this.cancelButton.TabIndex = 2;
+            this.cancelButton.Text = "Cancel";
+            this.cancelButton.UseVisualStyleBackColor = true;
+            this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
             // 
             // IP
             // 
-            this.IP.Location = new System.Drawing.Point(1, 1);
-            this.IP.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.IP.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.IP.Location = new System.Drawing.Point(5, 6);
+            this.IP.Margin = new System.Windows.Forms.Padding(5);
             this.IP.Name = "IP";
-            this.IP.Size = new System.Drawing.Size(415, 20);
+            this.IP.Size = new System.Drawing.Size(194, 20);
             this.IP.TabIndex = 0;
             this.IP.TextChanged += new System.EventHandler(this.IP_TextChanged);
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(418, 1);
-            this.button1.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(104, 20);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "Join!";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.IP.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.IP_KeyPress);
             // 
             // HostIP
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(525, 101);
-            this.Controls.Add(this.tableLayoutPanel1);
+            this.ClientSize = new System.Drawing.Size(326, 76);
+            this.Controls.Add(this.masterTable);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.Margin = new System.Windows.Forms.Padding(1);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "HostIP";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Enter Host I.P.";
-            this.tableLayoutPanel1.ResumeLayout(false);
-            this.tableLayoutPanel2.ResumeLayout(false);
-            this.tableLayoutPanel2.PerformLayout();
+            this.masterTable.ResumeLayout(false);
+            this.enterInfoTable.ResumeLayout(false);
+            this.enterInfoTable.PerformLayout();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
+        private System.Windows.Forms.TableLayoutPanel masterTable;
+        private System.Windows.Forms.Label instructionsLabel;
+        private System.Windows.Forms.TableLayoutPanel enterInfoTable;
         private System.Windows.Forms.TextBox IP;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button joinButton;
+        private System.Windows.Forms.Button cancelButton;
     }
 }

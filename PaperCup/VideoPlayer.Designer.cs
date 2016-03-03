@@ -29,154 +29,321 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(VideoPlayer));
-            this.localPort = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.remotePort = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.connectButton = new System.Windows.Forms.Button();
-            this.sendMessage = new System.Windows.Forms.TextBox();
-            this.Chat = new System.Windows.Forms.ListBox();
-            this.sendButton = new System.Windows.Forms.Button();
             this.mediaPlayer = new AxWMPLib.AxWindowsMediaPlayer();
+            this.masterPanel = new System.Windows.Forms.TableLayoutPanel();
+            this.sidebarTable = new System.Windows.Forms.TableLayoutPanel();
+            this.portInfoTable = new System.Windows.Forms.TableLayoutPanel();
+            this.portInfoGroupBox = new System.Windows.Forms.GroupBox();
+            this.enterPortInfoTable = new System.Windows.Forms.TableLayoutPanel();
+            this.remotePort = new System.Windows.Forms.TextBox();
+            this.localPort = new System.Windows.Forms.TextBox();
+            this.localPortLabel = new System.Windows.Forms.Label();
+            this.remotePortLabel = new System.Windows.Forms.Label();
+            this.chatTable = new System.Windows.Forms.TableLayoutPanel();
+            this.Chat = new System.Windows.Forms.ListBox();
+            this.sendTable = new System.Windows.Forms.TableLayoutPanel();
+            this.sendButton = new System.Windows.Forms.Button();
+            this.sendMessage = new System.Windows.Forms.TextBox();
+            this.connectButton = new System.Windows.Forms.Button();
+            this.settingsButton = new System.Windows.Forms.Button();
             this.chooseMedia = new System.Windows.Forms.Button();
-            this.groupBox2.SuspendLayout();
+            this.settingsTable = new System.Windows.Forms.TableLayoutPanel();
             ((System.ComponentModel.ISupportInitialize)(this.mediaPlayer)).BeginInit();
+            this.masterPanel.SuspendLayout();
+            this.sidebarTable.SuspendLayout();
+            this.portInfoTable.SuspendLayout();
+            this.portInfoGroupBox.SuspendLayout();
+            this.enterPortInfoTable.SuspendLayout();
+            this.chatTable.SuspendLayout();
+            this.sendTable.SuspendLayout();
+            this.settingsTable.SuspendLayout();
             this.SuspendLayout();
             // 
-            // localPort
+            // mediaPlayer
             // 
-            this.localPort.Location = new System.Drawing.Point(117, 19);
-            this.localPort.Name = "localPort";
-            this.localPort.Size = new System.Drawing.Size(174, 20);
-            this.localPort.TabIndex = 3;
+            this.mediaPlayer.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.mediaPlayer.Enabled = true;
+            this.mediaPlayer.Location = new System.Drawing.Point(320, 20);
+            this.mediaPlayer.Margin = new System.Windows.Forms.Padding(20);
+            this.mediaPlayer.Name = "mediaPlayer";
+            this.mediaPlayer.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("mediaPlayer.OcxState")));
+            this.mediaPlayer.Size = new System.Drawing.Size(924, 641);
+            this.mediaPlayer.TabIndex = 6;
+            this.mediaPlayer.PlayStateChange += new AxWMPLib._WMPOCXEvents_PlayStateChangeEventHandler(this.mediaPlayer_OnClick);
             // 
-            // label2
+            // masterPanel
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(19, 22);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(55, 13);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Local Port";
+            this.masterPanel.ColumnCount = 2;
+            this.masterPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 300F));
+            this.masterPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.masterPanel.Controls.Add(this.sidebarTable, 0, 0);
+            this.masterPanel.Controls.Add(this.mediaPlayer, 1, 0);
+            this.masterPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.masterPanel.Location = new System.Drawing.Point(0, 0);
+            this.masterPanel.Name = "masterPanel";
+            this.masterPanel.RowCount = 1;
+            this.masterPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.masterPanel.Size = new System.Drawing.Size(1264, 681);
+            this.masterPanel.TabIndex = 9;
             // 
-            // groupBox2
+            // sidebarTable
             // 
-            this.groupBox2.Controls.Add(this.label2);
-            this.groupBox2.Controls.Add(this.localPort);
-            this.groupBox2.Controls.Add(this.remotePort);
-            this.groupBox2.Controls.Add(this.label3);
-            this.groupBox2.Location = new System.Drawing.Point(31, 12);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(310, 89);
-            this.groupBox2.TabIndex = 1;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Port Info|";
+            this.sidebarTable.ColumnCount = 1;
+            this.sidebarTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.sidebarTable.Controls.Add(this.settingsTable, 0, 2);
+            this.sidebarTable.Controls.Add(this.portInfoTable, 0, 0);
+            this.sidebarTable.Controls.Add(this.chatTable, 0, 1);
+            this.sidebarTable.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.sidebarTable.Location = new System.Drawing.Point(3, 3);
+            this.sidebarTable.Name = "sidebarTable";
+            this.sidebarTable.RowCount = 3;
+            this.sidebarTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 100F));
+            this.sidebarTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.sidebarTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 64F));
+            this.sidebarTable.Size = new System.Drawing.Size(294, 675);
+            this.sidebarTable.TabIndex = 11;
+            this.sidebarTable.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel4_Paint);
+            // 
+            // portInfoTable
+            // 
+            this.portInfoTable.ColumnCount = 2;
+            this.portInfoTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 68.90952F));
+            this.portInfoTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 31.09049F));
+            this.portInfoTable.Controls.Add(this.portInfoGroupBox, 0, 0);
+            this.portInfoTable.Controls.Add(this.connectButton, 1, 0);
+            this.portInfoTable.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.portInfoTable.Location = new System.Drawing.Point(3, 3);
+            this.portInfoTable.Name = "portInfoTable";
+            this.portInfoTable.RowCount = 1;
+            this.portInfoTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.portInfoTable.Size = new System.Drawing.Size(288, 94);
+            this.portInfoTable.TabIndex = 10;
+            // 
+            // portInfoGroupBox
+            // 
+            this.portInfoGroupBox.Controls.Add(this.enterPortInfoTable);
+            this.portInfoGroupBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.portInfoGroupBox.Location = new System.Drawing.Point(3, 3);
+            this.portInfoGroupBox.Name = "portInfoGroupBox";
+            this.portInfoGroupBox.Size = new System.Drawing.Size(192, 88);
+            this.portInfoGroupBox.TabIndex = 1;
+            this.portInfoGroupBox.TabStop = false;
+            this.portInfoGroupBox.Text = "Port Information";
+            // 
+            // enterPortInfoTable
+            // 
+            this.enterPortInfoTable.ColumnCount = 2;
+            this.enterPortInfoTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 45.12195F));
+            this.enterPortInfoTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 54.87805F));
+            this.enterPortInfoTable.Controls.Add(this.remotePort, 1, 1);
+            this.enterPortInfoTable.Controls.Add(this.localPort, 1, 0);
+            this.enterPortInfoTable.Controls.Add(this.localPortLabel, 0, 0);
+            this.enterPortInfoTable.Controls.Add(this.remotePortLabel, 0, 1);
+            this.enterPortInfoTable.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.enterPortInfoTable.Location = new System.Drawing.Point(3, 16);
+            this.enterPortInfoTable.Name = "enterPortInfoTable";
+            this.enterPortInfoTable.RowCount = 2;
+            this.enterPortInfoTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.enterPortInfoTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.enterPortInfoTable.Size = new System.Drawing.Size(186, 69);
+            this.enterPortInfoTable.TabIndex = 10;
             // 
             // remotePort
             // 
-            this.remotePort.Location = new System.Drawing.Point(117, 54);
+            this.remotePort.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.remotePort.Location = new System.Drawing.Point(88, 41);
+            this.remotePort.Margin = new System.Windows.Forms.Padding(5);
             this.remotePort.Name = "remotePort";
-            this.remotePort.Size = new System.Drawing.Size(174, 20);
+            this.remotePort.Size = new System.Drawing.Size(93, 20);
             this.remotePort.TabIndex = 5;
             // 
-            // label3
+            // localPort
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(16, 54);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(66, 13);
-            this.label3.TabIndex = 3;
-            this.label3.Text = "Remote Port";
+            this.localPort.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.localPort.Location = new System.Drawing.Point(88, 7);
+            this.localPort.Margin = new System.Windows.Forms.Padding(5);
+            this.localPort.Name = "localPort";
+            this.localPort.Size = new System.Drawing.Size(93, 20);
+            this.localPort.TabIndex = 3;
             // 
-            // connectButton
+            // localPortLabel
             // 
-            this.connectButton.Location = new System.Drawing.Point(347, 31);
-            this.connectButton.Name = "connectButton";
-            this.connectButton.Size = new System.Drawing.Size(129, 62);
-            this.connectButton.TabIndex = 2;
-            this.connectButton.Text = "Connect";
-            this.connectButton.UseVisualStyleBackColor = true;
-            this.connectButton.Click += new System.EventHandler(this.connect_Click);
+            this.localPortLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.localPortLabel.AutoSize = true;
+            this.localPortLabel.Location = new System.Drawing.Point(14, 10);
+            this.localPortLabel.Name = "localPortLabel";
+            this.localPortLabel.Size = new System.Drawing.Size(55, 13);
+            this.localPortLabel.TabIndex = 1;
+            this.localPortLabel.Text = "Local Port";
             // 
-            // sendMessage
+            // remotePortLabel
             // 
-            this.sendMessage.Location = new System.Drawing.Point(31, 302);
-            this.sendMessage.Name = "sendMessage";
-            this.sendMessage.Size = new System.Drawing.Size(342, 20);
-            this.sendMessage.TabIndex = 3;
+            this.remotePortLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.remotePortLabel.AutoSize = true;
+            this.remotePortLabel.Location = new System.Drawing.Point(8, 45);
+            this.remotePortLabel.Name = "remotePortLabel";
+            this.remotePortLabel.Size = new System.Drawing.Size(66, 13);
+            this.remotePortLabel.TabIndex = 3;
+            this.remotePortLabel.Text = "Remote Port";
+            // 
+            // chatTable
+            // 
+            this.chatTable.ColumnCount = 1;
+            this.chatTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.chatTable.Controls.Add(this.Chat, 0, 0);
+            this.chatTable.Controls.Add(this.sendTable, 0, 1);
+            this.chatTable.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.chatTable.Location = new System.Drawing.Point(5, 105);
+            this.chatTable.Margin = new System.Windows.Forms.Padding(5);
+            this.chatTable.Name = "chatTable";
+            this.chatTable.RowCount = 2;
+            this.chatTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.chatTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.chatTable.Size = new System.Drawing.Size(284, 501);
+            this.chatTable.TabIndex = 13;
             // 
             // Chat
             // 
+            this.Chat.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Chat.FormattingEnabled = true;
-            this.Chat.Location = new System.Drawing.Point(31, 107);
+            this.Chat.Location = new System.Drawing.Point(0, 0);
+            this.Chat.Margin = new System.Windows.Forms.Padding(0);
             this.Chat.Name = "Chat";
-            this.Chat.Size = new System.Drawing.Size(445, 186);
-            this.Chat.TabIndex = 4;
+            this.Chat.Size = new System.Drawing.Size(284, 471);
+            this.Chat.TabIndex = 5;
+            // 
+            // sendTable
+            // 
+            this.sendTable.ColumnCount = 2;
+            this.sendTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 71.2766F));
+            this.sendTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 28.7234F));
+            this.sendTable.Controls.Add(this.sendButton, 1, 0);
+            this.sendTable.Controls.Add(this.sendMessage, 0, 0);
+            this.sendTable.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.sendTable.Location = new System.Drawing.Point(3, 474);
+            this.sendTable.Name = "sendTable";
+            this.sendTable.RowCount = 1;
+            this.sendTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.sendTable.Size = new System.Drawing.Size(278, 24);
+            this.sendTable.TabIndex = 6;
             // 
             // sendButton
             // 
-            this.sendButton.Location = new System.Drawing.Point(379, 295);
+            this.sendButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.sendButton.Location = new System.Drawing.Point(198, 1);
+            this.sendButton.Margin = new System.Windows.Forms.Padding(0);
             this.sendButton.Name = "sendButton";
-            this.sendButton.Size = new System.Drawing.Size(97, 27);
+            this.sendButton.Size = new System.Drawing.Size(80, 22);
             this.sendButton.TabIndex = 5;
             this.sendButton.Text = "Send";
             this.sendButton.UseVisualStyleBackColor = true;
             this.sendButton.Click += new System.EventHandler(this.sendButton_Click);
             // 
-            // mediaPlayer
+            // sendMessage
             // 
-            this.mediaPlayer.Enabled = true;
-            this.mediaPlayer.Location = new System.Drawing.Point(495, 34);
-            this.mediaPlayer.Name = "mediaPlayer";
-            this.mediaPlayer.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("mediaPlayer.OcxState")));
-            this.mediaPlayer.Size = new System.Drawing.Size(501, 350);
-            this.mediaPlayer.TabIndex = 6;
-            this.mediaPlayer.PlayStateChange += new AxWMPLib._WMPOCXEvents_PlayStateChangeEventHandler(this.mediaPlayer_OnClick);
+            this.sendMessage.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.sendMessage.Location = new System.Drawing.Point(0, 2);
+            this.sendMessage.Margin = new System.Windows.Forms.Padding(0);
+            this.sendMessage.Name = "sendMessage";
+            this.sendMessage.Size = new System.Drawing.Size(198, 20);
+            this.sendMessage.TabIndex = 3;
+            this.sendMessage.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.sendMessage_KeyPress);
+            // 
+            // connectButton
+            // 
+            this.connectButton.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.connectButton.Location = new System.Drawing.Point(206, 32);
+            this.connectButton.Name = "connectButton";
+            this.connectButton.Size = new System.Drawing.Size(73, 30);
+            this.connectButton.TabIndex = 2;
+            this.connectButton.Text = "Connect";
+            this.connectButton.UseVisualStyleBackColor = true;
+            this.connectButton.Click += new System.EventHandler(this.connect_Click);
+            // 
+            // settingsButton
+            // 
+            this.settingsButton.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.settingsButton.BackgroundImage = global::PaperCup.Properties.Resources.icon_ios7_gear_128;
+            this.settingsButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.settingsButton.Location = new System.Drawing.Point(230, 4);
+            this.settingsButton.Name = "settingsButton";
+            this.settingsButton.Size = new System.Drawing.Size(50, 50);
+            this.settingsButton.TabIndex = 8;
+            this.settingsButton.UseVisualStyleBackColor = true;
+            this.settingsButton.Click += new System.EventHandler(this.settingsButton_Click);
             // 
             // chooseMedia
             // 
-            this.chooseMedia.Location = new System.Drawing.Point(31, 337);
+            this.chooseMedia.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.chooseMedia.Location = new System.Drawing.Point(5, 5);
+            this.chooseMedia.Margin = new System.Windows.Forms.Padding(5);
             this.chooseMedia.Name = "chooseMedia";
-            this.chooseMedia.Size = new System.Drawing.Size(122, 47);
+            this.chooseMedia.Size = new System.Drawing.Size(212, 47);
             this.chooseMedia.TabIndex = 7;
             this.chooseMedia.Text = "Choose Media";
             this.chooseMedia.UseVisualStyleBackColor = true;
             this.chooseMedia.Click += new System.EventHandler(this.chooseMedia_Click);
             // 
+            // settingsTable
+            // 
+            this.settingsTable.ColumnCount = 2;
+            this.settingsTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 77.34375F));
+            this.settingsTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 22.65625F));
+            this.settingsTable.Controls.Add(this.chooseMedia, 0, 0);
+            this.settingsTable.Controls.Add(this.settingsButton, 1, 0);
+            this.settingsTable.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.settingsTable.Location = new System.Drawing.Point(3, 614);
+            this.settingsTable.Name = "settingsTable";
+            this.settingsTable.RowCount = 1;
+            this.settingsTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.settingsTable.Size = new System.Drawing.Size(288, 58);
+            this.settingsTable.TabIndex = 12;
+            // 
             // VideoPlayer
             // 
-            this.ClientSize = new System.Drawing.Size(1013, 400);
-            this.Controls.Add(this.chooseMedia);
-            this.Controls.Add(this.mediaPlayer);
-            this.Controls.Add(this.sendButton);
-            this.Controls.Add(this.Chat);
-            this.Controls.Add(this.sendMessage);
-            this.Controls.Add(this.connectButton);
-            this.Controls.Add(this.groupBox2);
+            this.ClientSize = new System.Drawing.Size(1264, 681);
+            this.Controls.Add(this.masterPanel);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MinimumSize = new System.Drawing.Size(800, 350);
             this.Name = "VideoPlayer";
             this.Tag = "video";
             this.Text = "Video Player";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.VideoPlayer_FormClosing);
             this.Load += new System.EventHandler(this.VideoPlayer_Load);
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.mediaPlayer)).EndInit();
+            this.masterPanel.ResumeLayout(false);
+            this.sidebarTable.ResumeLayout(false);
+            this.portInfoTable.ResumeLayout(false);
+            this.portInfoGroupBox.ResumeLayout(false);
+            this.enterPortInfoTable.ResumeLayout(false);
+            this.enterPortInfoTable.PerformLayout();
+            this.chatTable.ResumeLayout(false);
+            this.sendTable.ResumeLayout(false);
+            this.sendTable.PerformLayout();
+            this.settingsTable.ResumeLayout(false);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.Button connectButton;
-        private System.Windows.Forms.TextBox localPort;
-        private System.Windows.Forms.TextBox remotePort;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox sendMessage;
-        private System.Windows.Forms.ListBox Chat;
-        private System.Windows.Forms.Button sendButton;
         private AxWMPLib.AxWindowsMediaPlayer mediaPlayer;
+        private System.Windows.Forms.TableLayoutPanel masterPanel;
+        private System.Windows.Forms.TableLayoutPanel sidebarTable;
+        private System.Windows.Forms.TableLayoutPanel portInfoTable;
+        private System.Windows.Forms.GroupBox portInfoGroupBox;
+        private System.Windows.Forms.TableLayoutPanel enterPortInfoTable;
+        private System.Windows.Forms.TextBox remotePort;
+        private System.Windows.Forms.TextBox localPort;
+        private System.Windows.Forms.Label localPortLabel;
+        private System.Windows.Forms.Label remotePortLabel;
+        private System.Windows.Forms.TableLayoutPanel chatTable;
+        private System.Windows.Forms.ListBox Chat;
+        private System.Windows.Forms.TableLayoutPanel sendTable;
+        private System.Windows.Forms.Button sendButton;
+        private System.Windows.Forms.TextBox sendMessage;
+        private System.Windows.Forms.Button connectButton;
+        private System.Windows.Forms.TableLayoutPanel settingsTable;
         private System.Windows.Forms.Button chooseMedia;
+        private System.Windows.Forms.Button settingsButton;
     }
 }

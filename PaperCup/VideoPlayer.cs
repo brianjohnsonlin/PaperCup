@@ -21,6 +21,7 @@ namespace PaperCup
         string localIP, remoteIP;
         byte[] buffer;
         private List<IPAddress> ips;
+        private Options settings;
 
         OpenFileDialog file = new OpenFileDialog();
 
@@ -49,6 +50,11 @@ namespace PaperCup
             localIP = GetLocalIP();
             remoteIP = GetLocalIP();
 
+        }
+
+        private void VideoPlayer_FormClosing(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
 
         private string GetLocalIP()
@@ -192,6 +198,12 @@ namespace PaperCup
                 sck.BeginReceiveFrom(buffer, 0, buffer.Length, SocketFlags.None, ref epRemote, new AsyncCallback(MessageCallBack), buffer);
             }
         }
+
+        private void tableLayoutPanel4_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
         //------ Receiving Chat Functions ------
         //result is whatever we're receiving from epRemote
         //the result is then parsed into ASCII then string as a message
@@ -221,6 +233,8 @@ namespace PaperCup
                 {
                     //Adding the message into the text box (show complete conversation)
                     Chat.Items.Add(message);
+                    //scroll to bottom
+                    Chat.TopIndex = Chat.Items.Count - 1;
                 }
 
                 buffer = new byte[1500];
@@ -233,6 +247,8 @@ namespace PaperCup
         //------ Sending Chat Functions ------
         private void sendButton_Click(object sender, EventArgs e)
         {
+            if (sendMessage.Text.Length == 0) return;
+
             //convert string to byte
             ASCIIEncoding a = new ASCIIEncoding();
 
@@ -247,6 +263,20 @@ namespace PaperCup
 
             //reset text in sendMessage box
             sendMessage.Text = "";
+
+            //scroll to bottom
+            Chat.TopIndex = Chat.Items.Count - 1;
+        }
+
+        private void settingsButton_Click(object sender, EventArgs e)
+        {
+            settings = new Options();
+            settings.ShowDialog();
+        }
+
+        private void sendMessage_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == '\r') sendButton_Click(sender, e); //enter
         }
     }
 }
