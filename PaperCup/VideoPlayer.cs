@@ -187,6 +187,8 @@ namespace PaperCup
                 //then add it to the mediaPlayer
                 mediaPlayer.URL = @file.FileName;
 
+                mediaPlayer.Ctlcontrols.pause();
+                /*
                 //convert string to byte
                 ASCIIEncoding a = new ASCIIEncoding();
 
@@ -196,6 +198,7 @@ namespace PaperCup
                 //sending the sent message
                 sck.Send(send);
                 sck.BeginReceiveFrom(buffer, 0, buffer.Length, SocketFlags.None, ref epRemote, new AsyncCallback(MessageCallBack), buffer);
+                */
             }
         }
 
@@ -256,7 +259,10 @@ namespace PaperCup
             send = a.GetBytes(localname + ": " + sendMessage.Text);
 
             //sending the sent message
-            sck.Send(send);
+            try {
+                sck.Send(send);
+            }
+            catch (System.Net.Sockets.SocketException i) { }
 
             //add the sent message to the conversation
             Chat.Items.Add(localname + ": " + sendMessage.Text);
