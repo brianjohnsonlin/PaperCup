@@ -141,7 +141,7 @@ namespace PaperCup
         }
 
         private void mediaPlayer_PositionChange(object sender, AxWMPLib._WMPOCXEvents_PositionChangeEvent e) {
-            sendSocket("positionchanged" + e.newPosition);
+            sendSocket("positionChange" + e.newPosition);
         }
 
         //------ Changes Media Player's State -------
@@ -169,7 +169,6 @@ namespace PaperCup
                 case 8: // MediaEnded
                     break;
                 case 9: // Transitioning: The clip is being prepared.
-                    mediaPlayer.Ctlcontrols.currentPosition += 10;
                     break;
                 case 10: // Ready
                     break;
@@ -182,7 +181,7 @@ namespace PaperCup
             }
         }
 
-        private void change_position(int new_position) {
+        private void change_position(double new_position) {
             mediaPlayer.Ctlcontrols.currentPosition = new_position;
         }
 
@@ -195,9 +194,10 @@ namespace PaperCup
             {
                 //get the filename = address of the file
                 //then add it to the mediaPlayer
-                //mediaPlayer.URL = @file.FileName;
+                mediaPlayer.URL = @file.FileName;
 
                 mediaPlayer.Ctlcontrols.pause();
+
                 /*
                 //convert string to byte
                 ASCIIEncoding a = new ASCIIEncoding();
@@ -210,11 +210,6 @@ namespace PaperCup
                 sck.BeginReceiveFrom(buffer, 0, buffer.Length, SocketFlags.None, ref epRemote, new AsyncCallback(MessageCallBack), buffer);
                 */
             }
-        }
-
-        private void tableLayoutPanel4_Paint(object sender, PaintEventArgs e)
-        {
-
         }
 
         //------ Receiving Chat Functions ------
@@ -240,13 +235,11 @@ namespace PaperCup
                     int new_state = Int32.Parse(message.Substring("playStateChange".Length));
                     change_state(new_state);
                 } else if (message.StartsWith("positionChange")){
-                    int new_position = Int32.Parse(message.Substring("positionChange".Length));
-                    change_position(new_position);
-                } else {
+                    double new_position = Double.Parse(message.Substring("positionChange".Length));
+                    if (Math.Abs(mediaPlayer.Ctlcontrols.currentPosition - new_position) > 0.2) change_position(new_position);
+                } else if (message.StartsWith("chat")) {
                     //Adding the message into the text box (show complete conversation)
-                    Chat.Items.Add(message);
-                    //scroll to bottom
-                    Chat.TopIndex = Chat.Items.Count - 1;
+                    addToChat(message.Substring("chat".Length));
                 }
 
                 buffer = new byte[1500];
@@ -258,29 +251,20 @@ namespace PaperCup
         }
 
         //------ Sending Chat Functions ------
-        private void sendButton_Click(object sender, EventArgs e)
-        {
+        private void sendButton_Click(object sender, EventArgs e){
             if (sendMessage.Text.Length == 0) return;
 
-            //convert string to byte
-            ASCIIEncoding a = new ASCIIEncoding();
-
-            byte[] send = new byte[1500];
-            send = a.GetBytes(localname + ": " + sendMessage.Text);
-
-            //sending the sent message
-            try {
-                sck.Send(send);
-            }
-            catch (System.Net.Sockets.SocketException i) { }
+            sendSocket("chat" + "localname" + ": " + sendMessage.Text);
 
             //add the sent message to the conversation
-            Chat.Items.Add(localname + ": " + sendMessage.Text);
+            addToChat(localname + ": " + sendMessage.Text);
 
             //reset text in sendMessage box
             sendMessage.Text = "";
+        }
 
-            //scroll to bottom
+        private void addToChat(string message) {
+            Chat.Items.Add(message);
             Chat.TopIndex = Chat.Items.Count - 1;
         }
 
@@ -302,8 +286,10 @@ namespace PaperCup
             send = a.GetBytes(msg);
 
             //sending the sent message
-            sck.Send(send);
-            sck.BeginReceiveFrom(buffer, 0, buffer.Length, SocketFlags.None, ref epRemote, new AsyncCallback(MessageCallBack), buffer);
+            try {
+                sck.Send(send);
+                sck.BeginReceiveFrom(buffer, 0, buffer.Length, SocketFlags.None, ref epRemote, new AsyncCallback(MessageCallBack), buffer);
+            }catch (System.Net.Sockets.SocketException) { }
         }
     }
 }

@@ -103,7 +103,6 @@
             this.sidebarTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 64F));
             this.sidebarTable.Size = new System.Drawing.Size(294, 675);
             this.sidebarTable.TabIndex = 11;
-            this.sidebarTable.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel4_Paint);
             // 
             // settingsTable
             // 
