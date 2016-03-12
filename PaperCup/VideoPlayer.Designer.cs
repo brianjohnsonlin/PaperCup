@@ -32,6 +32,9 @@
             this.mediaPlayer = new AxWMPLib.AxWindowsMediaPlayer();
             this.masterPanel = new System.Windows.Forms.TableLayoutPanel();
             this.sidebarTable = new System.Windows.Forms.TableLayoutPanel();
+            this.settingsTable = new System.Windows.Forms.TableLayoutPanel();
+            this.chooseMedia = new System.Windows.Forms.Button();
+            this.settingsButton = new System.Windows.Forms.Button();
             this.portInfoTable = new System.Windows.Forms.TableLayoutPanel();
             this.portInfoGroupBox = new System.Windows.Forms.GroupBox();
             this.enterPortInfoTable = new System.Windows.Forms.TableLayoutPanel();
@@ -39,24 +42,21 @@
             this.localPort = new System.Windows.Forms.TextBox();
             this.localPortLabel = new System.Windows.Forms.Label();
             this.remotePortLabel = new System.Windows.Forms.Label();
+            this.connectButton = new System.Windows.Forms.Button();
             this.chatTable = new System.Windows.Forms.TableLayoutPanel();
             this.Chat = new System.Windows.Forms.ListBox();
             this.sendTable = new System.Windows.Forms.TableLayoutPanel();
             this.sendButton = new System.Windows.Forms.Button();
             this.sendMessage = new System.Windows.Forms.TextBox();
-            this.connectButton = new System.Windows.Forms.Button();
-            this.settingsButton = new System.Windows.Forms.Button();
-            this.chooseMedia = new System.Windows.Forms.Button();
-            this.settingsTable = new System.Windows.Forms.TableLayoutPanel();
             ((System.ComponentModel.ISupportInitialize)(this.mediaPlayer)).BeginInit();
             this.masterPanel.SuspendLayout();
             this.sidebarTable.SuspendLayout();
+            this.settingsTable.SuspendLayout();
             this.portInfoTable.SuspendLayout();
             this.portInfoGroupBox.SuspendLayout();
             this.enterPortInfoTable.SuspendLayout();
             this.chatTable.SuspendLayout();
             this.sendTable.SuspendLayout();
-            this.settingsTable.SuspendLayout();
             this.SuspendLayout();
             // 
             // mediaPlayer
@@ -67,9 +67,10 @@
             this.mediaPlayer.Margin = new System.Windows.Forms.Padding(20);
             this.mediaPlayer.Name = "mediaPlayer";
             this.mediaPlayer.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("mediaPlayer.OcxState")));
-            this.mediaPlayer.Size = new System.Drawing.Size(924, 641);
+            this.mediaPlayer.Size = new System.Drawing.Size(921, 641);
             this.mediaPlayer.TabIndex = 6;
-            this.mediaPlayer.PlayStateChange += new AxWMPLib._WMPOCXEvents_PlayStateChangeEventHandler(this.mediaPlayer_OnClick);
+            this.mediaPlayer.PlayStateChange += new AxWMPLib._WMPOCXEvents_PlayStateChangeEventHandler(this.mediaPlayer_PlayStateChange);
+            this.mediaPlayer.PositionChange += new AxWMPLib._WMPOCXEvents_PositionChangeEventHandler(this.mediaPlayer_PositionChange);
             // 
             // masterPanel
             // 
@@ -83,7 +84,7 @@
             this.masterPanel.Name = "masterPanel";
             this.masterPanel.RowCount = 1;
             this.masterPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.masterPanel.Size = new System.Drawing.Size(1264, 681);
+            this.masterPanel.Size = new System.Drawing.Size(1261, 681);
             this.masterPanel.TabIndex = 9;
             // 
             // sidebarTable
@@ -103,6 +104,45 @@
             this.sidebarTable.Size = new System.Drawing.Size(294, 675);
             this.sidebarTable.TabIndex = 11;
             this.sidebarTable.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel4_Paint);
+            // 
+            // settingsTable
+            // 
+            this.settingsTable.ColumnCount = 2;
+            this.settingsTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 77.34375F));
+            this.settingsTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 22.65625F));
+            this.settingsTable.Controls.Add(this.chooseMedia, 0, 0);
+            this.settingsTable.Controls.Add(this.settingsButton, 1, 0);
+            this.settingsTable.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.settingsTable.Location = new System.Drawing.Point(3, 614);
+            this.settingsTable.Name = "settingsTable";
+            this.settingsTable.RowCount = 1;
+            this.settingsTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.settingsTable.Size = new System.Drawing.Size(288, 58);
+            this.settingsTable.TabIndex = 12;
+            // 
+            // chooseMedia
+            // 
+            this.chooseMedia.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.chooseMedia.Location = new System.Drawing.Point(5, 5);
+            this.chooseMedia.Margin = new System.Windows.Forms.Padding(5);
+            this.chooseMedia.Name = "chooseMedia";
+            this.chooseMedia.Size = new System.Drawing.Size(212, 47);
+            this.chooseMedia.TabIndex = 7;
+            this.chooseMedia.Text = "Choose Media";
+            this.chooseMedia.UseVisualStyleBackColor = true;
+            this.chooseMedia.Click += new System.EventHandler(this.chooseMedia_Click);
+            // 
+            // settingsButton
+            // 
+            this.settingsButton.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.settingsButton.BackgroundImage = global::PaperCup.Properties.Resources.icon_ios7_gear_128;
+            this.settingsButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.settingsButton.Location = new System.Drawing.Point(230, 4);
+            this.settingsButton.Name = "settingsButton";
+            this.settingsButton.Size = new System.Drawing.Size(50, 50);
+            this.settingsButton.TabIndex = 8;
+            this.settingsButton.UseVisualStyleBackColor = true;
+            this.settingsButton.Click += new System.EventHandler(this.settingsButton_Click);
             // 
             // portInfoTable
             // 
@@ -186,6 +226,17 @@
             this.remotePortLabel.TabIndex = 3;
             this.remotePortLabel.Text = "Remote Port";
             // 
+            // connectButton
+            // 
+            this.connectButton.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.connectButton.Location = new System.Drawing.Point(206, 32);
+            this.connectButton.Name = "connectButton";
+            this.connectButton.Size = new System.Drawing.Size(73, 30);
+            this.connectButton.TabIndex = 2;
+            this.connectButton.Text = "Connect";
+            this.connectButton.UseVisualStyleBackColor = true;
+            this.connectButton.Click += new System.EventHandler(this.connect_Click);
+            // 
             // chatTable
             // 
             this.chatTable.ColumnCount = 1;
@@ -249,56 +300,6 @@
             this.sendMessage.TabIndex = 3;
             this.sendMessage.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.sendMessage_KeyPress);
             // 
-            // connectButton
-            // 
-            this.connectButton.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.connectButton.Location = new System.Drawing.Point(206, 32);
-            this.connectButton.Name = "connectButton";
-            this.connectButton.Size = new System.Drawing.Size(73, 30);
-            this.connectButton.TabIndex = 2;
-            this.connectButton.Text = "Connect";
-            this.connectButton.UseVisualStyleBackColor = true;
-            this.connectButton.Click += new System.EventHandler(this.connect_Click);
-            // 
-            // settingsButton
-            // 
-            this.settingsButton.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.settingsButton.BackgroundImage = global::PaperCup.Properties.Resources.icon_ios7_gear_128;
-            this.settingsButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.settingsButton.Location = new System.Drawing.Point(230, 4);
-            this.settingsButton.Name = "settingsButton";
-            this.settingsButton.Size = new System.Drawing.Size(50, 50);
-            this.settingsButton.TabIndex = 8;
-            this.settingsButton.UseVisualStyleBackColor = true;
-            this.settingsButton.Click += new System.EventHandler(this.settingsButton_Click);
-            // 
-            // chooseMedia
-            // 
-            this.chooseMedia.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.chooseMedia.Location = new System.Drawing.Point(5, 5);
-            this.chooseMedia.Margin = new System.Windows.Forms.Padding(5);
-            this.chooseMedia.Name = "chooseMedia";
-            this.chooseMedia.Size = new System.Drawing.Size(212, 47);
-            this.chooseMedia.TabIndex = 7;
-            this.chooseMedia.Text = "Choose Media";
-            this.chooseMedia.UseVisualStyleBackColor = true;
-            this.chooseMedia.Click += new System.EventHandler(this.chooseMedia_Click);
-            // 
-            // settingsTable
-            // 
-            this.settingsTable.ColumnCount = 2;
-            this.settingsTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 77.34375F));
-            this.settingsTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 22.65625F));
-            this.settingsTable.Controls.Add(this.chooseMedia, 0, 0);
-            this.settingsTable.Controls.Add(this.settingsButton, 1, 0);
-            this.settingsTable.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.settingsTable.Location = new System.Drawing.Point(3, 614);
-            this.settingsTable.Name = "settingsTable";
-            this.settingsTable.RowCount = 1;
-            this.settingsTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.settingsTable.Size = new System.Drawing.Size(288, 58);
-            this.settingsTable.TabIndex = 12;
-            // 
             // VideoPlayer
             // 
             this.ClientSize = new System.Drawing.Size(1264, 681);
@@ -313,6 +314,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.mediaPlayer)).EndInit();
             this.masterPanel.ResumeLayout(false);
             this.sidebarTable.ResumeLayout(false);
+            this.settingsTable.ResumeLayout(false);
             this.portInfoTable.ResumeLayout(false);
             this.portInfoGroupBox.ResumeLayout(false);
             this.enterPortInfoTable.ResumeLayout(false);
@@ -320,7 +322,6 @@
             this.chatTable.ResumeLayout(false);
             this.sendTable.ResumeLayout(false);
             this.sendTable.PerformLayout();
-            this.settingsTable.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

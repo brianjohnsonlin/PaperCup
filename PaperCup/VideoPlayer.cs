@@ -92,9 +92,9 @@ namespace PaperCup
         //----------- Check Media Player Events ----------
         //Senses and deciphers which mediaplayer button the user pressed
         //then sends that information to the other user
-        private void mediaPlayer_OnClick(object sender, AxWMPLib._WMPOCXEvents_PlayStateChangeEvent e)
-        {
-            int state_change = 0;
+        private void mediaPlayer_PlayStateChange(object sender, AxWMPLib._WMPOCXEvents_PlayStateChangeEvent e) {
+            /*
+            int state_change = e.newState;
             switch (e.newState)
             {
                 case 1:    // Stopped
@@ -131,49 +131,59 @@ namespace PaperCup
                 default:
                     break;
             }
-            if (state_change != 0)
-            {
+            */
+            if (e.newState != 0) {
                 //if the state has actually been changed, then send that information to 
                 //the other user, so then their state will also be changed
                 //convert string to byte
-                ASCIIEncoding a = new ASCIIEncoding();
-
-                byte[] send = new byte[1500];
-                send = a.GetBytes("statechanged" + state_change);
-
-                //sending the sent message
-                sck.Send(send);
-                sck.BeginReceiveFrom(buffer, 0, buffer.Length, SocketFlags.None, ref epRemote, new AsyncCallback(MessageCallBack), buffer);
+                sendSocket("playStateChange" + e.newState);
             }
         }
-        
+
+        private void mediaPlayer_PositionChange(object sender, AxWMPLib._WMPOCXEvents_PositionChangeEvent e) {
+            sendSocket("positionchanged" + e.newPosition);
+        }
+
         //------ Changes Media Player's State -------
         private void change_state(int new_state)
         {
             switch (new_state)
             {
-                case 1:
+                case 1: // Stopped
                     mediaPlayer.Ctlcontrols.stop();
                     break;
-                case 2:
+                case 2: // Paused
                     mediaPlayer.Ctlcontrols.pause();
                     break;
-                case 3:
+                case 3: // Playing
                     mediaPlayer.Ctlcontrols.play();
                     break;
-                case 4:
+                case 4: // ScanForward: fastforward
                     break;
-                case 5:
+                case 5: // ScanReverse: rewind
                     break;
-                case 8:
+                case 6: // Buffering
                     break;
-                case 9:
+                case 7: // Waiting: The player is waiting for the server to respond.
                     break;
-                case 12:
+                case 8: // MediaEnded
+                    break;
+                case 9: // Transitioning: The clip is being prepared.
+                    mediaPlayer.Ctlcontrols.currentPosition += 10;
+                    break;
+                case 10: // Ready
+                    break;
+                case 11: // Reconnecting
+                    break;
+                case 12: // Last
                     break;
                 default:
                     break;
             }
+        }
+
+        private void change_position(int new_position) {
+            mediaPlayer.Ctlcontrols.currentPosition = new_position;
         }
 
         //------ Pick & Send Media ------
@@ -185,7 +195,7 @@ namespace PaperCup
             {
                 //get the filename = address of the file
                 //then add it to the mediaPlayer
-                mediaPlayer.URL = @file.FileName;
+                //mediaPlayer.URL = @file.FileName;
 
                 mediaPlayer.Ctlcontrols.pause();
                 /*
@@ -226,14 +236,13 @@ namespace PaperCup
                     //the received media is then played
                     message = message.Replace("@fileaddress", "");
                     mediaPlayer.URL = @message;
-                } else if (message.Contains("statechanged"))
-                {
-                    message = message.Replace("statechanged", "");
-                    int new_state = Int32.Parse(message);
+                } else if (message.StartsWith("playStateChange")){
+                    int new_state = Int32.Parse(message.Substring("playStateChange".Length));
                     change_state(new_state);
-                }
-                else
-                {
+                } else if (message.StartsWith("positionChange")){
+                    int new_position = Int32.Parse(message.Substring("positionChange".Length));
+                    change_position(new_position);
+                } else {
                     //Adding the message into the text box (show complete conversation)
                     Chat.Items.Add(message);
                     //scroll to bottom
@@ -247,6 +256,7 @@ namespace PaperCup
                 MessageBox.Show(e.ToString());
             }            
         }
+
         //------ Sending Chat Functions ------
         private void sendButton_Click(object sender, EventArgs e)
         {
@@ -283,6 +293,17 @@ namespace PaperCup
         private void sendMessage_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == '\r') sendButton_Click(sender, e); //enter
+        }
+
+        private void sendSocket(string msg) {
+            ASCIIEncoding a = new ASCIIEncoding();
+
+            byte[] send = new byte[1500];
+            send = a.GetBytes(msg);
+
+            //sending the sent message
+            sck.Send(send);
+            sck.BeginReceiveFrom(buffer, 0, buffer.Length, SocketFlags.None, ref epRemote, new AsyncCallback(MessageCallBack), buffer);
         }
     }
 }
