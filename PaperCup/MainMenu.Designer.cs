@@ -36,8 +36,8 @@
             this.joinButton = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.bottomTable = new System.Windows.Forms.TableLayoutPanel();
-            this.nicknameLabel = new System.Windows.Forms.Label();
             this.nicknameBox = new System.Windows.Forms.TextBox();
+            this.nicknameLabel = new System.Windows.Forms.Label();
             this.masterTable.SuspendLayout();
             this.buttonsTable.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -102,6 +102,7 @@
             this.createButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.createButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.createButton.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.createButton.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
             this.createButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.createButton.Font = new System.Drawing.Font("Candara", 21.86387F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.createButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(182)))), ((int)(((byte)(215)))), ((int)(((byte)(167)))));
@@ -121,6 +122,7 @@
             this.joinButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.joinButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.joinButton.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.joinButton.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
             this.joinButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.joinButton.Font = new System.Drawing.Font("Candara", 21.86387F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.joinButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(182)))), ((int)(((byte)(215)))), ((int)(((byte)(167)))));
@@ -165,6 +167,19 @@
             this.bottomTable.Size = new System.Drawing.Size(1208, 59);
             this.bottomTable.TabIndex = 3;
             // 
+            // nicknameBox
+            // 
+            this.nicknameBox.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.nicknameBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(234)))), ((int)(((byte)(211)))));
+            this.nicknameBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.06283F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.nicknameBox.ForeColor = System.Drawing.Color.Gray;
+            this.nicknameBox.Location = new System.Drawing.Point(210, 7);
+            this.nicknameBox.Margin = new System.Windows.Forms.Padding(0);
+            this.nicknameBox.Name = "nicknameBox";
+            this.nicknameBox.Size = new System.Drawing.Size(987, 44);
+            this.nicknameBox.TabIndex = 1;
+            this.nicknameBox.TextChanged += new System.EventHandler(this.nicknameBox_TextChanged);
+            // 
             // nicknameLabel
             // 
             this.nicknameLabel.AutoSize = true;
@@ -179,19 +194,6 @@
             this.nicknameLabel.TabIndex = 2;
             this.nicknameLabel.Text = "Nickname:";
             this.nicknameLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // nicknameBox
-            // 
-            this.nicknameBox.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.nicknameBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(234)))), ((int)(((byte)(211)))));
-            this.nicknameBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.06283F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.nicknameBox.ForeColor = System.Drawing.Color.Gray;
-            this.nicknameBox.Location = new System.Drawing.Point(210, 7);
-            this.nicknameBox.Margin = new System.Windows.Forms.Padding(0);
-            this.nicknameBox.Name = "nicknameBox";
-            this.nicknameBox.Size = new System.Drawing.Size(987, 44);
-            this.nicknameBox.TabIndex = 1;
-            this.nicknameBox.TextChanged += new System.EventHandler(this.nicknameBox_TextChanged);
             // 
             // MainMenu
             // 
