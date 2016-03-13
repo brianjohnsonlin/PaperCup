@@ -23,9 +23,12 @@ namespace PaperCup
         private List<IPAddress> ips;
         private Options settings;
 
+        Form mainmenu;
+
         OpenFileDialog file = new OpenFileDialog();
 
         private string localname, hostIP;
+
         //host videoplayer
         public VideoPlayer(string localNickName)
         {
@@ -33,11 +36,12 @@ namespace PaperCup
             localname = localNickName;
         }
         //nonhost videoplayers
-        public VideoPlayer(string localNickName, string host_IP)
+        public VideoPlayer(string localNickName, string host_IP, Form mm)
         {
             InitializeComponent();
             localname = localNickName;
             hostIP = host_IP;
+            mainmenu = mm;
         }
 
         private void VideoPlayer_Load(object sender, EventArgs e)
@@ -49,12 +53,14 @@ namespace PaperCup
             //getting the users' I.P.s
             localIP = GetLocalIP();
             remoteIP = GetLocalIP();
+            sendMessage.Select();
 
         }
 
         private void VideoPlayer_FormClosing(object sender, EventArgs e)
         {
-            Application.Exit();
+            //Application.Exit();
+            mainmenu.Show();
         }
 
         private string GetLocalIP()
@@ -159,20 +165,28 @@ namespace PaperCup
                     mediaPlayer.Ctlcontrols.play();
                     break;
                 case 4: // ScanForward: fastforward
+                    mediaPlayer.Ctlcontrols.fastForward();
                     break;
                 case 5: // ScanReverse: rewind
+                    mediaPlayer.Ctlcontrols.fastReverse();
                     break;
                 case 6: // Buffering
+                    mediaPlayer.Ctlcontrols.pause();
                     break;
                 case 7: // Waiting: The player is waiting for the server to respond.
+                    mediaPlayer.Ctlcontrols.pause();
                     break;
                 case 8: // MediaEnded
+                    mediaPlayer.Ctlcontrols.stop();
                     break;
                 case 9: // Transitioning: The clip is being prepared.
+                    mediaPlayer.Ctlcontrols.pause();
                     break;
                 case 10: // Ready
+                    mediaPlayer.Ctlcontrols.pause();
                     break;
                 case 11: // Reconnecting
+                    mediaPlayer.Ctlcontrols.pause();
                     break;
                 case 12: // Last
                     break;
@@ -226,12 +240,15 @@ namespace PaperCup
                 ASCIIEncoding a = new ASCIIEncoding();
                 string message = a.GetString(receivedData);
                 
+                /*
                 if (message.Contains("@fileaddress")) {
                     //the message received is the media sent from the other user
                     //the received media is then played
                     message = message.Replace("@fileaddress", "");
                     mediaPlayer.URL = @message;
-                } else if (message.StartsWith("playStateChange")){
+                }*/
+
+                if (message.StartsWith("playStateChange")){
                     int new_state = Int32.Parse(message.Substring("playStateChange".Length));
                     change_state(new_state);
                 } else if (message.StartsWith("positionChange")){
@@ -276,7 +293,10 @@ namespace PaperCup
 
         private void sendMessage_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (e.KeyChar == '\r') sendButton_Click(sender, e); //enter
+            if (e.KeyChar == '\r') {
+                sendButton_Click(sender, e); //enter
+                e.Handled = true;
+            }
         }
 
         private void sendSocket(string msg) {
