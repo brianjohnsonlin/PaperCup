@@ -42,9 +42,11 @@ namespace PaperCup
         {
             InitializeComponent();
             localname = localNickName;
-            hostIP = host_IP;
+            sendMessage.Select();
+
+            //hostIP = host_IP;
             localIP = GetLocalIP();
-            remoteIP = hostIP;
+            hostIP = host_IP;
             mainmenu = mm;
         }
 
@@ -56,7 +58,7 @@ namespace PaperCup
 
             //getting the users' I.P.s
             localIP = GetLocalIP();
-            remoteIP = GetLocalIP();
+            remoteIP = hostIP;
             sendMessage.Select();
 
         }
@@ -97,6 +99,8 @@ namespace PaperCup
             //Listening to the specific port
             buffer = new byte[1500];
             sck.BeginReceiveFrom(buffer, 0, buffer.Length, SocketFlags.None, ref epRemote, new AsyncCallback(MessageCallBack), buffer);
+            addToChat("local: " + localIP);
+            addToChat("remote: " + remoteIP);
         }
 
         //----------- Check Media Player Events ----------
