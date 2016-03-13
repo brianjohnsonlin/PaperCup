@@ -32,22 +32,22 @@
             System.Windows.Forms.ListViewItem listViewItem2 = new System.Windows.Forms.ListViewItem("User 2");
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Options));
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.label1 = new System.Windows.Forms.Label();
+            this.roomLabel = new System.Windows.Forms.Label();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.label2 = new System.Windows.Forms.Label();
-            this.listView1 = new System.Windows.Forms.ListView();
+            this.usersList = new System.Windows.Forms.ListView();
+            this.usersLabel = new System.Windows.Forms.Label();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
+            this.ipLabel = new System.Windows.Forms.Label();
+            this.ipDisplay = new System.Windows.Forms.Label();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
-            this.label5 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.nicknameLabel = new System.Windows.Forms.Label();
+            this.nameChange = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
-            this.label6 = new System.Windows.Forms.Label();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.settingLabel = new System.Windows.Forms.Label();
+            this.soundCheck = new System.Windows.Forms.CheckBox();
             this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.updateButton = new System.Windows.Forms.Button();
+            this.cancelButton = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
@@ -58,10 +58,11 @@
             // 
             // tableLayoutPanel1
             // 
+            this.tableLayoutPanel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(234)))), ((int)(((byte)(211)))));
             this.tableLayoutPanel1.ColumnCount = 2;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20.25895F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 340F));
-            this.tableLayoutPanel1.Controls.Add(this.label1, 0, 0);
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 680F));
+            this.tableLayoutPanel1.Controls.Add(this.roomLabel, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel3, 0, 2);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel4, 1, 1);
@@ -81,170 +82,189 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(640, 319);
             this.tableLayoutPanel1.TabIndex = 1;
             // 
-            // label1
+            // roomLabel
             // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(234)))), ((int)(((byte)(211)))));
-            this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label1.Font = new System.Drawing.Font("Candara", 15.83246F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(182)))), ((int)(((byte)(215)))), ((int)(((byte)(167)))));
-            this.label1.Location = new System.Drawing.Point(2, 0);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(296, 27);
-            this.label1.TabIndex = 5;
-            this.label1.Text = "Room Information";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
+            this.roomLabel.AutoSize = true;
+            this.roomLabel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(234)))), ((int)(((byte)(211)))));
+            this.roomLabel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.roomLabel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.roomLabel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.roomLabel.Font = new System.Drawing.Font("Candara", 15.83246F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.roomLabel.ForeColor = System.Drawing.Color.DarkSeaGreen;
+            this.roomLabel.Location = new System.Drawing.Point(4, 0);
+            this.roomLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.roomLabel.Name = "roomLabel";
+            this.roomLabel.Size = new System.Drawing.Size(592, 51);
+            this.roomLabel.TabIndex = 5;
+            this.roomLabel.Text = "Room Information";
             // 
             // tableLayoutPanel2
             // 
             this.tableLayoutPanel2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.tableLayoutPanel2.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
             this.tableLayoutPanel2.ColumnCount = 2;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 255F));
-            this.tableLayoutPanel2.Controls.Add(this.label2, 0, 0);
-            this.tableLayoutPanel2.Controls.Add(this.listView1, 1, 0);
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(2, 31);
-            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 440F));
+            this.tableLayoutPanel2.Controls.Add(this.usersList, 1, 0);
+            this.tableLayoutPanel2.Controls.Add(this.usersLabel, 0, 0);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(4, 59);
+            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(4);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel2.Size = new System.Drawing.Size(296, 138);
             this.tableLayoutPanel2.TabIndex = 6;
             // 
-            // label2
+            // usersList
             // 
-            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(5, 0);
-            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(34, 138);
-            this.label2.TabIndex = 0;
-            this.label2.Text = "Users";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
-            // 
-            // listView1
-            // 
-            this.listView1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.listView1.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
+            this.usersList.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.usersList.ForeColor = System.Drawing.Color.Gray;
+            this.usersList.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
             listViewItem1,
             listViewItem2});
-            this.listView1.Location = new System.Drawing.Point(43, 2);
-            this.listView1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(251, 134);
-            this.listView1.TabIndex = 7;
-            this.listView1.UseCompatibleStateImageBehavior = false;
-            this.listView1.View = System.Windows.Forms.View.List;
+            this.usersList.Location = new System.Drawing.Point(160, 6);
+            this.usersList.Margin = new System.Windows.Forms.Padding(4);
+            this.usersList.Name = "usersList";
+            this.usersList.Size = new System.Drawing.Size(427, 254);
+            this.usersList.TabIndex = 7;
+            this.usersList.UseCompatibleStateImageBehavior = false;
+            this.usersList.View = System.Windows.Forms.View.List;
+            // 
+            // usersLabel
+            // 
+            this.usersLabel.AutoSize = true;
+            this.usersLabel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.usersLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.17801F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.usersLabel.ForeColor = System.Drawing.Color.OliveDrab;
+            this.usersLabel.Location = new System.Drawing.Point(5, 1);
+            this.usersLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.usersLabel.Name = "usersLabel";
+            this.usersLabel.Size = new System.Drawing.Size(141, 263);
+            this.usersLabel.TabIndex = 0;
+            this.usersLabel.Text = "Users";
             // 
             // tableLayoutPanel3
             // 
             this.tableLayoutPanel3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.tableLayoutPanel3.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
             this.tableLayoutPanel3.ColumnCount = 2;
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 21.49681F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 78.50318F));
-            this.tableLayoutPanel3.Controls.Add(this.label3, 0, 0);
-            this.tableLayoutPanel3.Controls.Add(this.label4, 1, 0);
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(2, 173);
-            this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 26.68919F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 73.31081F));
+            this.tableLayoutPanel3.Controls.Add(this.ipLabel, 0, 0);
+            this.tableLayoutPanel3.Controls.Add(this.ipDisplay, 1, 0);
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(4, 332);
+            this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(4);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 1;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel3.Size = new System.Drawing.Size(296, 113);
             this.tableLayoutPanel3.TabIndex = 7;
             // 
-            // label3
+            // ipLabel
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(2, 0);
-            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(43, 26);
-            this.label3.TabIndex = 0;
-            this.label3.Text = "ROOM I.P.:";
+            this.ipLabel.AutoSize = true;
+            this.ipLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.916231F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ipLabel.ForeColor = System.Drawing.Color.OliveDrab;
+            this.ipLabel.Location = new System.Drawing.Point(5, 1);
+            this.ipLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.ipLabel.Name = "ipLabel";
+            this.ipLabel.Size = new System.Drawing.Size(135, 26);
+            this.ipLabel.TabIndex = 0;
+            this.ipLabel.Text = "ROOM I.P.:";
             // 
-            // label4
+            // ipDisplay
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(65, 0);
-            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(58, 13);
-            this.label4.TabIndex = 1;
-            this.label4.Text = "IP Address";
+            this.ipDisplay.AutoSize = true;
+            this.ipDisplay.ForeColor = System.Drawing.Color.Gray;
+            this.ipDisplay.Location = new System.Drawing.Point(163, 1);
+            this.ipDisplay.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.ipDisplay.Name = "ipDisplay";
+            this.ipDisplay.Size = new System.Drawing.Size(119, 26);
+            this.ipDisplay.TabIndex = 1;
+            this.ipDisplay.Text = "IP Address";
             // 
             // tableLayoutPanel4
             // 
+            this.tableLayoutPanel4.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
             this.tableLayoutPanel4.ColumnCount = 2;
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 18.42496F));
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 81.57504F));
-            this.tableLayoutPanel4.Controls.Add(this.label5, 0, 0);
-            this.tableLayoutPanel4.Controls.Add(this.textBox1, 1, 0);
-            this.tableLayoutPanel4.Location = new System.Drawing.Point(302, 29);
-            this.tableLayoutPanel4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 26.48809F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 73.5119F));
+            this.tableLayoutPanel4.Controls.Add(this.nicknameLabel, 0, 0);
+            this.tableLayoutPanel4.Controls.Add(this.nameChange, 1, 0);
+            this.tableLayoutPanel4.ForeColor = System.Drawing.Color.Gray;
+            this.tableLayoutPanel4.Location = new System.Drawing.Point(604, 55);
+            this.tableLayoutPanel4.Margin = new System.Windows.Forms.Padding(4);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
             this.tableLayoutPanel4.RowCount = 1;
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel4.Size = new System.Drawing.Size(336, 138);
             this.tableLayoutPanel4.TabIndex = 8;
             // 
-            // label5
+            // nicknameLabel
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(2, 0);
-            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(55, 26);
-            this.label5.TabIndex = 0;
-            this.label5.Text = "Nickname:";
+            this.nicknameLabel.AutoSize = true;
+            this.nicknameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.17801F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.nicknameLabel.ForeColor = System.Drawing.Color.OliveDrab;
+            this.nicknameLabel.Location = new System.Drawing.Point(5, 1);
+            this.nicknameLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.nicknameLabel.Name = "nicknameLabel";
+            this.nicknameLabel.Size = new System.Drawing.Size(152, 31);
+            this.nicknameLabel.TabIndex = 0;
+            this.nicknameLabel.Text = "Nickname:";
             // 
-            // textBox1
+            // nameChange
             // 
-            this.textBox1.Location = new System.Drawing.Point(63, 2);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(270, 20);
-            this.textBox1.TabIndex = 1;
+            this.nameChange.ForeColor = System.Drawing.Color.Gray;
+            this.nameChange.Location = new System.Drawing.Point(183, 5);
+            this.nameChange.Margin = new System.Windows.Forms.Padding(4);
+            this.nameChange.Name = "nameChange";
+            this.nameChange.Size = new System.Drawing.Size(484, 31);
+            this.nameChange.TabIndex = 1;
+            this.nameChange.TextChanged += new System.EventHandler(this.nameChange_TextChanged);
             // 
             // tableLayoutPanel5
             // 
+            this.tableLayoutPanel5.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
             this.tableLayoutPanel5.ColumnCount = 1;
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel5.Controls.Add(this.label6, 0, 0);
-            this.tableLayoutPanel5.Controls.Add(this.checkBox1, 0, 1);
-            this.tableLayoutPanel5.Location = new System.Drawing.Point(302, 173);
-            this.tableLayoutPanel5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tableLayoutPanel5.Controls.Add(this.settingLabel, 0, 0);
+            this.tableLayoutPanel5.Controls.Add(this.soundCheck, 0, 1);
+            this.tableLayoutPanel5.Location = new System.Drawing.Point(604, 332);
+            this.tableLayoutPanel5.Margin = new System.Windows.Forms.Padding(4);
             this.tableLayoutPanel5.Name = "tableLayoutPanel5";
             this.tableLayoutPanel5.RowCount = 2;
-            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10.83033F));
-            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 89.16968F));
-            this.tableLayoutPanel5.Size = new System.Drawing.Size(336, 113);
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 17.51152F));
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 82.48848F));
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(672, 217);
             this.tableLayoutPanel5.TabIndex = 9;
             // 
-            // label6
+            // settingLabel
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(2, 0);
-            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(70, 12);
-            this.label6.TabIndex = 0;
-            this.label6.Text = "User Settings";
+            this.settingLabel.AutoSize = true;
+            this.settingLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.17801F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.settingLabel.ForeColor = System.Drawing.Color.OliveDrab;
+            this.settingLabel.Location = new System.Drawing.Point(5, 1);
+            this.settingLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.settingLabel.Name = "settingLabel";
+            this.settingLabel.Size = new System.Drawing.Size(191, 31);
+            this.settingLabel.TabIndex = 0;
+            this.settingLabel.Text = "User Settings";
             // 
-            // checkBox1
+            // soundCheck
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Checked = true;
-            this.checkBox1.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox1.Location = new System.Drawing.Point(2, 14);
-            this.checkBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(241, 17);
-            this.checkBox1.TabIndex = 1;
-            this.checkBox1.Text = "Play sound when someone sends a message.";
-            this.checkBox1.UseVisualStyleBackColor = true;
+            this.soundCheck.AutoSize = true;
+            this.soundCheck.Checked = true;
+            this.soundCheck.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.soundCheck.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.soundCheck.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.17801F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.soundCheck.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.soundCheck.Location = new System.Drawing.Point(5, 43);
+            this.soundCheck.Margin = new System.Windows.Forms.Padding(4);
+            this.soundCheck.Name = "soundCheck";
+            this.soundCheck.Size = new System.Drawing.Size(591, 35);
+            this.soundCheck.TabIndex = 1;
+            this.soundCheck.Text = "Play sound when someone sends a message.";
+            this.soundCheck.UseVisualStyleBackColor = true;
             // 
             // tableLayoutPanel6
             // 
@@ -252,43 +272,50 @@
             this.tableLayoutPanel6.ColumnCount = 2;
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 68.49926F));
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 31.50074F));
-            this.tableLayoutPanel6.Controls.Add(this.button2, 0, 0);
-            this.tableLayoutPanel6.Controls.Add(this.button1, 1, 0);
-            this.tableLayoutPanel6.Location = new System.Drawing.Point(302, 290);
-            this.tableLayoutPanel6.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tableLayoutPanel6.Controls.Add(this.updateButton, 0, 0);
+            this.tableLayoutPanel6.Controls.Add(this.cancelButton, 1, 0);
+            this.tableLayoutPanel6.Location = new System.Drawing.Point(604, 557);
+            this.tableLayoutPanel6.Margin = new System.Windows.Forms.Padding(4);
             this.tableLayoutPanel6.Name = "tableLayoutPanel6";
             this.tableLayoutPanel6.RowCount = 1;
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel6.Size = new System.Drawing.Size(336, 27);
             this.tableLayoutPanel6.TabIndex = 11;
             // 
-            // button2
+            // updateButton
             // 
-            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button2.BackgroundImage = global::PaperCup.Properties.Resources.button1;
-            this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.button2.Location = new System.Drawing.Point(127, 2);
-            this.button2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(101, 23);
-            this.button2.TabIndex = 11;
-            this.button2.Text = "Update";
-            this.button2.UseVisualStyleBackColor = true;
+            this.updateButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.updateButton.BackgroundImage = global::PaperCup.Properties.Resources.button1;
+            this.updateButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.updateButton.Cursor = System.Windows.Forms.Cursors.Default;
+            this.updateButton.FlatAppearance.BorderSize = 0;
+            this.updateButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.updateButton.ForeColor = System.Drawing.Color.Green;
+            this.updateButton.Location = new System.Drawing.Point(254, 4);
+            this.updateButton.Margin = new System.Windows.Forms.Padding(4);
+            this.updateButton.Name = "updateButton";
+            this.updateButton.Size = new System.Drawing.Size(202, 44);
+            this.updateButton.TabIndex = 11;
+            this.updateButton.Text = "Update";
+            this.updateButton.UseVisualStyleBackColor = true;
+            this.updateButton.Click += new System.EventHandler(this.updateButton_Click);
             // 
-            // button1
+            // cancelButton
             // 
-            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.BackgroundImage = global::PaperCup.Properties.Resources.button1;
-            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.button1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.button1.Location = new System.Drawing.Point(233, 2);
-            this.button1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(101, 23);
-            this.button1.TabIndex = 10;
-            this.button1.Text = "Cancel";
-            this.button1.UseVisualStyleBackColor = true;
+            this.cancelButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.cancelButton.BackgroundImage = global::PaperCup.Properties.Resources.button1;
+            this.cancelButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.cancelButton.FlatAppearance.BorderSize = 0;
+            this.cancelButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cancelButton.ForeColor = System.Drawing.Color.Gray;
+            this.cancelButton.Location = new System.Drawing.Point(466, 4);
+            this.cancelButton.Margin = new System.Windows.Forms.Padding(4);
+            this.cancelButton.Name = "cancelButton";
+            this.cancelButton.Size = new System.Drawing.Size(202, 44);
+            this.cancelButton.TabIndex = 10;
+            this.cancelButton.Text = "Cancel";
+            this.cancelButton.UseVisualStyleBackColor = true;
+            this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
             // 
             // Options
             // 
@@ -320,21 +347,21 @@
         #endregion
 
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label roomLabel;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.ListView listView1;
+        private System.Windows.Forms.Label usersLabel;
+        private System.Windows.Forms.ListView usersList;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label ipLabel;
+        private System.Windows.Forms.Label ipDisplay;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label nicknameLabel;
+        private System.Windows.Forms.TextBox nameChange;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.CheckBox checkBox1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label settingLabel;
+        private System.Windows.Forms.CheckBox soundCheck;
+        private System.Windows.Forms.Button cancelButton;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel6;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button updateButton;
     }
 }
