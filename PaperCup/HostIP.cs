@@ -17,34 +17,30 @@ namespace PaperCup
         private string hostIP;
         private Form parent;
 
-        public HostIP(string localNickName, Form p)
-        {
+        public HostIP(string localNickName, Form p){
             InitializeComponent();
             localname = localNickName;
             parent = p;
         }
 
-        private void IP_TextChanged(object sender, EventArgs e)
-        {
+        private void IP_TextChanged(object sender, EventArgs e){
             hostIP = IP.Text;
         }
 
         //joining a room
-        private void joinButton_Click(object sender, EventArgs e)
-        {
+        private void joinButton_Click(object sender, EventArgs e){
             video = new VideoPlayer(localname, hostIP, parent);
             video.Show();
             this.parent.Hide();
             this.Close();
         }
 
-        private void cancelButton_Click(object sender, EventArgs e)
-        {
+        private void cancelButton_Click(object sender, EventArgs e){
             this.Close();
         }
 
-        private void IP_KeyPress(object sender, KeyPressEventArgs e)
-        {
+        /*
+        private void IP_KeyPress(object sender, KeyPressEventArgs e){
             if (e.KeyChar == '\r') {
                 joinButton_Click(sender, e); //enter
                 e.Handled = true;
@@ -53,5 +49,6 @@ namespace PaperCup
                 e.Handled = true;
             }
         }
+        */
     }
 }
