@@ -193,45 +193,45 @@
             this.enterPortInfoTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 45.12195F));
             this.enterPortInfoTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 54.87805F));
             this.enterPortInfoTable.Controls.Add(this.remotePort, 1, 1);
-            this.enterPortInfoTable.Controls.Add(this.localPort, 1, 0);
             this.enterPortInfoTable.Controls.Add(this.localPortLabel, 0, 0);
             this.enterPortInfoTable.Controls.Add(this.remotePortLabel, 0, 1);
+            this.enterPortInfoTable.Controls.Add(this.localPort, 1, 0);
             this.enterPortInfoTable.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.enterPortInfoTable.Location = new System.Drawing.Point(3, 27);
+            this.enterPortInfoTable.Location = new System.Drawing.Point(3, 16);
             this.enterPortInfoTable.Name = "enterPortInfoTable";
             this.enterPortInfoTable.RowCount = 2;
             this.enterPortInfoTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.enterPortInfoTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.enterPortInfoTable.Size = new System.Drawing.Size(186, 58);
+            this.enterPortInfoTable.Size = new System.Drawing.Size(186, 69);
             this.enterPortInfoTable.TabIndex = 10;
             // 
             // remotePort
             // 
             this.remotePort.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.remotePort.ForeColor = System.Drawing.Color.Gray;
-            this.remotePort.Location = new System.Drawing.Point(88, 34);
+            this.remotePort.Location = new System.Drawing.Point(88, 41);
             this.remotePort.Margin = new System.Windows.Forms.Padding(5);
             this.remotePort.Name = "remotePort";
-            this.remotePort.Size = new System.Drawing.Size(93, 31);
+            this.remotePort.Size = new System.Drawing.Size(93, 20);
             this.remotePort.TabIndex = 5;
             // 
             // localPort
             // 
             this.localPort.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.localPort.ForeColor = System.Drawing.Color.Gray;
-            this.localPort.Location = new System.Drawing.Point(88, 5);
+            this.localPort.Location = new System.Drawing.Point(88, 7);
             this.localPort.Margin = new System.Windows.Forms.Padding(5);
             this.localPort.Name = "localPort";
-            this.localPort.Size = new System.Drawing.Size(93, 31);
+            this.localPort.Size = new System.Drawing.Size(93, 20);
             this.localPort.TabIndex = 3;
             // 
             // localPortLabel
             // 
             this.localPortLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.localPortLabel.AutoSize = true;
-            this.localPortLabel.Location = new System.Drawing.Point(6, 0);
+            this.localPortLabel.Location = new System.Drawing.Point(14, 10);
             this.localPortLabel.Name = "localPortLabel";
-            this.localPortLabel.Size = new System.Drawing.Size(70, 29);
+            this.localPortLabel.Size = new System.Drawing.Size(55, 13);
             this.localPortLabel.TabIndex = 1;
             this.localPortLabel.Text = "Local Port";
             // 
@@ -239,9 +239,9 @@
             // 
             this.remotePortLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.remotePortLabel.AutoSize = true;
-            this.remotePortLabel.Location = new System.Drawing.Point(3, 29);
+            this.remotePortLabel.Location = new System.Drawing.Point(8, 45);
             this.remotePortLabel.Name = "remotePortLabel";
-            this.remotePortLabel.Size = new System.Drawing.Size(77, 29);
+            this.remotePortLabel.Size = new System.Drawing.Size(66, 13);
             this.remotePortLabel.TabIndex = 3;
             this.remotePortLabel.Text = "Remote Port";
             // 
@@ -284,7 +284,6 @@
             // 
             this.Chat.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Chat.FormattingEnabled = true;
-            this.Chat.ItemHeight = 25;
             this.Chat.Location = new System.Drawing.Point(0, 0);
             this.Chat.Margin = new System.Windows.Forms.Padding(0);
             this.Chat.Name = "Chat";
@@ -309,12 +308,11 @@
             // sendMessage
             // 
             this.sendMessage.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.sendMessage.Location = new System.Drawing.Point(0, 0);
+            this.sendMessage.Location = new System.Drawing.Point(0, 5);
             this.sendMessage.Margin = new System.Windows.Forms.Padding(0);
             this.sendMessage.Name = "sendMessage";
-            this.sendMessage.Size = new System.Drawing.Size(198, 31);
+            this.sendMessage.Size = new System.Drawing.Size(198, 20);
             this.sendMessage.TabIndex = 3;
-            //this.sendMessage.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.sendMessage_KeyPress);
             // 
             // sendButton
             // 

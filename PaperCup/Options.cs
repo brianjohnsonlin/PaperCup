@@ -8,34 +8,24 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace PaperCup
-{
-    public partial class Options : Form
-    {
+namespace PaperCup{
+    public partial class Options : Form{
         private VideoPlayer videoplayer;
 
-        public Options(VideoPlayer v)
-        {
+        public Options(VideoPlayer v){
             videoplayer = v;
             InitializeComponent();
             nameChange.Text = v.localname;
-            //nameChange.Select();
-            ipDisplay.Text = videoplayer.getLocalIP();
+
+            ipDisplay.Text = "Room IP: " + videoplayer.getLocalIP();
             soundCheck.Checked = videoplayer.isSound;
         }
 
-        private void cancelButton_Click (object sender, EventArgs e)
-        {
+        private void cancelButton_Click (object sender, EventArgs e){
             this.Close();
         }
 
-        private void nameChange_TextChanged(object sender, EventArgs e)
-        {
-            //nickName = nameChange.Text;
-        }
-
-        private void updateButton_Click(object sender, EventArgs e)
-        {
+        private void updateButton_Click(object sender, EventArgs e){
             videoplayer.localname = nameChange.Text;
             videoplayer.isSound = soundCheck.Checked;
             this.Close();

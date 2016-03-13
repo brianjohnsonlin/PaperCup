@@ -26,270 +26,205 @@
             System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem("User 1 - [Host]");
             System.Windows.Forms.ListViewItem listViewItem2 = new System.Windows.Forms.ListViewItem("User 2");
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Options));
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.roomLabel = new System.Windows.Forms.Label();
-            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.usersList = new System.Windows.Forms.ListView();
-            this.usersLabel = new System.Windows.Forms.Label();
-            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
-            this.ipLabel = new System.Windows.Forms.Label();
-            this.ipDisplay = new System.Windows.Forms.Label();
-            this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
-            this.nicknameLabel = new System.Windows.Forms.Label();
+            this.masterTable = new System.Windows.Forms.TableLayoutPanel();
+            this.nicknameTable = new System.Windows.Forms.TableLayoutPanel();
             this.nameChange = new System.Windows.Forms.TextBox();
-            this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
-            this.settingLabel = new System.Windows.Forms.Label();
+            this.nicknameLabel = new System.Windows.Forms.Label();
+            this.settingsGroupBox = new System.Windows.Forms.GroupBox();
+            this.userSettingsTable = new System.Windows.Forms.TableLayoutPanel();
             this.soundCheck = new System.Windows.Forms.CheckBox();
-            this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
+            this.ipDisplay = new System.Windows.Forms.Label();
+            this.roomInfoGroupBox = new System.Windows.Forms.GroupBox();
+            this.roomInfoTable = new System.Windows.Forms.TableLayoutPanel();
+            this.usersList = new System.Windows.Forms.ListView();
             this.updateButton = new System.Windows.Forms.Button();
             this.cancelButton = new System.Windows.Forms.Button();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.masterTable.SuspendLayout();
+            this.nicknameTable.SuspendLayout();
+            this.settingsGroupBox.SuspendLayout();
+            this.userSettingsTable.SuspendLayout();
+            this.roomInfoGroupBox.SuspendLayout();
+            this.roomInfoTable.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
-            this.tableLayoutPanel2.SuspendLayout();
-            this.tableLayoutPanel3.SuspendLayout();
-            this.tableLayoutPanel4.SuspendLayout();
-            this.tableLayoutPanel5.SuspendLayout();
-            this.tableLayoutPanel6.SuspendLayout();
             this.SuspendLayout();
             // 
-            // tableLayoutPanel1
+            // masterTable
             // 
-            this.tableLayoutPanel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(234)))), ((int)(((byte)(211)))));
-            this.tableLayoutPanel1.ColumnCount = 2;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20.25895F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 680F));
-            this.tableLayoutPanel1.Controls.Add(this.roomLabel, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel3, 0, 2);
-            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel4, 1, 1);
-            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel5, 1, 2);
-            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel6, 1, 3);
-            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(4);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 4;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 68.75F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 277F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 225F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 60F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 19F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 19F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1280, 613);
-            this.tableLayoutPanel1.TabIndex = 1;
+            this.masterTable.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(234)))), ((int)(((byte)(211)))));
+            this.masterTable.ColumnCount = 2;
+            this.masterTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.masterTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.masterTable.Controls.Add(this.settingsGroupBox, 1, 0);
+            this.masterTable.Controls.Add(this.roomInfoGroupBox, 0, 0);
+            this.masterTable.Controls.Add(this.tableLayoutPanel1, 1, 1);
+            this.masterTable.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.masterTable.Location = new System.Drawing.Point(0, 0);
+            this.masterTable.Margin = new System.Windows.Forms.Padding(2);
+            this.masterTable.Name = "masterTable";
+            this.masterTable.RowCount = 2;
+            this.masterTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.masterTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.masterTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.masterTable.Size = new System.Drawing.Size(624, 211);
+            this.masterTable.TabIndex = 1;
             // 
-            // roomLabel
+            // nicknameTable
             // 
-            this.roomLabel.AutoSize = true;
-            this.roomLabel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(234)))), ((int)(((byte)(211)))));
-            this.roomLabel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.roomLabel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.roomLabel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.roomLabel.Font = new System.Drawing.Font("Candara", 15.83246F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.roomLabel.ForeColor = System.Drawing.Color.DarkSeaGreen;
-            this.roomLabel.Location = new System.Drawing.Point(4, 0);
-            this.roomLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.roomLabel.Name = "roomLabel";
-            this.roomLabel.Size = new System.Drawing.Size(592, 51);
-            this.roomLabel.TabIndex = 5;
-            this.roomLabel.Text = "Room Information";
-            // 
-            // tableLayoutPanel2
-            // 
-            this.tableLayoutPanel2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.tableLayoutPanel2.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
-            this.tableLayoutPanel2.ColumnCount = 2;
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 440F));
-            this.tableLayoutPanel2.Controls.Add(this.usersList, 1, 0);
-            this.tableLayoutPanel2.Controls.Add(this.usersLabel, 0, 0);
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(4, 59);
-            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(4);
-            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
-            this.tableLayoutPanel2.RowCount = 1;
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(592, 265);
-            this.tableLayoutPanel2.TabIndex = 6;
-            // 
-            // usersList
-            // 
-            this.usersList.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.usersList.ForeColor = System.Drawing.Color.Gray;
-            this.usersList.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem1,
-            listViewItem2});
-            this.usersList.Location = new System.Drawing.Point(160, 6);
-            this.usersList.Margin = new System.Windows.Forms.Padding(4);
-            this.usersList.Name = "usersList";
-            this.usersList.Size = new System.Drawing.Size(427, 254);
-            this.usersList.TabIndex = 7;
-            this.usersList.UseCompatibleStateImageBehavior = false;
-            this.usersList.View = System.Windows.Forms.View.List;
-            // 
-            // usersLabel
-            // 
-            this.usersLabel.AutoSize = true;
-            this.usersLabel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.usersLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.17801F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.usersLabel.ForeColor = System.Drawing.Color.OliveDrab;
-            this.usersLabel.Location = new System.Drawing.Point(5, 1);
-            this.usersLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.usersLabel.Name = "usersLabel";
-            this.usersLabel.Size = new System.Drawing.Size(141, 263);
-            this.usersLabel.TabIndex = 0;
-            this.usersLabel.Text = "Users";
-            // 
-            // tableLayoutPanel3
-            // 
-            this.tableLayoutPanel3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.tableLayoutPanel3.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
-            this.tableLayoutPanel3.ColumnCount = 2;
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 26.68919F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 73.31081F));
-            this.tableLayoutPanel3.Controls.Add(this.ipLabel, 0, 0);
-            this.tableLayoutPanel3.Controls.Add(this.ipDisplay, 1, 0);
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(4, 332);
-            this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(4);
-            this.tableLayoutPanel3.Name = "tableLayoutPanel3";
-            this.tableLayoutPanel3.RowCount = 1;
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(592, 217);
-            this.tableLayoutPanel3.TabIndex = 7;
-            // 
-            // ipLabel
-            // 
-            this.ipLabel.AutoSize = true;
-            this.ipLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.916231F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ipLabel.ForeColor = System.Drawing.Color.OliveDrab;
-            this.ipLabel.Location = new System.Drawing.Point(5, 1);
-            this.ipLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.ipLabel.Name = "ipLabel";
-            this.ipLabel.Size = new System.Drawing.Size(135, 26);
-            this.ipLabel.TabIndex = 0;
-            this.ipLabel.Text = "ROOM I.P.:";
-            // 
-            // ipDisplay
-            // 
-            this.ipDisplay.AutoSize = true;
-            this.ipDisplay.ForeColor = System.Drawing.Color.Gray;
-            this.ipDisplay.Location = new System.Drawing.Point(163, 1);
-            this.ipDisplay.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.ipDisplay.Name = "ipDisplay";
-            this.ipDisplay.Size = new System.Drawing.Size(119, 26);
-            this.ipDisplay.TabIndex = 1;
-            this.ipDisplay.Text = "IP Address";
-            // 
-            // tableLayoutPanel4
-            // 
-            this.tableLayoutPanel4.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
-            this.tableLayoutPanel4.ColumnCount = 2;
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 26.48809F));
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 73.5119F));
-            this.tableLayoutPanel4.Controls.Add(this.nicknameLabel, 0, 0);
-            this.tableLayoutPanel4.Controls.Add(this.nameChange, 1, 0);
-            this.tableLayoutPanel4.ForeColor = System.Drawing.Color.Gray;
-            this.tableLayoutPanel4.Location = new System.Drawing.Point(604, 55);
-            this.tableLayoutPanel4.Margin = new System.Windows.Forms.Padding(4);
-            this.tableLayoutPanel4.Name = "tableLayoutPanel4";
-            this.tableLayoutPanel4.RowCount = 1;
-            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(672, 265);
-            this.tableLayoutPanel4.TabIndex = 8;
-            // 
-            // nicknameLabel
-            // 
-            this.nicknameLabel.AutoSize = true;
-            this.nicknameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.17801F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.nicknameLabel.ForeColor = System.Drawing.Color.OliveDrab;
-            this.nicknameLabel.Location = new System.Drawing.Point(5, 1);
-            this.nicknameLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.nicknameLabel.Name = "nicknameLabel";
-            this.nicknameLabel.Size = new System.Drawing.Size(152, 31);
-            this.nicknameLabel.TabIndex = 0;
-            this.nicknameLabel.Text = "Nickname:";
+            this.nicknameTable.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.nicknameTable.ColumnCount = 2;
+            this.nicknameTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 68F));
+            this.nicknameTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.nicknameTable.Controls.Add(this.nicknameLabel, 0, 0);
+            this.nicknameTable.Controls.Add(this.nameChange, 1, 0);
+            this.nicknameTable.ForeColor = System.Drawing.Color.Gray;
+            this.nicknameTable.Location = new System.Drawing.Point(2, 22);
+            this.nicknameTable.Margin = new System.Windows.Forms.Padding(2);
+            this.nicknameTable.Name = "nicknameTable";
+            this.nicknameTable.RowCount = 1;
+            this.nicknameTable.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.nicknameTable.Size = new System.Drawing.Size(296, 25);
+            this.nicknameTable.TabIndex = 8;
             // 
             // nameChange
             // 
+            this.nameChange.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.nameChange.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.nameChange.ForeColor = System.Drawing.Color.Gray;
-            this.nameChange.Location = new System.Drawing.Point(183, 5);
-            this.nameChange.Margin = new System.Windows.Forms.Padding(4);
+            this.nameChange.Location = new System.Drawing.Point(70, 2);
+            this.nameChange.Margin = new System.Windows.Forms.Padding(2);
             this.nameChange.Name = "nameChange";
-            this.nameChange.Size = new System.Drawing.Size(484, 31);
+            this.nameChange.Size = new System.Drawing.Size(234, 20);
             this.nameChange.TabIndex = 1;
-            this.nameChange.TextChanged += new System.EventHandler(this.nameChange_TextChanged);
             // 
-            // tableLayoutPanel5
+            // nicknameLabel
             // 
-            this.tableLayoutPanel5.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
-            this.tableLayoutPanel5.ColumnCount = 1;
-            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel5.Controls.Add(this.settingLabel, 0, 0);
-            this.tableLayoutPanel5.Controls.Add(this.soundCheck, 0, 1);
-            this.tableLayoutPanel5.Location = new System.Drawing.Point(604, 332);
-            this.tableLayoutPanel5.Margin = new System.Windows.Forms.Padding(4);
-            this.tableLayoutPanel5.Name = "tableLayoutPanel5";
-            this.tableLayoutPanel5.RowCount = 2;
-            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 17.51152F));
-            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 82.48848F));
-            this.tableLayoutPanel5.Size = new System.Drawing.Size(672, 217);
-            this.tableLayoutPanel5.TabIndex = 9;
+            this.nicknameLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.nicknameLabel.AutoSize = true;
+            this.nicknameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.nicknameLabel.ForeColor = System.Drawing.Color.OliveDrab;
+            this.nicknameLabel.Location = new System.Drawing.Point(7, 6);
+            this.nicknameLabel.Name = "nicknameLabel";
+            this.nicknameLabel.Size = new System.Drawing.Size(58, 13);
+            this.nicknameLabel.TabIndex = 2;
+            this.nicknameLabel.Text = "Nickname:";
             // 
-            // settingLabel
+            // settingsGroupBox
             // 
-            this.settingLabel.AutoSize = true;
-            this.settingLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.17801F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.settingLabel.ForeColor = System.Drawing.Color.OliveDrab;
-            this.settingLabel.Location = new System.Drawing.Point(5, 1);
-            this.settingLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.settingLabel.Name = "settingLabel";
-            this.settingLabel.Size = new System.Drawing.Size(191, 31);
-            this.settingLabel.TabIndex = 0;
-            this.settingLabel.Text = "User Settings";
+            this.settingsGroupBox.Controls.Add(this.userSettingsTable);
+            this.settingsGroupBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.settingsGroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.settingsGroupBox.ForeColor = System.Drawing.Color.OliveDrab;
+            this.settingsGroupBox.Location = new System.Drawing.Point(315, 3);
+            this.settingsGroupBox.Name = "settingsGroupBox";
+            this.settingsGroupBox.Size = new System.Drawing.Size(306, 175);
+            this.settingsGroupBox.TabIndex = 12;
+            this.settingsGroupBox.TabStop = false;
+            this.settingsGroupBox.Text = "User Settings";
+            // 
+            // userSettingsTable
+            // 
+            this.userSettingsTable.ColumnCount = 1;
+            this.userSettingsTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.userSettingsTable.Controls.Add(this.soundCheck, 0, 0);
+            this.userSettingsTable.Controls.Add(this.nicknameTable, 0, 1);
+            this.userSettingsTable.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.userSettingsTable.Location = new System.Drawing.Point(3, 20);
+            this.userSettingsTable.Margin = new System.Windows.Forms.Padding(2);
+            this.userSettingsTable.Name = "userSettingsTable";
+            this.userSettingsTable.RowCount = 2;
+            this.userSettingsTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.userSettingsTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.userSettingsTable.Size = new System.Drawing.Size(300, 152);
+            this.userSettingsTable.TabIndex = 9;
             // 
             // soundCheck
             // 
-            this.soundCheck.AutoSize = true;
             this.soundCheck.Checked = true;
             this.soundCheck.CheckState = System.Windows.Forms.CheckState.Checked;
             this.soundCheck.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.soundCheck.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.17801F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.soundCheck.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.soundCheck.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.soundCheck.Location = new System.Drawing.Point(5, 43);
-            this.soundCheck.Margin = new System.Windows.Forms.Padding(4);
+            this.soundCheck.Location = new System.Drawing.Point(2, 2);
+            this.soundCheck.Margin = new System.Windows.Forms.Padding(2);
             this.soundCheck.Name = "soundCheck";
-            this.soundCheck.Size = new System.Drawing.Size(591, 35);
+            this.soundCheck.Size = new System.Drawing.Size(296, 16);
             this.soundCheck.TabIndex = 1;
             this.soundCheck.Text = "Play sound when someone sends a message.";
             this.soundCheck.UseVisualStyleBackColor = true;
             // 
-            // tableLayoutPanel6
+            // ipDisplay
             // 
-            this.tableLayoutPanel6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.tableLayoutPanel6.ColumnCount = 2;
-            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 68.49926F));
-            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 31.50074F));
-            this.tableLayoutPanel6.Controls.Add(this.updateButton, 0, 0);
-            this.tableLayoutPanel6.Controls.Add(this.cancelButton, 1, 0);
-            this.tableLayoutPanel6.Location = new System.Drawing.Point(604, 557);
-            this.tableLayoutPanel6.Margin = new System.Windows.Forms.Padding(4);
-            this.tableLayoutPanel6.Name = "tableLayoutPanel6";
-            this.tableLayoutPanel6.RowCount = 1;
-            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel6.Size = new System.Drawing.Size(672, 52);
-            this.tableLayoutPanel6.TabIndex = 11;
+            this.ipDisplay.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.ipDisplay.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ipDisplay.ForeColor = System.Drawing.Color.Gray;
+            this.ipDisplay.Location = new System.Drawing.Point(2, 3);
+            this.ipDisplay.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.ipDisplay.Name = "ipDisplay";
+            this.ipDisplay.Size = new System.Drawing.Size(296, 13);
+            this.ipDisplay.TabIndex = 1;
+            this.ipDisplay.Text = "IP Address";
+            // 
+            // roomInfoGroupBox
+            // 
+            this.roomInfoGroupBox.Controls.Add(this.roomInfoTable);
+            this.roomInfoGroupBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.roomInfoGroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.roomInfoGroupBox.ForeColor = System.Drawing.Color.OliveDrab;
+            this.roomInfoGroupBox.Location = new System.Drawing.Point(3, 3);
+            this.roomInfoGroupBox.Name = "roomInfoGroupBox";
+            this.roomInfoGroupBox.Size = new System.Drawing.Size(306, 175);
+            this.roomInfoGroupBox.TabIndex = 14;
+            this.roomInfoGroupBox.TabStop = false;
+            this.roomInfoGroupBox.Text = "Room Information";
+            // 
+            // roomInfoTable
+            // 
+            this.roomInfoTable.ColumnCount = 1;
+            this.roomInfoTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.roomInfoTable.Controls.Add(this.ipDisplay, 0, 0);
+            this.roomInfoTable.Controls.Add(this.usersList, 0, 1);
+            this.roomInfoTable.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.roomInfoTable.Location = new System.Drawing.Point(3, 20);
+            this.roomInfoTable.Margin = new System.Windows.Forms.Padding(2);
+            this.roomInfoTable.Name = "roomInfoTable";
+            this.roomInfoTable.RowCount = 2;
+            this.roomInfoTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.roomInfoTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.roomInfoTable.Size = new System.Drawing.Size(300, 152);
+            this.roomInfoTable.TabIndex = 6;
+            // 
+            // usersList
+            // 
+            this.usersList.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.usersList.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.usersList.ForeColor = System.Drawing.Color.Gray;
+            this.usersList.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
+            listViewItem1,
+            listViewItem2});
+            this.usersList.Location = new System.Drawing.Point(2, 22);
+            this.usersList.Margin = new System.Windows.Forms.Padding(2);
+            this.usersList.Name = "usersList";
+            this.usersList.Size = new System.Drawing.Size(296, 128);
+            this.usersList.TabIndex = 7;
+            this.usersList.UseCompatibleStateImageBehavior = false;
+            this.usersList.View = System.Windows.Forms.View.List;
             // 
             // updateButton
             // 
-            this.updateButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.updateButton.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.updateButton.BackgroundImage = global::PaperCup.Properties.Resources.button1;
             this.updateButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.updateButton.Cursor = System.Windows.Forms.Cursors.Default;
             this.updateButton.FlatAppearance.BorderSize = 0;
             this.updateButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.updateButton.ForeColor = System.Drawing.Color.Green;
-            this.updateButton.Location = new System.Drawing.Point(254, 4);
-            this.updateButton.Margin = new System.Windows.Forms.Padding(4);
+            this.updateButton.Location = new System.Drawing.Point(108, 2);
+            this.updateButton.Margin = new System.Windows.Forms.Padding(2);
             this.updateButton.Name = "updateButton";
-            this.updateButton.Size = new System.Drawing.Size(202, 44);
+            this.updateButton.Size = new System.Drawing.Size(96, 20);
             this.updateButton.TabIndex = 11;
             this.updateButton.Text = "Update";
             this.updateButton.UseVisualStyleBackColor = true;
@@ -297,66 +232,81 @@
             // 
             // cancelButton
             // 
-            this.cancelButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.cancelButton.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.cancelButton.BackgroundImage = global::PaperCup.Properties.Resources.button1;
-            this.cancelButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.cancelButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.cancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.cancelButton.FlatAppearance.BorderSize = 0;
             this.cancelButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cancelButton.ForeColor = System.Drawing.Color.Gray;
-            this.cancelButton.Location = new System.Drawing.Point(466, 4);
-            this.cancelButton.Margin = new System.Windows.Forms.Padding(4);
+            this.cancelButton.Location = new System.Drawing.Point(208, 2);
+            this.cancelButton.Margin = new System.Windows.Forms.Padding(2);
             this.cancelButton.Name = "cancelButton";
-            this.cancelButton.Size = new System.Drawing.Size(202, 44);
+            this.cancelButton.Size = new System.Drawing.Size(96, 20);
             this.cancelButton.TabIndex = 10;
             this.cancelButton.Text = "Cancel";
             this.cancelButton.UseVisualStyleBackColor = true;
             this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
             // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.ColumnCount = 3;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
+            this.tableLayoutPanel1.Controls.Add(this.updateButton, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.cancelButton, 2, 0);
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(315, 184);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 1;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(306, 24);
+            this.tableLayoutPanel1.TabIndex = 15;
+            // 
             // Options
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
+            this.AcceptButton = this.updateButton;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1280, 613);
-            this.Controls.Add(this.tableLayoutPanel1);
+            this.CancelButton = this.cancelButton;
+            this.ClientSize = new System.Drawing.Size(624, 211);
+            this.Controls.Add(this.masterTable);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
+            this.MinimumSize = new System.Drawing.Size(530, 180);
             this.Name = "Options";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Options";
+            this.masterTable.ResumeLayout(false);
+            this.nicknameTable.ResumeLayout(false);
+            this.nicknameTable.PerformLayout();
+            this.settingsGroupBox.ResumeLayout(false);
+            this.userSettingsTable.ResumeLayout(false);
+            this.roomInfoGroupBox.ResumeLayout(false);
+            this.roomInfoTable.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
-            this.tableLayoutPanel1.PerformLayout();
-            this.tableLayoutPanel2.ResumeLayout(false);
-            this.tableLayoutPanel2.PerformLayout();
-            this.tableLayoutPanel3.ResumeLayout(false);
-            this.tableLayoutPanel3.PerformLayout();
-            this.tableLayoutPanel4.ResumeLayout(false);
-            this.tableLayoutPanel4.PerformLayout();
-            this.tableLayoutPanel5.ResumeLayout(false);
-            this.tableLayoutPanel5.PerformLayout();
-            this.tableLayoutPanel6.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.Label roomLabel;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
-        private System.Windows.Forms.Label usersLabel;
+        private System.Windows.Forms.TableLayoutPanel masterTable;
+        private System.Windows.Forms.TableLayoutPanel roomInfoTable;
         private System.Windows.Forms.ListView usersList;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
-        private System.Windows.Forms.Label ipLabel;
         private System.Windows.Forms.Label ipDisplay;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
-        private System.Windows.Forms.Label nicknameLabel;
-        private System.Windows.Forms.TextBox nameChange;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
-        private System.Windows.Forms.Label settingLabel;
+        private System.Windows.Forms.TableLayoutPanel userSettingsTable;
         private System.Windows.Forms.CheckBox soundCheck;
+        private System.Windows.Forms.TableLayoutPanel nicknameTable;
+        private System.Windows.Forms.TextBox nameChange;
+        private System.Windows.Forms.GroupBox settingsGroupBox;
+        private System.Windows.Forms.GroupBox roomInfoGroupBox;
+        private System.Windows.Forms.Label nicknameLabel;
         private System.Windows.Forms.Button cancelButton;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel6;
         private System.Windows.Forms.Button updateButton;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
     }
 }
