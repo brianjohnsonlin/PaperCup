@@ -33,6 +33,8 @@
             this.masterPanel = new System.Windows.Forms.TableLayoutPanel();
             this.sidebarTable = new System.Windows.Forms.TableLayoutPanel();
             this.settingsTable = new System.Windows.Forms.TableLayoutPanel();
+            this.chooseMedia = new System.Windows.Forms.Button();
+            this.settingsButton = new System.Windows.Forms.Button();
             this.portInfoTable = new System.Windows.Forms.TableLayoutPanel();
             this.portInfoGroupBox = new System.Windows.Forms.GroupBox();
             this.enterPortInfoTable = new System.Windows.Forms.TableLayoutPanel();
@@ -45,8 +47,6 @@
             this.Chat = new System.Windows.Forms.ListBox();
             this.sendTable = new System.Windows.Forms.TableLayoutPanel();
             this.sendMessage = new System.Windows.Forms.TextBox();
-            this.chooseMedia = new System.Windows.Forms.Button();
-            this.settingsButton = new System.Windows.Forms.Button();
             this.sendButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.mediaPlayer)).BeginInit();
             this.masterPanel.SuspendLayout();
@@ -119,6 +119,43 @@
             this.settingsTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.settingsTable.Size = new System.Drawing.Size(288, 58);
             this.settingsTable.TabIndex = 12;
+            // 
+            // chooseMedia
+            // 
+            this.chooseMedia.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.chooseMedia.BackgroundImage = global::PaperCup.Properties.Resources.button1;
+            this.chooseMedia.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.chooseMedia.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.chooseMedia.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.chooseMedia.FlatAppearance.BorderSize = 0;
+            this.chooseMedia.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.chooseMedia.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.chooseMedia.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.06283F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chooseMedia.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(182)))), ((int)(((byte)(215)))), ((int)(((byte)(167)))));
+            this.chooseMedia.Location = new System.Drawing.Point(5, 5);
+            this.chooseMedia.Margin = new System.Windows.Forms.Padding(5);
+            this.chooseMedia.Name = "chooseMedia";
+            this.chooseMedia.Size = new System.Drawing.Size(212, 47);
+            this.chooseMedia.TabIndex = 7;
+            this.chooseMedia.Text = "Choose Media";
+            this.chooseMedia.UseVisualStyleBackColor = true;
+            this.chooseMedia.Click += new System.EventHandler(this.chooseMedia_Click);
+            // 
+            // settingsButton
+            // 
+            this.settingsButton.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.settingsButton.BackgroundImage = global::PaperCup.Properties.Resources.icon_ios7_gear_128;
+            this.settingsButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.settingsButton.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(182)))), ((int)(((byte)(215)))), ((int)(((byte)(167)))));
+            this.settingsButton.FlatAppearance.BorderSize = 3;
+            this.settingsButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.settingsButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.settingsButton.Location = new System.Drawing.Point(230, 4);
+            this.settingsButton.Name = "settingsButton";
+            this.settingsButton.Size = new System.Drawing.Size(50, 50);
+            this.settingsButton.TabIndex = 8;
+            this.settingsButton.UseVisualStyleBackColor = true;
+            this.settingsButton.Click += new System.EventHandler(this.settingsButton_Click);
             // 
             // portInfoTable
             // 
@@ -272,43 +309,6 @@
             this.sendMessage.Size = new System.Drawing.Size(198, 31);
             this.sendMessage.TabIndex = 3;
             this.sendMessage.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.sendMessage_KeyPress);
-            // 
-            // chooseMedia
-            // 
-            this.chooseMedia.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.chooseMedia.BackgroundImage = global::PaperCup.Properties.Resources.button1;
-            this.chooseMedia.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.chooseMedia.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.chooseMedia.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.chooseMedia.FlatAppearance.BorderSize = 0;
-            this.chooseMedia.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.chooseMedia.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.chooseMedia.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.06283F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chooseMedia.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(182)))), ((int)(((byte)(215)))), ((int)(((byte)(167)))));
-            this.chooseMedia.Location = new System.Drawing.Point(5, 5);
-            this.chooseMedia.Margin = new System.Windows.Forms.Padding(5);
-            this.chooseMedia.Name = "chooseMedia";
-            this.chooseMedia.Size = new System.Drawing.Size(212, 47);
-            this.chooseMedia.TabIndex = 7;
-            this.chooseMedia.Text = "Choose Media";
-            this.chooseMedia.UseVisualStyleBackColor = true;
-            this.chooseMedia.Click += new System.EventHandler(this.chooseMedia_Click);
-            // 
-            // settingsButton
-            // 
-            this.settingsButton.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.settingsButton.BackgroundImage = global::PaperCup.Properties.Resources.icon_ios7_gear_128;
-            this.settingsButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.settingsButton.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(182)))), ((int)(((byte)(215)))), ((int)(((byte)(167)))));
-            this.settingsButton.FlatAppearance.BorderSize = 3;
-            this.settingsButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.settingsButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.settingsButton.Location = new System.Drawing.Point(230, 4);
-            this.settingsButton.Name = "settingsButton";
-            this.settingsButton.Size = new System.Drawing.Size(50, 50);
-            this.settingsButton.TabIndex = 8;
-            this.settingsButton.UseVisualStyleBackColor = true;
-            this.settingsButton.Click += new System.EventHandler(this.settingsButton_Click);
             // 
             // sendButton
             // 
