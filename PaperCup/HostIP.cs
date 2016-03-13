@@ -32,7 +32,7 @@ namespace PaperCup
         //joining a room
         private void joinButton_Click(object sender, EventArgs e)
         {
-            video = new VideoPlayer(localname, hostIP, parent);
+            video = new VideoPlayer(localname, parent);
             video.Show();
             this.parent.Hide();
             this.Close();

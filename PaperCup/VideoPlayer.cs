@@ -30,11 +30,13 @@ namespace PaperCup
         private string localname, hostIP;
 
         //host videoplayer
-        public VideoPlayer(string localNickName)
+        public VideoPlayer(string localNickName, Form mm)
         {
             InitializeComponent();
             localname = localNickName;
+            mainmenu = mm;
         }
+
         //nonhost videoplayers
         public VideoPlayer(string localNickName, string host_IP, Form mm)
         {
@@ -210,7 +212,10 @@ namespace PaperCup
                 //then add it to the mediaPlayer
                 mediaPlayer.URL = @file.FileName;
 
-                mediaPlayer.Ctlcontrols.pause();
+                sendSocket("?position");
+
+
+                //mediaPlayer.Ctlcontrols.pause(); //doesn't work
 
                 /*
                 //convert string to byte
@@ -257,6 +262,8 @@ namespace PaperCup
                 } else if (message.StartsWith("chat")) {
                     //Adding the message into the text box (show complete conversation)
                     addToChat(message.Substring("chat".Length));
+                }else if (message.StartsWith("?position")) {
+                    sendSocket("positionChange" + mediaPlayer.Ctlcontrols.currentPosition);
                 }
 
                 buffer = new byte[1500];
