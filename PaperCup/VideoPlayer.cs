@@ -22,12 +22,16 @@ namespace PaperCup
         byte[] buffer;
         private List<IPAddress> ips;
         private Options settings;
+        public bool isSound = true;
+        System.Media.SoundPlayer msgSoundPlayer = new System.Media.SoundPlayer(@"\\psf\Home\PaperCup\PaperCup\Resources\msg.wav");
+       // private string[] users;
 
         Form mainmenu;
 
         OpenFileDialog file = new OpenFileDialog();
 
-        private string localname, hostIP;
+        public string localname;
+        private string hostIP;
 
         //host videoplayer
         public VideoPlayer(string localNickName, Form mm)
@@ -268,7 +272,8 @@ namespace PaperCup
                 } else if (message.StartsWith("chat")) {
                     //Adding the message into the text box (show complete conversation)
                     addToChat(message.Substring("chat".Length));
-                }else if (message.StartsWith("?position")) {
+                }
+                else if (message.StartsWith("?position")) {
                     sendSocket("positionChange" + mediaPlayer.Ctlcontrols.currentPosition);
                 }
 
@@ -277,7 +282,12 @@ namespace PaperCup
             } catch( Exception e)
             {
                 MessageBox.Show(e.ToString());
-            }            
+            }
+
+            if (isSound == true)
+            {
+                msgSoundPlayer.Play();
+            }
         }
 
         //------ Sending Chat Functions ------
@@ -300,7 +310,7 @@ namespace PaperCup
 
         private void settingsButton_Click(object sender, EventArgs e)
         {
-            settings = new Options();
+            settings = new Options(this);
             settings.ShowDialog();
         }
 
@@ -323,6 +333,16 @@ namespace PaperCup
                 sck.Send(send);
                 sck.BeginReceiveFrom(buffer, 0, buffer.Length, SocketFlags.None, ref epRemote, new AsyncCallback(MessageCallBack), buffer);
             }catch (System.Net.Sockets.SocketException) { }
+   
         }
+
+        public string getLocalIP()
+        {
+            return localIP;
+        }
+        /*  public string[] getUsers()
+          {
+              return users;
+          }*/
     }
 }
