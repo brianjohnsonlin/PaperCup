@@ -144,6 +144,30 @@
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </COMReference>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\createRoom.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\createRoom1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\createRoom2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\joinRoom.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\createRoom11.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\joinRoom1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\button.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\button1.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

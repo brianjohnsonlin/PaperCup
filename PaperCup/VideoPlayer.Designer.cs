@@ -46,8 +46,8 @@
             this.chatTable = new System.Windows.Forms.TableLayoutPanel();
             this.Chat = new System.Windows.Forms.ListBox();
             this.sendTable = new System.Windows.Forms.TableLayoutPanel();
-            this.sendButton = new System.Windows.Forms.Button();
             this.sendMessage = new System.Windows.Forms.TextBox();
+            this.sendButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.mediaPlayer)).BeginInit();
             this.masterPanel.SuspendLayout();
             this.sidebarTable.SuspendLayout();
@@ -74,6 +74,7 @@
             // 
             // masterPanel
             // 
+            this.masterPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(234)))), ((int)(((byte)(211)))));
             this.masterPanel.ColumnCount = 2;
             this.masterPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 300F));
             this.masterPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -143,6 +144,58 @@
             this.settingsButton.UseVisualStyleBackColor = true;
             this.settingsButton.Click += new System.EventHandler(this.settingsButton_Click);
             // 
+            // settingsTable
+            // 
+            this.settingsTable.ColumnCount = 2;
+            this.settingsTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 77.34375F));
+            this.settingsTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 22.65625F));
+            this.settingsTable.Controls.Add(this.chooseMedia, 0, 0);
+            this.settingsTable.Controls.Add(this.settingsButton, 1, 0);
+            this.settingsTable.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.settingsTable.Location = new System.Drawing.Point(3, 614);
+            this.settingsTable.Name = "settingsTable";
+            this.settingsTable.RowCount = 1;
+            this.settingsTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.settingsTable.Size = new System.Drawing.Size(288, 58);
+            this.settingsTable.TabIndex = 12;
+            // 
+            // chooseMedia
+            // 
+            this.chooseMedia.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.chooseMedia.BackgroundImage = global::PaperCup.Properties.Resources.button1;
+            this.chooseMedia.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.chooseMedia.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.chooseMedia.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.chooseMedia.FlatAppearance.BorderSize = 0;
+            this.chooseMedia.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.chooseMedia.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.chooseMedia.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.06283F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chooseMedia.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(182)))), ((int)(((byte)(215)))), ((int)(((byte)(167)))));
+            this.chooseMedia.Location = new System.Drawing.Point(5, 5);
+            this.chooseMedia.Margin = new System.Windows.Forms.Padding(5);
+            this.chooseMedia.Name = "chooseMedia";
+            this.chooseMedia.Size = new System.Drawing.Size(212, 47);
+            this.chooseMedia.TabIndex = 7;
+            this.chooseMedia.Text = "Choose Media";
+            this.chooseMedia.UseVisualStyleBackColor = true;
+            this.chooseMedia.Click += new System.EventHandler(this.chooseMedia_Click);
+            // 
+            // settingsButton
+            // 
+            this.settingsButton.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.settingsButton.BackgroundImage = global::PaperCup.Properties.Resources.icon_ios7_gear_128;
+            this.settingsButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.settingsButton.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(182)))), ((int)(((byte)(215)))), ((int)(((byte)(167)))));
+            this.settingsButton.FlatAppearance.BorderSize = 3;
+            this.settingsButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.settingsButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.settingsButton.Location = new System.Drawing.Point(230, 4);
+            this.settingsButton.Name = "settingsButton";
+            this.settingsButton.Size = new System.Drawing.Size(50, 50);
+            this.settingsButton.TabIndex = 8;
+            this.settingsButton.UseVisualStyleBackColor = true;
+            this.settingsButton.Click += new System.EventHandler(this.settingsButton_Click);
+            // 
             // portInfoTable
             // 
             this.portInfoTable.ColumnCount = 2;
@@ -179,39 +232,39 @@
             this.enterPortInfoTable.Controls.Add(this.localPortLabel, 0, 0);
             this.enterPortInfoTable.Controls.Add(this.remotePortLabel, 0, 1);
             this.enterPortInfoTable.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.enterPortInfoTable.Location = new System.Drawing.Point(3, 16);
+            this.enterPortInfoTable.Location = new System.Drawing.Point(3, 27);
             this.enterPortInfoTable.Name = "enterPortInfoTable";
             this.enterPortInfoTable.RowCount = 2;
             this.enterPortInfoTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.enterPortInfoTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.enterPortInfoTable.Size = new System.Drawing.Size(186, 69);
+            this.enterPortInfoTable.Size = new System.Drawing.Size(186, 58);
             this.enterPortInfoTable.TabIndex = 10;
             // 
             // remotePort
             // 
             this.remotePort.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.remotePort.Location = new System.Drawing.Point(88, 41);
+            this.remotePort.Location = new System.Drawing.Point(88, 34);
             this.remotePort.Margin = new System.Windows.Forms.Padding(5);
             this.remotePort.Name = "remotePort";
-            this.remotePort.Size = new System.Drawing.Size(93, 20);
+            this.remotePort.Size = new System.Drawing.Size(93, 31);
             this.remotePort.TabIndex = 5;
             // 
             // localPort
             // 
             this.localPort.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.localPort.Location = new System.Drawing.Point(88, 7);
+            this.localPort.Location = new System.Drawing.Point(88, 5);
             this.localPort.Margin = new System.Windows.Forms.Padding(5);
             this.localPort.Name = "localPort";
-            this.localPort.Size = new System.Drawing.Size(93, 20);
+            this.localPort.Size = new System.Drawing.Size(93, 31);
             this.localPort.TabIndex = 3;
             // 
             // localPortLabel
             // 
             this.localPortLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.localPortLabel.AutoSize = true;
-            this.localPortLabel.Location = new System.Drawing.Point(14, 10);
+            this.localPortLabel.Location = new System.Drawing.Point(6, 0);
             this.localPortLabel.Name = "localPortLabel";
-            this.localPortLabel.Size = new System.Drawing.Size(55, 13);
+            this.localPortLabel.Size = new System.Drawing.Size(70, 29);
             this.localPortLabel.TabIndex = 1;
             this.localPortLabel.Text = "Local Port";
             // 
@@ -219,18 +272,26 @@
             // 
             this.remotePortLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.remotePortLabel.AutoSize = true;
-            this.remotePortLabel.Location = new System.Drawing.Point(8, 45);
+            this.remotePortLabel.Location = new System.Drawing.Point(3, 29);
             this.remotePortLabel.Name = "remotePortLabel";
-            this.remotePortLabel.Size = new System.Drawing.Size(66, 13);
+            this.remotePortLabel.Size = new System.Drawing.Size(77, 29);
             this.remotePortLabel.TabIndex = 3;
             this.remotePortLabel.Text = "Remote Port";
             // 
             // connectButton
             // 
             this.connectButton.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.connectButton.Location = new System.Drawing.Point(206, 32);
+            this.connectButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.connectButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.connectButton.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(182)))), ((int)(((byte)(215)))), ((int)(((byte)(167)))));
+            this.connectButton.FlatAppearance.BorderSize = 3;
+            this.connectButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.connectButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.connectButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.17801F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.connectButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(182)))), ((int)(((byte)(215)))), ((int)(((byte)(167)))));
+            this.connectButton.Location = new System.Drawing.Point(201, 32);
             this.connectButton.Name = "connectButton";
-            this.connectButton.Size = new System.Drawing.Size(73, 30);
+            this.connectButton.Size = new System.Drawing.Size(84, 30);
             this.connectButton.TabIndex = 2;
             this.connectButton.Text = "Connect";
             this.connectButton.UseVisualStyleBackColor = true;
@@ -248,7 +309,7 @@
             this.chatTable.Name = "chatTable";
             this.chatTable.RowCount = 2;
             this.chatTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.chatTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.chatTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 37F));
             this.chatTable.Size = new System.Drawing.Size(284, 501);
             this.chatTable.TabIndex = 13;
             // 
@@ -256,10 +317,11 @@
             // 
             this.Chat.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Chat.FormattingEnabled = true;
+            this.Chat.ItemHeight = 25;
             this.Chat.Location = new System.Drawing.Point(0, 0);
             this.Chat.Margin = new System.Windows.Forms.Padding(0);
             this.Chat.Name = "Chat";
-            this.Chat.Size = new System.Drawing.Size(284, 471);
+            this.Chat.Size = new System.Drawing.Size(284, 464);
             this.Chat.TabIndex = 5;
             // 
             // sendTable
@@ -267,37 +329,47 @@
             this.sendTable.ColumnCount = 2;
             this.sendTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 71.2766F));
             this.sendTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 28.7234F));
-            this.sendTable.Controls.Add(this.sendButton, 1, 0);
             this.sendTable.Controls.Add(this.sendMessage, 0, 0);
+            this.sendTable.Controls.Add(this.sendButton, 1, 0);
             this.sendTable.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.sendTable.Location = new System.Drawing.Point(3, 474);
+            this.sendTable.Location = new System.Drawing.Point(3, 467);
             this.sendTable.Name = "sendTable";
             this.sendTable.RowCount = 1;
             this.sendTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.sendTable.Size = new System.Drawing.Size(278, 24);
+            this.sendTable.Size = new System.Drawing.Size(278, 31);
             this.sendTable.TabIndex = 6;
-            // 
-            // sendButton
-            // 
-            this.sendButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.sendButton.Location = new System.Drawing.Point(198, 1);
-            this.sendButton.Margin = new System.Windows.Forms.Padding(0);
-            this.sendButton.Name = "sendButton";
-            this.sendButton.Size = new System.Drawing.Size(80, 22);
-            this.sendButton.TabIndex = 5;
-            this.sendButton.Text = "Send";
-            this.sendButton.UseVisualStyleBackColor = true;
-            this.sendButton.Click += new System.EventHandler(this.sendButton_Click);
             // 
             // sendMessage
             // 
             this.sendMessage.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.sendMessage.Location = new System.Drawing.Point(0, 2);
+            this.sendMessage.Location = new System.Drawing.Point(0, 0);
             this.sendMessage.Margin = new System.Windows.Forms.Padding(0);
             this.sendMessage.Name = "sendMessage";
-            this.sendMessage.Size = new System.Drawing.Size(198, 20);
+            this.sendMessage.Size = new System.Drawing.Size(198, 31);
             this.sendMessage.TabIndex = 3;
             this.sendMessage.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.sendMessage_KeyPress);
+            // 
+            // sendButton
+            // 
+            this.sendButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.sendButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(234)))), ((int)(((byte)(211)))));
+            this.sendButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.sendButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.sendButton.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(182)))), ((int)(((byte)(215)))), ((int)(((byte)(167)))));
+            this.sendButton.FlatAppearance.BorderSize = 3;
+            this.sendButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.sendButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.sendButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.sendButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.17801F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.sendButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(182)))), ((int)(((byte)(215)))), ((int)(((byte)(167)))));
+            this.sendButton.Location = new System.Drawing.Point(198, 0);
+            this.sendButton.Margin = new System.Windows.Forms.Padding(0);
+            this.sendButton.Name = "sendButton";
+            this.sendButton.Size = new System.Drawing.Size(80, 31);
+            this.sendButton.TabIndex = 5;
+            this.sendButton.Text = "Send";
+            this.sendButton.UseVisualStyleBackColor = false;
+            this.sendButton.Click += new System.EventHandler(this.sendButton_Click);
             // 
             // VideoPlayer
             // 
