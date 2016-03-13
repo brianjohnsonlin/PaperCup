@@ -28,11 +28,12 @@ namespace PaperCup
                                                  "Centipede", "Moth", "Wasp"};
             Random rand = new Random();
             nicknameBox.Text = fruit[rand.Next(fruit.Count)] + bug[rand.Next(bug.Count)] + rand.Next(1000).ToString("D3");
+            nicknameBox.Select();
         }
 
         private void createButton_Click(object sender, EventArgs e)
         {
-            video = new VideoPlayer(nickname);
+            video = new VideoPlayer(nickname, null, this);
             this.Hide();
             video.Show();
         }

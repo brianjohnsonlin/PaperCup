@@ -26,13 +26,13 @@ namespace PaperCup
 
         private void IP_TextChanged(object sender, EventArgs e)
         {
-            hostIP = IP.Text;            
+            hostIP = IP.Text;
         }
 
         //joining a room
         private void joinButton_Click(object sender, EventArgs e)
         {
-            video = new VideoPlayer(localname, hostIP);
+            video = new VideoPlayer(localname, hostIP, parent);
             video.Show();
             this.parent.Hide();
             this.Close();
@@ -45,8 +45,13 @@ namespace PaperCup
 
         private void IP_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (e.KeyChar == '\r') joinButton_Click(sender, e); //enter
-            if (e.KeyChar == 27) this.Close(); //escape
+            if (e.KeyChar == '\r') {
+                joinButton_Click(sender, e); //enter
+                e.Handled = true;
+            }else if (e.KeyChar == 27) { //escape
+                this.Close();
+                e.Handled = true;
+            }
         }
     }
 }

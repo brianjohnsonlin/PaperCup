@@ -23,9 +23,12 @@ namespace PaperCup
         private List<IPAddress> ips;
         private Options settings;
 
+        Form mainmenu;
+
         OpenFileDialog file = new OpenFileDialog();
 
         private string localname, hostIP;
+
         //host videoplayer
         public VideoPlayer(string localNickName)
         {
@@ -33,11 +36,12 @@ namespace PaperCup
             localname = localNickName;
         }
         //nonhost videoplayers
-        public VideoPlayer(string localNickName, string host_IP)
+        public VideoPlayer(string localNickName, string host_IP, Form mm)
         {
             InitializeComponent();
             localname = localNickName;
             hostIP = host_IP;
+            mainmenu = mm;
         }
 
         private void VideoPlayer_Load(object sender, EventArgs e)
@@ -49,12 +53,14 @@ namespace PaperCup
             //getting the users' I.P.s
             localIP = GetLocalIP();
             remoteIP = GetLocalIP();
+            sendMessage.Select();
 
         }
 
         private void VideoPlayer_FormClosing(object sender, EventArgs e)
         {
-            Application.Exit();
+            //Application.Exit();
+            mainmenu.Show();
         }
 
         private string GetLocalIP()
@@ -92,9 +98,9 @@ namespace PaperCup
         //----------- Check Media Player Events ----------
         //Senses and deciphers which mediaplayer button the user pressed
         //then sends that information to the other user
-        private void mediaPlayer_OnClick(object sender, AxWMPLib._WMPOCXEvents_PlayStateChangeEvent e)
-        {
-            int state_change = 0;
+        private void mediaPlayer_PlayStateChange(object sender, AxWMPLib._WMPOCXEvents_PlayStateChangeEvent e) {
+            /*
+            int state_change = e.newState;
             switch (e.newState)
             {
                 case 1:    // Stopped
@@ -131,49 +137,66 @@ namespace PaperCup
                 default:
                     break;
             }
-            if (state_change != 0)
-            {
+            */
+            if (e.newState != 0) {
                 //if the state has actually been changed, then send that information to 
                 //the other user, so then their state will also be changed
                 //convert string to byte
-                ASCIIEncoding a = new ASCIIEncoding();
-
-                byte[] send = new byte[1500];
-                send = a.GetBytes("statechanged" + state_change);
-
-                //sending the sent message
-                sck.Send(send);
-                sck.BeginReceiveFrom(buffer, 0, buffer.Length, SocketFlags.None, ref epRemote, new AsyncCallback(MessageCallBack), buffer);
+                sendSocket("playStateChange" + e.newState);
             }
         }
-        
+
+        private void mediaPlayer_PositionChange(object sender, AxWMPLib._WMPOCXEvents_PositionChangeEvent e) {
+            sendSocket("positionChange" + e.newPosition);
+        }
+
         //------ Changes Media Player's State -------
         private void change_state(int new_state)
         {
             switch (new_state)
             {
-                case 1:
+                case 1: // Stopped
                     mediaPlayer.Ctlcontrols.stop();
                     break;
-                case 2:
+                case 2: // Paused
                     mediaPlayer.Ctlcontrols.pause();
                     break;
-                case 3:
+                case 3: // Playing
                     mediaPlayer.Ctlcontrols.play();
                     break;
-                case 4:
+                case 4: // ScanForward: fastforward
+                    mediaPlayer.Ctlcontrols.fastForward();
                     break;
-                case 5:
+                case 5: // ScanReverse: rewind
+                    mediaPlayer.Ctlcontrols.fastReverse();
                     break;
-                case 8:
+                case 6: // Buffering
+                    mediaPlayer.Ctlcontrols.pause();
                     break;
-                case 9:
+                case 7: // Waiting: The player is waiting for the server to respond.
+                    mediaPlayer.Ctlcontrols.pause();
                     break;
-                case 12:
+                case 8: // MediaEnded
+                    mediaPlayer.Ctlcontrols.stop();
+                    break;
+                case 9: // Transitioning: The clip is being prepared.
+                    mediaPlayer.Ctlcontrols.pause();
+                    break;
+                case 10: // Ready
+                    mediaPlayer.Ctlcontrols.pause();
+                    break;
+                case 11: // Reconnecting
+                    mediaPlayer.Ctlcontrols.pause();
+                    break;
+                case 12: // Last
                     break;
                 default:
                     break;
             }
+        }
+
+        private void change_position(double new_position) {
+            mediaPlayer.Ctlcontrols.currentPosition = new_position;
         }
 
         //------ Pick & Send Media ------
@@ -188,6 +211,7 @@ namespace PaperCup
                 mediaPlayer.URL = @file.FileName;
 
                 mediaPlayer.Ctlcontrols.pause();
+
                 /*
                 //convert string to byte
                 ASCIIEncoding a = new ASCIIEncoding();
@@ -200,11 +224,6 @@ namespace PaperCup
                 sck.BeginReceiveFrom(buffer, 0, buffer.Length, SocketFlags.None, ref epRemote, new AsyncCallback(MessageCallBack), buffer);
                 */
             }
-        }
-
-        private void tableLayoutPanel4_Paint(object sender, PaintEventArgs e)
-        {
-
         }
 
         //------ Receiving Chat Functions ------
@@ -221,23 +240,23 @@ namespace PaperCup
                 ASCIIEncoding a = new ASCIIEncoding();
                 string message = a.GetString(receivedData);
                 
+                /*
                 if (message.Contains("@fileaddress")) {
                     //the message received is the media sent from the other user
                     //the received media is then played
                     message = message.Replace("@fileaddress", "");
                     mediaPlayer.URL = @message;
-                } else if (message.Contains("statechanged"))
-                {
-                    message = message.Replace("statechanged", "");
-                    int new_state = Int32.Parse(message);
+                }*/
+
+                if (message.StartsWith("playStateChange")){
+                    int new_state = Int32.Parse(message.Substring("playStateChange".Length));
                     change_state(new_state);
-                }
-                else
-                {
+                } else if (message.StartsWith("positionChange")){
+                    double new_position = Double.Parse(message.Substring("positionChange".Length));
+                    if (Math.Abs(mediaPlayer.Ctlcontrols.currentPosition - new_position) > 0.2) change_position(new_position);
+                } else if (message.StartsWith("chat")) {
                     //Adding the message into the text box (show complete conversation)
-                    Chat.Items.Add(message);
-                    //scroll to bottom
-                    Chat.TopIndex = Chat.Items.Count - 1;
+                    addToChat(message.Substring("chat".Length));
                 }
 
                 buffer = new byte[1500];
@@ -247,30 +266,22 @@ namespace PaperCup
                 MessageBox.Show(e.ToString());
             }            
         }
+
         //------ Sending Chat Functions ------
-        private void sendButton_Click(object sender, EventArgs e)
-        {
+        private void sendButton_Click(object sender, EventArgs e){
             if (sendMessage.Text.Length == 0) return;
 
-            //convert string to byte
-            ASCIIEncoding a = new ASCIIEncoding();
-
-            byte[] send = new byte[1500];
-            send = a.GetBytes(localname + ": " + sendMessage.Text);
-
-            //sending the sent message
-            try {
-                sck.Send(send);
-            }
-            catch (System.Net.Sockets.SocketException i) { }
+            sendSocket("chat" + "localname" + ": " + sendMessage.Text);
 
             //add the sent message to the conversation
-            Chat.Items.Add(localname + ": " + sendMessage.Text);
+            addToChat(localname + ": " + sendMessage.Text);
 
             //reset text in sendMessage box
             sendMessage.Text = "";
+        }
 
-            //scroll to bottom
+        private void addToChat(string message) {
+            Chat.Items.Add(message);
             Chat.TopIndex = Chat.Items.Count - 1;
         }
 
@@ -282,7 +293,23 @@ namespace PaperCup
 
         private void sendMessage_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (e.KeyChar == '\r') sendButton_Click(sender, e); //enter
+            if (e.KeyChar == '\r') {
+                sendButton_Click(sender, e); //enter
+                e.Handled = true;
+            }
+        }
+
+        private void sendSocket(string msg) {
+            ASCIIEncoding a = new ASCIIEncoding();
+
+            byte[] send = new byte[1500];
+            send = a.GetBytes(msg);
+
+            //sending the sent message
+            try {
+                sck.Send(send);
+                sck.BeginReceiveFrom(buffer, 0, buffer.Length, SocketFlags.None, ref epRemote, new AsyncCallback(MessageCallBack), buffer);
+            }catch (System.Net.Sockets.SocketException) { }
         }
     }
 }
