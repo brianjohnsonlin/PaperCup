@@ -43,6 +43,8 @@ namespace PaperCup
             InitializeComponent();
             localname = localNickName;
             hostIP = host_IP;
+            localIP = GetLocalIP();
+            remoteIP = hostIP;
             mainmenu = mm;
         }
 
