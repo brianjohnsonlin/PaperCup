@@ -31,15 +31,13 @@ namespace PaperCup
             nicknameBox.Select();
         }
 
-        private void createButton_Click(object sender, EventArgs e)
-        {
+        private void createButton_Click(object sender, EventArgs e){
             video = new VideoPlayer(nickname, null, this);
             this.Hide();
             video.Show();
         }
 
-        private void nicknameBox_TextChanged(object sender, EventArgs e)
-        {
+        private void nicknameBox_TextChanged(object sender, EventArgs e){
             nickname = nicknameBox.Text;
         }
 

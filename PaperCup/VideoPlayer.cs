@@ -163,10 +163,8 @@ namespace PaperCup
         }
 
         //------ Changes Media Player's State -------
-        private void change_state(int new_state)
-        {
-            switch (new_state)
-            {
+        private void change_state(int new_state){
+            switch (new_state){
                 case 1: // Stopped
                     mediaPlayer.Ctlcontrols.stop();
                     break;
@@ -214,8 +212,7 @@ namespace PaperCup
         //------ Pick & Send Media ------
         //user chooses media file to play
         //the address of the file is sent to the other user(s)
-        private void chooseMedia_Click(object sender, EventArgs e)
-        {
+        private void chooseMedia_Click(object sender, EventArgs e){
             if(file.ShowDialog() == DialogResult.OK)
             {
                 //get the filename = address of the file
@@ -245,8 +242,7 @@ namespace PaperCup
         //result is whatever we're receiving from epRemote
         //the result is then parsed into ASCII then string as a message
         //then added to the chat box
-        private void MessageCallBack(IAsyncResult result)
-        {
+        private void MessageCallBack(IAsyncResult result){
             try {
                 byte[] receivedData = new byte[1500];
                 receivedData = (byte[])result.AsyncState;
@@ -314,13 +310,14 @@ namespace PaperCup
             settings.ShowDialog();
         }
 
-        private void sendMessage_KeyPress(object sender, KeyPressEventArgs e)
-        {
+        /*
+        private void sendMessage_KeyPress(object sender, KeyPressEventArgs e){
             if (e.KeyChar == '\r') {
                 sendButton_Click(sender, e); //enter
                 e.Handled = true;
             }
         }
+        */
 
         private void sendSocket(string msg) {
             ASCIIEncoding a = new ASCIIEncoding();

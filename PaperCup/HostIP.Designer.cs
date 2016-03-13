@@ -138,7 +138,7 @@
             this.IP.Size = new System.Drawing.Size(388, 31);
             this.IP.TabIndex = 0;
             this.IP.TextChanged += new System.EventHandler(this.IP_TextChanged);
-            this.IP.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.IP_KeyPress);
+            //this.IP.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.IP_KeyPress);
             // 
             // HostIP
             // 

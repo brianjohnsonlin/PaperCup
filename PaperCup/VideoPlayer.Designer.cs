@@ -314,7 +314,7 @@
             this.sendMessage.Name = "sendMessage";
             this.sendMessage.Size = new System.Drawing.Size(198, 31);
             this.sendMessage.TabIndex = 3;
-            this.sendMessage.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.sendMessage_KeyPress);
+            //this.sendMessage.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.sendMessage_KeyPress);
             // 
             // sendButton
             // 
@@ -340,6 +340,7 @@
             // 
             // VideoPlayer
             // 
+            this.AcceptButton = this.sendButton;
             this.ClientSize = new System.Drawing.Size(1264, 681);
             this.Controls.Add(this.masterPanel);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
