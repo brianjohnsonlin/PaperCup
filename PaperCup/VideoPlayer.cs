@@ -58,7 +58,7 @@ namespace PaperCup
 
         //what if we unexpectedly close???
         private void VideoPlayer_FormClosing(object sender, EventArgs e){
-            sendSocket("disconnecting");
+            //sendSocket("disconnecting"); //doesn't work
         }
 
         //---------- Networking ----------//
@@ -106,12 +106,13 @@ namespace PaperCup
                 ASCIIEncoding a = new ASCIIEncoding();
                 string message = a.GetString(receivedData);
 
-                if (message.Equals("ping")) {
+                /*if (message.Equals("ping")) {
                     sendSocket("pong");
                     addToChat(">>> Connection Success!"); //temp
                 }else if (message.Equals("pong")) {
                     addToChat(">>> Connection Success!");
-                }else if (message.StartsWith("playStateChange")) {
+                }else //doesnt work */
+                if (message.StartsWith("playStateChange")) {
                     int new_state = Int32.Parse(message.Substring("playStateChange".Length));
                     change_state(new_state);
                 }else if (message.StartsWith("positionChange")) {
@@ -123,9 +124,10 @@ namespace PaperCup
                 }
                 else if (message.Equals("?position")) {
                     sendSocket("positionChange" + mediaPlayer.Ctlcontrols.currentPosition);
-                }else if (message.Equals("disconnecting")) {
-                    addToChat(">>> Remote has disconnected.");
                 }
+                /*else if (message.Equals("disconnecting")) {
+                    addToChat(">>> Remote has disconnected."); //doesn't work
+                }*/
 
                 buffer = new byte[1500];
                 sck.BeginReceiveFrom(buffer, 0, buffer.Length, SocketFlags.None, ref epRemote, new AsyncCallback(MessageCallBack), buffer);
@@ -159,10 +161,10 @@ namespace PaperCup
         }
         
         private void connect_Click(object sender, EventArgs e){
-            /*if(friendIP.Text.Equals(localIP) && localPort == remotePort) {
+            if(friendIP.Text.Equals(localIP) && localPort == remotePort) {
                 MessageBox.Show("You're trying to connect with yourself!");
                 return; //catch connecting with self
-            }*/
+            }
             try {
                 IPAddress.Parse(friendIP.Text);
                 remoteIP = friendIP.Text;
@@ -179,8 +181,6 @@ namespace PaperCup
         //---------- Media Player ----------//
         private void chooseMedia_Click(object sender, EventArgs e) {
             if (file.ShowDialog() == DialogResult.OK) {
-                //get the filename = address of the file
-                //then add it to the mediaPlayer
                 mediaPlayer.URL = @file.FileName;
 
                 sendSocket("?position");
