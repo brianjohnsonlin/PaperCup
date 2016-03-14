@@ -39,12 +39,14 @@
             this.portInfoGroupBox = new System.Windows.Forms.GroupBox();
             this.enterPortInfoTable = new System.Windows.Forms.TableLayoutPanel();
             this.friendIP = new System.Windows.Forms.TextBox();
+            this.friendIPButtonTable = new System.Windows.Forms.TableLayoutPanel();
+            this.clearButton = new System.Windows.Forms.Button();
+            this.connectButton = new System.Windows.Forms.Button();
             this.chatTable = new System.Windows.Forms.TableLayoutPanel();
             this.Chat = new System.Windows.Forms.ListBox();
             this.sendTable = new System.Windows.Forms.TableLayoutPanel();
             this.sendMessage = new System.Windows.Forms.TextBox();
             this.sendButton = new System.Windows.Forms.Button();
-            this.connectButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.mediaPlayer)).BeginInit();
             this.masterPanel.SuspendLayout();
             this.sidebarTable.SuspendLayout();
@@ -52,6 +54,7 @@
             this.portInfoTable.SuspendLayout();
             this.portInfoGroupBox.SuspendLayout();
             this.enterPortInfoTable.SuspendLayout();
+            this.friendIPButtonTable.SuspendLayout();
             this.chatTable.SuspendLayout();
             this.sendTable.SuspendLayout();
             this.SuspendLayout();
@@ -187,13 +190,13 @@
             this.enterPortInfoTable.ColumnCount = 1;
             this.enterPortInfoTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 45.12195F));
             this.enterPortInfoTable.Controls.Add(this.friendIP, 0, 0);
-            this.enterPortInfoTable.Controls.Add(this.connectButton, 0, 1);
+            this.enterPortInfoTable.Controls.Add(this.friendIPButtonTable, 0, 1);
             this.enterPortInfoTable.Dock = System.Windows.Forms.DockStyle.Fill;
             this.enterPortInfoTable.Location = new System.Drawing.Point(3, 16);
             this.enterPortInfoTable.Name = "enterPortInfoTable";
             this.enterPortInfoTable.RowCount = 2;
-            this.enterPortInfoTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.enterPortInfoTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.enterPortInfoTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 39.13044F));
+            this.enterPortInfoTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 60.86956F));
             this.enterPortInfoTable.Size = new System.Drawing.Size(276, 69);
             this.enterPortInfoTable.TabIndex = 10;
             // 
@@ -201,11 +204,64 @@
             // 
             this.friendIP.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.friendIP.ForeColor = System.Drawing.Color.Gray;
-            this.friendIP.Location = new System.Drawing.Point(5, 7);
+            this.friendIP.Location = new System.Drawing.Point(5, 5);
             this.friendIP.Margin = new System.Windows.Forms.Padding(5);
             this.friendIP.Name = "friendIP";
             this.friendIP.Size = new System.Drawing.Size(266, 20);
             this.friendIP.TabIndex = 3;
+            this.friendIP.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.friendIP_KeyPress);
+            // 
+            // friendIPButtonTable
+            // 
+            this.friendIPButtonTable.ColumnCount = 2;
+            this.friendIPButtonTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.friendIPButtonTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.friendIPButtonTable.Controls.Add(this.clearButton, 1, 0);
+            this.friendIPButtonTable.Controls.Add(this.connectButton, 0, 0);
+            this.friendIPButtonTable.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.friendIPButtonTable.Location = new System.Drawing.Point(3, 30);
+            this.friendIPButtonTable.Name = "friendIPButtonTable";
+            this.friendIPButtonTable.RowCount = 1;
+            this.friendIPButtonTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.friendIPButtonTable.Size = new System.Drawing.Size(270, 36);
+            this.friendIPButtonTable.TabIndex = 4;
+            // 
+            // clearButton
+            // 
+            this.clearButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.clearButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.clearButton.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.clearButton.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(182)))), ((int)(((byte)(215)))), ((int)(((byte)(167)))));
+            this.clearButton.FlatAppearance.BorderSize = 3;
+            this.clearButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.clearButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.clearButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.17801F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.clearButton.ForeColor = System.Drawing.Color.DarkSeaGreen;
+            this.clearButton.Location = new System.Drawing.Point(138, 3);
+            this.clearButton.Name = "clearButton";
+            this.clearButton.Size = new System.Drawing.Size(129, 30);
+            this.clearButton.TabIndex = 3;
+            this.clearButton.Text = "Clear";
+            this.clearButton.UseVisualStyleBackColor = true;
+            // 
+            // connectButton
+            // 
+            this.connectButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.connectButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.connectButton.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.connectButton.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(182)))), ((int)(((byte)(215)))), ((int)(((byte)(167)))));
+            this.connectButton.FlatAppearance.BorderSize = 3;
+            this.connectButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.connectButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.connectButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.17801F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.connectButton.ForeColor = System.Drawing.Color.DarkSeaGreen;
+            this.connectButton.Location = new System.Drawing.Point(3, 3);
+            this.connectButton.Name = "connectButton";
+            this.connectButton.Size = new System.Drawing.Size(129, 30);
+            this.connectButton.TabIndex = 2;
+            this.connectButton.Text = "Connect";
+            this.connectButton.UseVisualStyleBackColor = true;
+            this.connectButton.Click += new System.EventHandler(this.connect_Click);
             // 
             // chatTable
             // 
@@ -256,6 +312,7 @@
             this.sendMessage.Name = "sendMessage";
             this.sendMessage.Size = new System.Drawing.Size(198, 20);
             this.sendMessage.TabIndex = 3;
+            this.sendMessage.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.sendMessage_KeyPress);
             // 
             // sendButton
             // 
@@ -279,28 +336,8 @@
             this.sendButton.UseVisualStyleBackColor = false;
             this.sendButton.Click += new System.EventHandler(this.sendButton_Click);
             // 
-            // connectButton
-            // 
-            this.connectButton.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.connectButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.connectButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.connectButton.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(182)))), ((int)(((byte)(215)))), ((int)(((byte)(167)))));
-            this.connectButton.FlatAppearance.BorderSize = 3;
-            this.connectButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.connectButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.connectButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.17801F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.connectButton.ForeColor = System.Drawing.Color.DarkSeaGreen;
-            this.connectButton.Location = new System.Drawing.Point(91, 37);
-            this.connectButton.Name = "connectButton";
-            this.connectButton.Size = new System.Drawing.Size(93, 29);
-            this.connectButton.TabIndex = 2;
-            this.connectButton.Text = "Connect";
-            this.connectButton.UseVisualStyleBackColor = true;
-            this.connectButton.Click += new System.EventHandler(this.connect_Click);
-            // 
             // VideoPlayer
             // 
-            this.AcceptButton = this.sendButton;
             this.ClientSize = new System.Drawing.Size(1264, 681);
             this.Controls.Add(this.masterPanel);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -318,6 +355,7 @@
             this.portInfoGroupBox.ResumeLayout(false);
             this.enterPortInfoTable.ResumeLayout(false);
             this.enterPortInfoTable.PerformLayout();
+            this.friendIPButtonTable.ResumeLayout(false);
             this.chatTable.ResumeLayout(false);
             this.sendTable.ResumeLayout(false);
             this.sendTable.PerformLayout();
@@ -329,18 +367,20 @@
         private AxWMPLib.AxWindowsMediaPlayer mediaPlayer;
         private System.Windows.Forms.TableLayoutPanel masterPanel;
         private System.Windows.Forms.TableLayoutPanel sidebarTable;
+        private System.Windows.Forms.TableLayoutPanel settingsTable;
+        private System.Windows.Forms.Button chooseMedia;
+        private System.Windows.Forms.Button settingsButton;
         private System.Windows.Forms.TableLayoutPanel portInfoTable;
         private System.Windows.Forms.GroupBox portInfoGroupBox;
         private System.Windows.Forms.TableLayoutPanel enterPortInfoTable;
         private System.Windows.Forms.TextBox friendIP;
+        private System.Windows.Forms.TableLayoutPanel friendIPButtonTable;
+        private System.Windows.Forms.Button clearButton;
+        private System.Windows.Forms.Button connectButton;
         private System.Windows.Forms.TableLayoutPanel chatTable;
         private System.Windows.Forms.ListBox Chat;
         private System.Windows.Forms.TableLayoutPanel sendTable;
-        private System.Windows.Forms.Button sendButton;
         private System.Windows.Forms.TextBox sendMessage;
-        private System.Windows.Forms.TableLayoutPanel settingsTable;
-        private System.Windows.Forms.Button chooseMedia;
-        private System.Windows.Forms.Button settingsButton;
-        private System.Windows.Forms.Button connectButton;
+        private System.Windows.Forms.Button sendButton;
     }
 }
