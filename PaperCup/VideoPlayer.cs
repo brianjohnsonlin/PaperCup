@@ -328,6 +328,7 @@ namespace PaperCup
             //sending the sent message
             try {
                 sck.Send(send);
+                buffer = new byte[1500];
                 sck.BeginReceiveFrom(buffer, 0, buffer.Length, SocketFlags.None, ref epRemote, new AsyncCallback(MessageCallBack), buffer);
             }catch (System.Net.Sockets.SocketException) { }
    
