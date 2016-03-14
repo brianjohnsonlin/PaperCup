@@ -18,20 +18,20 @@ namespace PaperCup
         //receiving/sending messages
         Socket sck;
         EndPoint epLocal, epRemote;
-        string localIP, remoteIP;
+        string localIP;
         byte[] buffer;
-        private List<IPAddress> ips;
+
+        private List<IPAddress> remote_ips = new List<IPAddress>();
+
         private Options settings;
-        public bool isSound = true;
-        System.Media.SoundPlayer msgSoundPlayer = new System.Media.SoundPlayer(@"\\psf\Home\PaperCup\PaperCup\Resources\msg.wav");
-       // private string[] users;
+        public bool isSound = true, isHost;
+        System.Media.SoundPlayer msgSoundPlayer = new System.Media.SoundPlayer(@"msg.wav");
 
         Form mainmenu;
 
         OpenFileDialog file = new OpenFileDialog();
 
         public string localname;
-        private string hostIP;
 
         //host videoplayer
         public VideoPlayer(string localNickName, Form mm)
@@ -39,6 +39,8 @@ namespace PaperCup
             InitializeComponent();
             localname = localNickName;
             mainmenu = mm;
+            isHost = true;
+            //remote_ips starts empty
         }
 
         //nonhost videoplayers
@@ -46,12 +48,10 @@ namespace PaperCup
         {
             InitializeComponent();
             localname = localNickName;
-            sendMessage.Select();
-
-            //hostIP = host_IP;
-            localIP = GetLocalIP();
-            hostIP = host_IP;
             mainmenu = mm;
+            isHost = false;
+
+            remote_ips.Add(IPAddress.Parse(host_IP)); //remote_ips will have 1 and only 1 ip!
         }
 
         private void VideoPlayer_Load(object sender, EventArgs e)
@@ -62,15 +62,27 @@ namespace PaperCup
 
             //getting the users' I.P.s
             localIP = GetLocalIP();
-            remoteIP = hostIP;
             sendMessage.Select();
 
+            //binding socket
+            epLocal = new IPEndPoint(IPAddress.Parse(localIP), (isHost) ? 49153 : 49154);
+            sck.Bind(epLocal);
+
+            if (!isHost){
+                //connect to remote IP
+                epRemote = new IPEndPoint(remote_ips[0], 49153);
+                sck.Connect(epRemote);
+
+                //Listening to the specific port
+                buffer = new byte[1500];
+                sck.BeginReceiveFrom(buffer, 0, buffer.Length, SocketFlags.None, ref epRemote, new AsyncCallback(MessageCallBack), buffer);
+            }
         }
 
         private void VideoPlayer_FormClosing(object sender, EventArgs e)
         {
-            //Application.Exit();
             mainmenu.Show();
+            //sendSocket("leaving");
         }
 
         private string GetLocalIP()
@@ -90,66 +102,22 @@ namespace PaperCup
         //our connect button
         private void connect_Click(object sender, EventArgs e)
         {
-            //binding socket
-            //IPEndPoint = network endpoints(Ip address, portnumber)
-            epLocal = new IPEndPoint(IPAddress.Parse(localIP), Convert.ToInt32(localPort.Text));
-
-            sck.Bind(epLocal);
+            IPAddress friend = IPAddress.Parse(friendIP.Text);
+            remote_ips.Add(friend);
 
             //connect to remote IP
-            epRemote = new IPEndPoint(IPAddress.Parse(remoteIP), Convert.ToInt32(remotePort.Text));
+            epRemote = new IPEndPoint(friend, 49154);
             sck.Connect(epRemote);
 
             //Listening to the specific port
             buffer = new byte[1500];
             sck.BeginReceiveFrom(buffer, 0, buffer.Length, SocketFlags.None, ref epRemote, new AsyncCallback(MessageCallBack), buffer);
-            addToChat("local: " + localIP);
-            addToChat("remote: " + remoteIP);
         }
 
         //----------- Check Media Player Events ----------
         //Senses and deciphers which mediaplayer button the user pressed
         //then sends that information to the other user
-        private void mediaPlayer_PlayStateChange(object sender, AxWMPLib._WMPOCXEvents_PlayStateChangeEvent e) {
-            /*
-            int state_change = e.newState;
-            switch (e.newState)
-            {
-                case 1:    // Stopped
-                    state_change = 1;
-                    break;
-
-                case 2:    // Paused
-                    state_change = 2;
-                    break;
-
-                case 3:    // Playing
-                    state_change = 3;
-                    break;
-
-                case 4:    // ScanForward
-                    state_change = 4;
-                    break;
-
-                case 5:    // ScanReverse
-                    state_change = 5;
-                    break;
-                case 8:    // MediaEnded
-                    state_change = 8;
-                    break;
-
-                case 9:    // Transitioning
-                    state_change = 9;
-                    break;
-
-                case 12:   // Last
-                    state_change = 12;
-                    break;
-
-                default:
-                    break;
-            }
-            */
+        private void mediaPlayer_PlayStateChange(object sender, AxWMPLib._WMPOCXEvents_PlayStateChangeEvent e) {  
             if (e.newState != 0) {
                 //if the state has actually been changed, then send that information to 
                 //the other user, so then their state will also be changed
@@ -220,21 +188,6 @@ namespace PaperCup
                 mediaPlayer.URL = @file.FileName;
 
                 sendSocket("?position");
-
-
-                //mediaPlayer.Ctlcontrols.pause(); //doesn't work
-
-                /*
-                //convert string to byte
-                ASCIIEncoding a = new ASCIIEncoding();
-
-                byte[] send = new byte[1500];
-                send = a.GetBytes("@fileaddress" + file.FileName);
-
-                //sending the sent message
-                sck.Send(send);
-                sck.BeginReceiveFrom(buffer, 0, buffer.Length, SocketFlags.None, ref epRemote, new AsyncCallback(MessageCallBack), buffer);
-                */
             }
         }
 
@@ -250,39 +203,39 @@ namespace PaperCup
                 //converting byte[] to string
                 ASCIIEncoding a = new ASCIIEncoding();
                 string message = a.GetString(receivedData);
-                
-                /*
-                if (message.Contains("@fileaddress")) {
-                    //the message received is the media sent from the other user
-                    //the received media is then played
-                    message = message.Replace("@fileaddress", "");
-                    mediaPlayer.URL = @message;
-                }*/
 
                 if (message.StartsWith("playStateChange")){
+
                     int new_state = Int32.Parse(message.Substring("playStateChange".Length));
                     change_state(new_state);
+
                 } else if (message.StartsWith("positionChange")){
+
                     double new_position = Double.Parse(message.Substring("positionChange".Length));
                     if (Math.Abs(mediaPlayer.Ctlcontrols.currentPosition - new_position) > 0.2) change_position(new_position);
+
                 } else if (message.StartsWith("chat")) {
+
                     //Adding the message into the text box (show complete conversation)
                     addToChat(message.Substring("chat".Length));
+
+                    if (isSound == true)
+                    {
+                        msgSoundPlayer.Play();
+                    }
                 }
                 else if (message.StartsWith("?position")) {
-                    sendSocket("positionChange" + mediaPlayer.Ctlcontrols.currentPosition);
-                }
 
+                    sendSocket("positionChange" + mediaPlayer.Ctlcontrols.currentPosition);
+
+                }
+                
                 buffer = new byte[1500];
+
                 sck.BeginReceiveFrom(buffer, 0, buffer.Length, SocketFlags.None, ref epRemote, new AsyncCallback(MessageCallBack), buffer);
             } catch( Exception e)
             {
                 MessageBox.Show(e.ToString());
-            }
-
-            if (isSound == true)
-            {
-                msgSoundPlayer.Play();
             }
         }
 
@@ -290,7 +243,7 @@ namespace PaperCup
         private void sendButton_Click(object sender, EventArgs e){
             if (sendMessage.Text.Length == 0) return;
 
-            sendSocket("chat" + "localname" + ": " + sendMessage.Text);
+            sendSocket("chat" + localname + ": " + sendMessage.Text);
 
             //add the sent message to the conversation
             addToChat(localname + ": " + sendMessage.Text);
@@ -309,15 +262,6 @@ namespace PaperCup
             settings = new Options(this);
             settings.ShowDialog();
         }
-
-        /*
-        private void sendMessage_KeyPress(object sender, KeyPressEventArgs e){
-            if (e.KeyChar == '\r') {
-                sendButton_Click(sender, e); //enter
-                e.Handled = true;
-            }
-        }
-        */
 
         private void sendSocket(string msg) {
             ASCIIEncoding a = new ASCIIEncoding();
@@ -338,9 +282,5 @@ namespace PaperCup
         {
             return localIP;
         }
-        /*  public string[] getUsers()
-          {
-              return users;
-          }*/
     }
 }

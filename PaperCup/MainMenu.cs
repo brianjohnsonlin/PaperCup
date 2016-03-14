@@ -32,7 +32,7 @@ namespace PaperCup
         }
 
         private void createButton_Click(object sender, EventArgs e){
-            video = new VideoPlayer(nickname, null, this);
+            video = new VideoPlayer(nickname, this);
             this.Hide();
             video.Show();
         }

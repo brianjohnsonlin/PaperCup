@@ -38,16 +38,13 @@
             this.portInfoTable = new System.Windows.Forms.TableLayoutPanel();
             this.portInfoGroupBox = new System.Windows.Forms.GroupBox();
             this.enterPortInfoTable = new System.Windows.Forms.TableLayoutPanel();
-            this.remotePort = new System.Windows.Forms.TextBox();
-            this.localPort = new System.Windows.Forms.TextBox();
-            this.localPortLabel = new System.Windows.Forms.Label();
-            this.remotePortLabel = new System.Windows.Forms.Label();
-            this.connectButton = new System.Windows.Forms.Button();
+            this.friendIP = new System.Windows.Forms.TextBox();
             this.chatTable = new System.Windows.Forms.TableLayoutPanel();
             this.Chat = new System.Windows.Forms.ListBox();
             this.sendTable = new System.Windows.Forms.TableLayoutPanel();
             this.sendMessage = new System.Windows.Forms.TextBox();
             this.sendButton = new System.Windows.Forms.Button();
+            this.connectButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.mediaPlayer)).BeginInit();
             this.masterPanel.SuspendLayout();
             this.sidebarTable.SuspendLayout();
@@ -162,11 +159,9 @@
             // 
             // portInfoTable
             // 
-            this.portInfoTable.ColumnCount = 2;
+            this.portInfoTable.ColumnCount = 1;
             this.portInfoTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 68.90952F));
-            this.portInfoTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 31.09049F));
             this.portInfoTable.Controls.Add(this.portInfoGroupBox, 0, 0);
-            this.portInfoTable.Controls.Add(this.connectButton, 1, 0);
             this.portInfoTable.Dock = System.Windows.Forms.DockStyle.Fill;
             this.portInfoTable.Location = new System.Drawing.Point(3, 3);
             this.portInfoTable.Name = "portInfoTable";
@@ -182,87 +177,35 @@
             this.portInfoGroupBox.ForeColor = System.Drawing.Color.Gray;
             this.portInfoGroupBox.Location = new System.Drawing.Point(3, 3);
             this.portInfoGroupBox.Name = "portInfoGroupBox";
-            this.portInfoGroupBox.Size = new System.Drawing.Size(192, 88);
+            this.portInfoGroupBox.Size = new System.Drawing.Size(282, 88);
             this.portInfoGroupBox.TabIndex = 1;
             this.portInfoGroupBox.TabStop = false;
-            this.portInfoGroupBox.Text = "Port Information";
+            this.portInfoGroupBox.Text = "Add Friend IP";
             // 
             // enterPortInfoTable
             // 
-            this.enterPortInfoTable.ColumnCount = 2;
+            this.enterPortInfoTable.ColumnCount = 1;
             this.enterPortInfoTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 45.12195F));
-            this.enterPortInfoTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 54.87805F));
-            this.enterPortInfoTable.Controls.Add(this.remotePort, 1, 1);
-            this.enterPortInfoTable.Controls.Add(this.localPortLabel, 0, 0);
-            this.enterPortInfoTable.Controls.Add(this.remotePortLabel, 0, 1);
-            this.enterPortInfoTable.Controls.Add(this.localPort, 1, 0);
+            this.enterPortInfoTable.Controls.Add(this.friendIP, 0, 0);
+            this.enterPortInfoTable.Controls.Add(this.connectButton, 0, 1);
             this.enterPortInfoTable.Dock = System.Windows.Forms.DockStyle.Fill;
             this.enterPortInfoTable.Location = new System.Drawing.Point(3, 16);
             this.enterPortInfoTable.Name = "enterPortInfoTable";
             this.enterPortInfoTable.RowCount = 2;
             this.enterPortInfoTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.enterPortInfoTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.enterPortInfoTable.Size = new System.Drawing.Size(186, 69);
+            this.enterPortInfoTable.Size = new System.Drawing.Size(276, 69);
             this.enterPortInfoTable.TabIndex = 10;
             // 
-            // remotePort
+            // friendIP
             // 
-            this.remotePort.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.remotePort.ForeColor = System.Drawing.Color.Gray;
-            this.remotePort.Location = new System.Drawing.Point(88, 41);
-            this.remotePort.Margin = new System.Windows.Forms.Padding(5);
-            this.remotePort.Name = "remotePort";
-            this.remotePort.Size = new System.Drawing.Size(93, 20);
-            this.remotePort.TabIndex = 5;
-            // 
-            // localPort
-            // 
-            this.localPort.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.localPort.ForeColor = System.Drawing.Color.Gray;
-            this.localPort.Location = new System.Drawing.Point(88, 7);
-            this.localPort.Margin = new System.Windows.Forms.Padding(5);
-            this.localPort.Name = "localPort";
-            this.localPort.Size = new System.Drawing.Size(93, 20);
-            this.localPort.TabIndex = 3;
-            // 
-            // localPortLabel
-            // 
-            this.localPortLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.localPortLabel.AutoSize = true;
-            this.localPortLabel.Location = new System.Drawing.Point(14, 10);
-            this.localPortLabel.Name = "localPortLabel";
-            this.localPortLabel.Size = new System.Drawing.Size(55, 13);
-            this.localPortLabel.TabIndex = 1;
-            this.localPortLabel.Text = "Local Port";
-            // 
-            // remotePortLabel
-            // 
-            this.remotePortLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.remotePortLabel.AutoSize = true;
-            this.remotePortLabel.Location = new System.Drawing.Point(8, 45);
-            this.remotePortLabel.Name = "remotePortLabel";
-            this.remotePortLabel.Size = new System.Drawing.Size(66, 13);
-            this.remotePortLabel.TabIndex = 3;
-            this.remotePortLabel.Text = "Remote Port";
-            // 
-            // connectButton
-            // 
-            this.connectButton.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.connectButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.connectButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.connectButton.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(182)))), ((int)(((byte)(215)))), ((int)(((byte)(167)))));
-            this.connectButton.FlatAppearance.BorderSize = 3;
-            this.connectButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.connectButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.connectButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.17801F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.connectButton.ForeColor = System.Drawing.Color.DarkSeaGreen;
-            this.connectButton.Location = new System.Drawing.Point(201, 32);
-            this.connectButton.Name = "connectButton";
-            this.connectButton.Size = new System.Drawing.Size(84, 30);
-            this.connectButton.TabIndex = 2;
-            this.connectButton.Text = "Connect";
-            this.connectButton.UseVisualStyleBackColor = true;
-            this.connectButton.Click += new System.EventHandler(this.connect_Click);
+            this.friendIP.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.friendIP.ForeColor = System.Drawing.Color.Gray;
+            this.friendIP.Location = new System.Drawing.Point(5, 7);
+            this.friendIP.Margin = new System.Windows.Forms.Padding(5);
+            this.friendIP.Name = "friendIP";
+            this.friendIP.Size = new System.Drawing.Size(266, 20);
+            this.friendIP.TabIndex = 3;
             // 
             // chatTable
             // 
@@ -336,6 +279,25 @@
             this.sendButton.UseVisualStyleBackColor = false;
             this.sendButton.Click += new System.EventHandler(this.sendButton_Click);
             // 
+            // connectButton
+            // 
+            this.connectButton.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.connectButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.connectButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.connectButton.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(182)))), ((int)(((byte)(215)))), ((int)(((byte)(167)))));
+            this.connectButton.FlatAppearance.BorderSize = 3;
+            this.connectButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.connectButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.connectButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.17801F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.connectButton.ForeColor = System.Drawing.Color.DarkSeaGreen;
+            this.connectButton.Location = new System.Drawing.Point(91, 37);
+            this.connectButton.Name = "connectButton";
+            this.connectButton.Size = new System.Drawing.Size(93, 29);
+            this.connectButton.TabIndex = 2;
+            this.connectButton.Text = "Connect";
+            this.connectButton.UseVisualStyleBackColor = true;
+            this.connectButton.Click += new System.EventHandler(this.connect_Click);
+            // 
             // VideoPlayer
             // 
             this.AcceptButton = this.sendButton;
@@ -370,18 +332,15 @@
         private System.Windows.Forms.TableLayoutPanel portInfoTable;
         private System.Windows.Forms.GroupBox portInfoGroupBox;
         private System.Windows.Forms.TableLayoutPanel enterPortInfoTable;
-        private System.Windows.Forms.TextBox remotePort;
-        private System.Windows.Forms.TextBox localPort;
-        private System.Windows.Forms.Label localPortLabel;
-        private System.Windows.Forms.Label remotePortLabel;
+        private System.Windows.Forms.TextBox friendIP;
         private System.Windows.Forms.TableLayoutPanel chatTable;
         private System.Windows.Forms.ListBox Chat;
         private System.Windows.Forms.TableLayoutPanel sendTable;
         private System.Windows.Forms.Button sendButton;
         private System.Windows.Forms.TextBox sendMessage;
-        private System.Windows.Forms.Button connectButton;
         private System.Windows.Forms.TableLayoutPanel settingsTable;
         private System.Windows.Forms.Button chooseMedia;
         private System.Windows.Forms.Button settingsButton;
+        private System.Windows.Forms.Button connectButton;
     }
 }
