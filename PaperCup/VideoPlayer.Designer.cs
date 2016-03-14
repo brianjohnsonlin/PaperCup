@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(VideoPlayer));
-            this.mediaPlayer = new AxWMPLib.AxWindowsMediaPlayer();
             this.masterPanel = new System.Windows.Forms.TableLayoutPanel();
             this.sidebarTable = new System.Windows.Forms.TableLayoutPanel();
             this.settingsTable = new System.Windows.Forms.TableLayoutPanel();
@@ -47,7 +46,7 @@
             this.sendTable = new System.Windows.Forms.TableLayoutPanel();
             this.sendMessage = new System.Windows.Forms.TextBox();
             this.sendButton = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.mediaPlayer)).BeginInit();
+            this.mediaPlayer = new AxWMPLib.AxWindowsMediaPlayer();
             this.masterPanel.SuspendLayout();
             this.sidebarTable.SuspendLayout();
             this.settingsTable.SuspendLayout();
@@ -57,20 +56,8 @@
             this.friendIPButtonTable.SuspendLayout();
             this.chatTable.SuspendLayout();
             this.sendTable.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.mediaPlayer)).BeginInit();
             this.SuspendLayout();
-            // 
-            // mediaPlayer
-            // 
-            this.mediaPlayer.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.mediaPlayer.Enabled = true;
-            this.mediaPlayer.Location = new System.Drawing.Point(320, 20);
-            this.mediaPlayer.Margin = new System.Windows.Forms.Padding(20);
-            this.mediaPlayer.Name = "mediaPlayer";
-            this.mediaPlayer.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("mediaPlayer.OcxState")));
-            this.mediaPlayer.Size = new System.Drawing.Size(924, 641);
-            this.mediaPlayer.TabIndex = 6;
-            this.mediaPlayer.PlayStateChange += new AxWMPLib._WMPOCXEvents_PlayStateChangeEventHandler(this.mediaPlayer_PlayStateChange);
-            this.mediaPlayer.PositionChange += new AxWMPLib._WMPOCXEvents_PositionChangeEventHandler(this.mediaPlayer_PositionChange);
             // 
             // masterPanel
             // 
@@ -338,6 +325,19 @@
             this.sendButton.UseVisualStyleBackColor = false;
             this.sendButton.Click += new System.EventHandler(this.sendButton_Click);
             // 
+            // mediaPlayer
+            // 
+            this.mediaPlayer.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.mediaPlayer.Enabled = true;
+            this.mediaPlayer.Location = new System.Drawing.Point(320, 20);
+            this.mediaPlayer.Margin = new System.Windows.Forms.Padding(20);
+            this.mediaPlayer.Name = "mediaPlayer";
+            this.mediaPlayer.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("mediaPlayer.OcxState")));
+            this.mediaPlayer.Size = new System.Drawing.Size(924, 641);
+            this.mediaPlayer.TabIndex = 6;
+            this.mediaPlayer.PlayStateChange += new AxWMPLib._WMPOCXEvents_PlayStateChangeEventHandler(this.mediaPlayer_PlayStateChange);
+            this.mediaPlayer.PositionChange += new AxWMPLib._WMPOCXEvents_PositionChangeEventHandler(this.mediaPlayer_PositionChange);
+            // 
             // VideoPlayer
             // 
             this.ClientSize = new System.Drawing.Size(1264, 681);
@@ -346,10 +346,9 @@
             this.MinimumSize = new System.Drawing.Size(800, 350);
             this.Name = "VideoPlayer";
             this.Tag = "video";
-            this.Text = "Video Player";
+            this.Text = "PaperCup";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.VideoPlayer_FormClosing);
             this.Load += new System.EventHandler(this.VideoPlayer_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.mediaPlayer)).EndInit();
             this.masterPanel.ResumeLayout(false);
             this.sidebarTable.ResumeLayout(false);
             this.settingsTable.ResumeLayout(false);
@@ -361,6 +360,7 @@
             this.chatTable.ResumeLayout(false);
             this.sendTable.ResumeLayout(false);
             this.sendTable.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.mediaPlayer)).EndInit();
             this.ResumeLayout(false);
 
         }
