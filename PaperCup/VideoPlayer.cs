@@ -16,121 +16,185 @@ namespace PaperCup
     public partial class VideoPlayer : Form
     {
         //receiving/sending messages
-        Socket sck;
-        EndPoint epLocal, epRemote;
-        string localIP;
-        byte[] buffer;
+        public int localPort = 49153;
+        public int remotePort = 49153;
+        public double lagBuffer = 0.2; // don't set to 0!
 
-        private List<IPAddress> remote_ips = new List<IPAddress>();
+        private Socket sck;
+        private EndPoint epLocal, epRemote;
+        private string localIP;
+        private string remoteIP = "";
+        private byte[] buffer = new byte[1500];
 
-        private Options settings;
-        public bool isSound = true, isHost;
-        System.Media.SoundPlayer msgSoundPlayer = new System.Media.SoundPlayer(@"msg.wav");
-
-        Form mainmenu;
-
-        OpenFileDialog file = new OpenFileDialog();
-
+        //user settings
         public string localname;
+        public bool isSound = true;
 
-        //host videoplayer
-        public VideoPlayer(string localNickName, Form mm)
-        {
+        private System.Media.SoundPlayer msgSoundPlayer = new System.Media.SoundPlayer(@"msg.wav");
+        private OpenFileDialog file = new OpenFileDialog();
+
+        public VideoPlayer() {
             InitializeComponent();
-            localname = localNickName;
-            mainmenu = mm;
-            isHost = true;
-            //remote_ips starts empty
+
+            //set nickname
+            List<String> fruit = new List<String> {"Banana", "Apple", "Strawberry", "Guava", "Peach", "Pineapple", "Grape", "Avocado",
+                                                   "Pear", "Mango", "Blueberry", "Raspberry", "Orange", "Lemon", "Lime", "Watermelon",
+                                                   "Cherry", "Lychee", "Kiwi", "Grapefruit"};
+            List<String> bug = new List<String> {"Slug", "Butterfly", "Spider", "Ladybug", "Bee", "Roach", "Ant", "Mosquito", "Grasshopper",
+                                                 "Firefly", "Fly", "Caterpiller", "Worm", "Snail", "Scarab", "Beetle", "Mantis", "Millipede",
+                                                 "Centipede", "Moth", "Wasp"};
+            Random rand = new Random();
+            localname = fruit[rand.Next(fruit.Count)] + bug[rand.Next(bug.Count)] + rand.Next(1000).ToString("D3");
         }
 
-        //nonhost videoplayers
-        public VideoPlayer(string localNickName, string host_IP, Form mm)
-        {
-            InitializeComponent();
-            localname = localNickName;
-            mainmenu = mm;
-            isHost = false;
-
-            remote_ips.Add(IPAddress.Parse(host_IP)); //remote_ips will have 1 and only 1 ip!
+        private void VideoPlayer_Load(object sender, EventArgs e){
+            localIP = FindLocalIP();
+            BindSocket(localIP, localPort);
+            addToChat(">>> Welcome to PaperCup!");
+            addToChat(">>> Your current nickname is " + localname + ".");
+            addToChat(">>> Go to the settings if you wish to change this.");
+            addToChat("");
         }
 
-        private void VideoPlayer_Load(object sender, EventArgs e)
-        {
-            //set up socket
-            sck = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
-            sck.SetSocketOption(SocketOptionLevel.Socket, SocketOptionName.ReuseAddress, true);
-
-            //getting the users' I.P.s
-            localIP = GetLocalIP();
-            sendMessage.Select();
-
-            //binding socket
-            epLocal = new IPEndPoint(IPAddress.Parse(localIP), (isHost) ? 49153 : 49154);
-            sck.Bind(epLocal);
-
-            if (!isHost){
-                //connect to remote IP
-                epRemote = new IPEndPoint(remote_ips[0], 49153);
-                sck.Connect(epRemote);
-
-                //Listening to the specific port
-                buffer = new byte[1500];
-                sck.BeginReceiveFrom(buffer, 0, buffer.Length, SocketFlags.None, ref epRemote, new AsyncCallback(MessageCallBack), buffer);
-            }
+        //what if we unexpectedly close???
+        private void VideoPlayer_FormClosing(object sender, EventArgs e){
+            //sendSocket("disconnecting"); //doesn't work
         }
 
-        private void VideoPlayer_FormClosing(object sender, EventArgs e)
-        {
-            mainmenu.Show();
-            //sendSocket("leaving");
-        }
-
-        private string GetLocalIP()
-        {
+        //---------- Networking ----------//
+        private string FindLocalIP() {
             IPHostEntry host;
             host = Dns.GetHostEntry(Dns.GetHostName());
-            foreach(IPAddress ip in host.AddressList)
-            {
-                if(ip.AddressFamily == AddressFamily.InterNetwork)
-                { 
+            foreach (IPAddress ip in host.AddressList) {
+                if (ip.AddressFamily == AddressFamily.InterNetwork) {
                     return ip.ToString();
                 }
             }
             return "0";
         }
 
-        //our connect button
-        private void connect_Click(object sender, EventArgs e)
-        {
-            IPAddress friend = IPAddress.Parse(friendIP.Text);
-            remote_ips.Add(friend);
+        private void BindSocket(string ip, int port) {
+            //set up socket
+            sck = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
+            sck.SetSocketOption(SocketOptionLevel.Socket, SocketOptionName.ReuseAddress, true);
 
-            //connect to remote IP
-            epRemote = new IPEndPoint(friend, 49154);
-            sck.Connect(epRemote);
-
-            //Listening to the specific port
-            buffer = new byte[1500];
-            sck.BeginReceiveFrom(buffer, 0, buffer.Length, SocketFlags.None, ref epRemote, new AsyncCallback(MessageCallBack), buffer);
+            //binding socket
+            epLocal = new IPEndPoint(IPAddress.Parse(ip), port);
+            sck.Bind(epLocal);
         }
 
-        //----------- Check Media Player Events ----------
-        //Senses and deciphers which mediaplayer button the user pressed
-        //then sends that information to the other user
-        private void mediaPlayer_PlayStateChange(object sender, AxWMPLib._WMPOCXEvents_PlayStateChangeEvent e) {  
-            if (e.newState != 0) {
-                //if the state has actually been changed, then send that information to 
-                //the other user, so then their state will also be changed
-                //convert string to byte
-                sendSocket("playStateChange" + e.newState);
+        private void ConnectSocket(string ip, int port) {
+            addToChat(">>> Attempting to connect to " + ip + ":" + port + "...");
+            //connect to remote IP
+            epRemote = new IPEndPoint(IPAddress.Parse(ip), port);
+            try {
+                sck.Connect(epRemote);
+                sendSocket("ping");
+                sck.BeginReceiveFrom(buffer, 0, buffer.Length, SocketFlags.None, ref epRemote, new AsyncCallback(MessageCallBack), buffer);
+            } catch (System.Net.Sockets.SocketException) {
+                addToChat(">>> Failed to Connect! Make sure the IP Address is valid.");
             }
+        }
+
+        //disconnecting and checking to see if connect, and unexpected close.
+        private void MessageCallBack(IAsyncResult result) {
+            try {
+                byte[] receivedData = new byte[1500];
+                receivedData = (byte[])result.AsyncState;
+
+                //converting byte[] to string
+                ASCIIEncoding a = new ASCIIEncoding();
+                string message = a.GetString(receivedData);
+
+                /*if (message.Equals("ping")) {
+                    sendSocket("pong");
+                    addToChat(">>> Connection Success!"); //temp
+                }else if (message.Equals("pong")) {
+                    addToChat(">>> Connection Success!");
+                }else //doesnt work */
+                if (message.StartsWith("playStateChange")) {
+                    int new_state = Int32.Parse(message.Substring("playStateChange".Length));
+                    change_state(new_state);
+                }else if (message.StartsWith("positionChange")) {
+                    double new_position = Double.Parse(message.Substring("positionChange".Length));
+                    if (Math.Abs(mediaPlayer.Ctlcontrols.currentPosition - new_position) > lagBuffer) change_position(new_position);
+                }else if (message.StartsWith("chat")) {
+                    addToChat(message.Substring("chat".Length));
+                    if (isSound) msgSoundPlayer.Play();
+                }
+                else if (message.Equals("?position")) {
+                    sendSocket("positionChange" + mediaPlayer.Ctlcontrols.currentPosition);
+                }
+                /*else if (message.Equals("disconnecting")) {
+                    addToChat(">>> Remote has disconnected."); //doesn't work
+                }*/
+
+                buffer = new byte[1500];
+                sck.BeginReceiveFrom(buffer, 0, buffer.Length, SocketFlags.None, ref epRemote, new AsyncCallback(MessageCallBack), buffer);
+            }
+            catch (Exception e) {
+                MessageBox.Show(e.ToString());
+            }
+        }
+
+        private void sendSocket(string msg) {
+            ASCIIEncoding a = new ASCIIEncoding();
+
+            byte[] send = new byte[1500];
+            send = a.GetBytes(msg);
+
+            //sending the sent message
+            try {
+                sck.Send(send);
+                buffer = new byte[1500];
+                sck.BeginReceiveFrom(buffer, 0, buffer.Length, SocketFlags.None, ref epRemote, new AsyncCallback(MessageCallBack), buffer);
+            }
+            catch (System.Net.Sockets.SocketException) { }
+
+        }
+
+        private void friendIP_KeyPress(object sender, KeyPressEventArgs e) {
+            if (e.KeyChar == '\r') { //enter
+                connect_Click(sender, e); 
+                e.Handled = true;
+            }
+        }
+        
+        private void connect_Click(object sender, EventArgs e){
+            if(friendIP.Text.Equals(localIP) && localPort == remotePort) {
+                MessageBox.Show("You're trying to connect with yourself!");
+                return; //catch connecting with self
+            }
+            try {
+                IPAddress.Parse(friendIP.Text);
+                remoteIP = friendIP.Text;
+                ConnectSocket(remoteIP, remotePort);
+            }catch (System.FormatException) {
+                MessageBox.Show("\"" + friendIP.Text + "\" is not a valid IP Address!");
+            }
+        }
+        
+        private void clearButton_Click(object sender, EventArgs e) {
+            friendIP.Text = "";
+        }
+
+        //---------- Media Player ----------//
+        private void chooseMedia_Click(object sender, EventArgs e) {
+            if (file.ShowDialog() == DialogResult.OK) {
+                mediaPlayer.URL = @file.FileName;
+
+                sendSocket("?position");
+            }
+        }
+
+        private void mediaPlayer_PlayStateChange(object sender, AxWMPLib._WMPOCXEvents_PlayStateChangeEvent e) {  
+            if (e.newState != 0) sendSocket("playStateChange" + e.newState);
         }
 
         private void mediaPlayer_PositionChange(object sender, AxWMPLib._WMPOCXEvents_PositionChangeEvent e) {
             sendSocket("positionChange" + e.newPosition);
         }
 
-        //------ Changes Media Player's State -------
         private void change_state(int new_state){
             switch (new_state){
                 case 1: // Stopped
@@ -177,78 +241,18 @@ namespace PaperCup
             mediaPlayer.Ctlcontrols.currentPosition = new_position;
         }
 
-        //------ Pick & Send Media ------
-        //user chooses media file to play
-        //the address of the file is sent to the other user(s)
-        private void chooseMedia_Click(object sender, EventArgs e){
-            if(file.ShowDialog() == DialogResult.OK)
-            {
-                //get the filename = address of the file
-                //then add it to the mediaPlayer
-                mediaPlayer.URL = @file.FileName;
-
-                sendSocket("?position");
+        //---------- Chat ----------//
+        private void sendMessage_KeyPress(object sender, KeyPressEventArgs e) {
+            if (e.KeyChar == '\r') { //enter
+                sendButton_Click(sender, e);
+                e.Handled = true;
             }
         }
 
-        //------ Receiving Chat Functions ------
-        //result is whatever we're receiving from epRemote
-        //the result is then parsed into ASCII then string as a message
-        //then added to the chat box
-        private void MessageCallBack(IAsyncResult result){
-            try {
-                byte[] receivedData = new byte[1500];
-                receivedData = (byte[])result.AsyncState;
-
-                //converting byte[] to string
-                ASCIIEncoding a = new ASCIIEncoding();
-                string message = a.GetString(receivedData);
-
-                if (message.StartsWith("playStateChange")){
-
-                    int new_state = Int32.Parse(message.Substring("playStateChange".Length));
-                    change_state(new_state);
-
-                } else if (message.StartsWith("positionChange")){
-
-                    double new_position = Double.Parse(message.Substring("positionChange".Length));
-                    if (Math.Abs(mediaPlayer.Ctlcontrols.currentPosition - new_position) > 0.2) change_position(new_position);
-
-                } else if (message.StartsWith("chat")) {
-
-                    //Adding the message into the text box (show complete conversation)
-                    addToChat(message.Substring("chat".Length));
-
-                    if (isSound == true)
-                    {
-                        msgSoundPlayer.Play();
-                    }
-                }
-                else if (message.StartsWith("?position")) {
-
-                    sendSocket("positionChange" + mediaPlayer.Ctlcontrols.currentPosition);
-
-                }
-                
-                buffer = new byte[1500];
-
-                sck.BeginReceiveFrom(buffer, 0, buffer.Length, SocketFlags.None, ref epRemote, new AsyncCallback(MessageCallBack), buffer);
-            } catch( Exception e)
-            {
-                MessageBox.Show(e.ToString());
-            }
-        }
-
-        //------ Sending Chat Functions ------
         private void sendButton_Click(object sender, EventArgs e){
             if (sendMessage.Text.Length == 0) return;
-
             sendSocket("chat" + localname + ": " + sendMessage.Text);
-
-            //add the sent message to the conversation
             addToChat(localname + ": " + sendMessage.Text);
-
-            //reset text in sendMessage box
             sendMessage.Text = "";
         }
 
@@ -257,30 +261,56 @@ namespace PaperCup
             Chat.TopIndex = Chat.Items.Count - 1;
         }
 
-        private void settingsButton_Click(object sender, EventArgs e)
-        {
-            settings = new Options(this);
-            settings.ShowDialog();
+        private void settingsButton_Click(object sender, EventArgs e){
+            (new Options(this)).ShowDialog();
         }
 
-        private void sendSocket(string msg) {
-            ASCIIEncoding a = new ASCIIEncoding();
+        /* doesn't work
+        private List<string> WrapText(string text, int pixels) {
+            string[] originalLines = text.Split(new string[] { " " }, StringSplitOptions.None);
 
-            byte[] send = new byte[1500];
-            send = a.GetBytes(msg);
+            List<string> wrappedLines = new List<string>();
 
-            //sending the sent message
-            try {
-                sck.Send(send);
-                buffer = new byte[1500];
-                sck.BeginReceiveFrom(buffer, 0, buffer.Length, SocketFlags.None, ref epRemote, new AsyncCallback(MessageCallBack), buffer);
-            }catch (System.Net.Sockets.SocketException) { }
-   
+            StringBuilder actualLine = new StringBuilder();
+            double actualWidth = 0;
+
+            foreach (var item in originalLines) {
+                int itemLength = TextRenderer.MeasureText(item, new Font("Microsoft San Serif", 8, FontStyle.Regular, GraphicsUnit.Point)).Width;
+                actualLine.Append(item + " ");
+                actualWidth += itemLength;
+
+                if (actualWidth + itemLength < pixels) {
+                    actualLine.Append(item + " ");
+                    actualWidth += itemLength;
+                }else {
+                    wrappedLines.Add(actualLine.ToString());
+                    actualLine.Clear();
+                    actualWidth = 0;
+                }
+            }
+
+            if (actualLine.Length > 0)
+                wrappedLines.Add(actualLine.ToString());
+
+            return wrappedLines;
         }
+        */
 
-        public string getLocalIP()
-        {
+        //---------- Access Functions ----------//
+        public string getLocalIP() {
             return localIP;
+        }
+
+        public string getRemoteIP() {
+            return remoteIP;
+        }
+
+        public void BindSocket() {
+            BindSocket(localIP, localPort);
+        }
+
+        public void ConnectSocket() {
+            ConnectSocket(remoteIP, remotePort);
         }
     }
 }
