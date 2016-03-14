@@ -16,17 +16,20 @@ namespace PaperCup
     public partial class VideoPlayer : Form
     {
         //receiving/sending messages
+        public int localPort = 49153;
+        public int remotePort = 49153;
+        public double lagBuffer = 0.2; // don't set to 0!
+
         private Socket sck;
         private EndPoint epLocal, epRemote;
-        private string localIP, remoteIP;
+        private string localIP;
+        private string remoteIP = "";
         private byte[] buffer = new byte[1500];
-        public int localPort = 49153;
-        public int remotePort = 49154;
-        public double lagBuffer = 0.2; // don't set to 0!
 
         //user settings
         public string localname;
         public bool isSound = true;
+
         private System.Media.SoundPlayer msgSoundPlayer = new System.Media.SoundPlayer(@"msg.wav");
         private OpenFileDialog file = new OpenFileDialog();
 
@@ -46,7 +49,11 @@ namespace PaperCup
 
         private void VideoPlayer_Load(object sender, EventArgs e){
             localIP = FindLocalIP();
-            BindSocket(IPAddress.Parse(localIP));
+            BindSocket(localIP, localPort);
+            addToChat(">>> Welcome to PaperCup!");
+            addToChat(">>> Your current nickname is " + localname + ".");
+            addToChat(">>> Go to the settings if you wish to change this.");
+            addToChat("");
         }
 
         //what if we unexpectedly close???
@@ -66,23 +73,27 @@ namespace PaperCup
             return "0";
         }
 
-        private void BindSocket(IPAddress lIP) {
+        private void BindSocket(string ip, int port) {
             //set up socket
             sck = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
             sck.SetSocketOption(SocketOptionLevel.Socket, SocketOptionName.ReuseAddress, true);
 
             //binding socket
-            epLocal = new IPEndPoint(lIP, localPort);
+            epLocal = new IPEndPoint(IPAddress.Parse(ip), port);
             sck.Bind(epLocal);
         }
 
-        private void ConnectSocket(IPAddress rIP) {
+        private void ConnectSocket(string ip, int port) {
+            addToChat(">>> Attempting to connect to " + ip + ":" + port + "...");
             //connect to remote IP
-            epRemote = new IPEndPoint(rIP, remotePort);
-            sck.Connect(epRemote);
-
-            //Listening to the specific port
-            sck.BeginReceiveFrom(buffer, 0, buffer.Length, SocketFlags.None, ref epRemote, new AsyncCallback(MessageCallBack), buffer);
+            epRemote = new IPEndPoint(IPAddress.Parse(ip), port);
+            try {
+                sck.Connect(epRemote);
+                sendSocket("ping");
+                sck.BeginReceiveFrom(buffer, 0, buffer.Length, SocketFlags.None, ref epRemote, new AsyncCallback(MessageCallBack), buffer);
+            } catch (System.Net.Sockets.SocketException) {
+                addToChat(">>> Failed to Connect! Make sure the IP Address is valid.");
+            }
         }
 
         //disconnecting and checking to see if connect, and unexpected close.
@@ -95,7 +106,12 @@ namespace PaperCup
                 ASCIIEncoding a = new ASCIIEncoding();
                 string message = a.GetString(receivedData);
 
-                if (message.StartsWith("playStateChange")) {
+                if (message.Equals("ping")) {
+                    sendSocket("pong");
+                    addToChat(">>> Connection Success!"); //temp
+                }else if (message.Equals("pong")) {
+                    addToChat(">>> Connection Success!");
+                }else if (message.StartsWith("playStateChange")) {
                     int new_state = Int32.Parse(message.Substring("playStateChange".Length));
                     change_state(new_state);
                 }else if (message.StartsWith("positionChange")) {
@@ -108,7 +124,7 @@ namespace PaperCup
                 else if (message.Equals("?position")) {
                     sendSocket("positionChange" + mediaPlayer.Ctlcontrols.currentPosition);
                 }else if (message.Equals("disconnecting")) {
-
+                    addToChat(">>> Remote has disconnected.");
                 }
 
                 buffer = new byte[1500];
@@ -142,10 +158,22 @@ namespace PaperCup
             }
         }
         
-        //what if text is invalid or empty???
         private void connect_Click(object sender, EventArgs e){
-            remoteIP = friendIP.Text;
-            ConnectSocket(IPAddress.Parse(remoteIP));
+            /*if(friendIP.Text.Equals(localIP) && localPort == remotePort) {
+                MessageBox.Show("You're trying to connect with yourself!");
+                return; //catch connecting with self
+            }*/
+            try {
+                IPAddress.Parse(friendIP.Text);
+                remoteIP = friendIP.Text;
+                ConnectSocket(remoteIP, remotePort);
+            }catch (System.FormatException) {
+                MessageBox.Show("\"" + friendIP.Text + "\" is not a valid IP Address!");
+            }
+        }
+        
+        private void clearButton_Click(object sender, EventArgs e) {
+            friendIP.Text = "";
         }
 
         //---------- Media Player ----------//
@@ -237,10 +265,52 @@ namespace PaperCup
             (new Options(this)).ShowDialog();
         }
 
-        //getter function
-        public string getLocalIP()
-        {
+        /* doesn't work
+        private List<string> WrapText(string text, int pixels) {
+            string[] originalLines = text.Split(new string[] { " " }, StringSplitOptions.None);
+
+            List<string> wrappedLines = new List<string>();
+
+            StringBuilder actualLine = new StringBuilder();
+            double actualWidth = 0;
+
+            foreach (var item in originalLines) {
+                int itemLength = TextRenderer.MeasureText(item, new Font("Microsoft San Serif", 8, FontStyle.Regular, GraphicsUnit.Point)).Width;
+                actualLine.Append(item + " ");
+                actualWidth += itemLength;
+
+                if (actualWidth + itemLength < pixels) {
+                    actualLine.Append(item + " ");
+                    actualWidth += itemLength;
+                }else {
+                    wrappedLines.Add(actualLine.ToString());
+                    actualLine.Clear();
+                    actualWidth = 0;
+                }
+            }
+
+            if (actualLine.Length > 0)
+                wrappedLines.Add(actualLine.ToString());
+
+            return wrappedLines;
+        }
+        */
+
+        //---------- Access Functions ----------//
+        public string getLocalIP() {
             return localIP;
+        }
+
+        public string getRemoteIP() {
+            return remoteIP;
+        }
+
+        public void BindSocket() {
+            BindSocket(localIP, localPort);
+        }
+
+        public void ConnectSocket() {
+            ConnectSocket(remoteIP, remotePort);
         }
     }
 }

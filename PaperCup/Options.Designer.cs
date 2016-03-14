@@ -33,8 +33,8 @@
             this.nameChange = new System.Windows.Forms.TextBox();
             this.roomInfoGroupBox = new System.Windows.Forms.GroupBox();
             this.roomInfoTable = new System.Windows.Forms.TableLayoutPanel();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.localPortTextBox = new System.Windows.Forms.TextBox();
+            this.remotePortTextBox = new System.Windows.Forms.TextBox();
             this.ipDisplay = new System.Windows.Forms.Label();
             this.yourIPLabel = new System.Windows.Forms.Label();
             this.connectedIPLabel = new System.Windows.Forms.Label();
@@ -42,6 +42,8 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.updateButton = new System.Windows.Forms.Button();
             this.cancelButton = new System.Windows.Forms.Button();
+            this.localPortLabel = new System.Windows.Forms.Label();
+            this.remotePortLabel = new System.Windows.Forms.Label();
             this.masterTable.SuspendLayout();
             this.settingsGroupBox.SuspendLayout();
             this.userSettingsTable.SuspendLayout();
@@ -68,7 +70,7 @@
             this.masterTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.masterTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.masterTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.masterTable.Size = new System.Drawing.Size(344, 191);
+            this.masterTable.Size = new System.Drawing.Size(284, 191);
             this.masterTable.TabIndex = 1;
             // 
             // settingsGroupBox
@@ -79,7 +81,7 @@
             this.settingsGroupBox.ForeColor = System.Drawing.Color.OliveDrab;
             this.settingsGroupBox.Location = new System.Drawing.Point(3, 83);
             this.settingsGroupBox.Name = "settingsGroupBox";
-            this.settingsGroupBox.Size = new System.Drawing.Size(338, 74);
+            this.settingsGroupBox.Size = new System.Drawing.Size(278, 74);
             this.settingsGroupBox.TabIndex = 12;
             this.settingsGroupBox.TabStop = false;
             this.settingsGroupBox.Text = "User Settings";
@@ -97,7 +99,7 @@
             this.userSettingsTable.RowCount = 2;
             this.userSettingsTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.userSettingsTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.userSettingsTable.Size = new System.Drawing.Size(332, 51);
+            this.userSettingsTable.Size = new System.Drawing.Size(272, 51);
             this.userSettingsTable.TabIndex = 9;
             // 
             // soundCheck
@@ -110,7 +112,7 @@
             this.soundCheck.Location = new System.Drawing.Point(2, 2);
             this.soundCheck.Margin = new System.Windows.Forms.Padding(2);
             this.soundCheck.Name = "soundCheck";
-            this.soundCheck.Size = new System.Drawing.Size(296, 16);
+            this.soundCheck.Size = new System.Drawing.Size(268, 16);
             this.soundCheck.TabIndex = 1;
             this.soundCheck.Text = "Play a sound when someone sends a message.";
             this.soundCheck.UseVisualStyleBackColor = true;
@@ -130,7 +132,7 @@
             this.nicknameTable.Name = "nicknameTable";
             this.nicknameTable.RowCount = 1;
             this.nicknameTable.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.nicknameTable.Size = new System.Drawing.Size(328, 25);
+            this.nicknameTable.Size = new System.Drawing.Size(268, 25);
             this.nicknameTable.TabIndex = 8;
             // 
             // nicknameLabel
@@ -153,8 +155,9 @@
             this.nameChange.ForeColor = System.Drawing.Color.Gray;
             this.nameChange.Location = new System.Drawing.Point(70, 2);
             this.nameChange.Margin = new System.Windows.Forms.Padding(2);
+            this.nameChange.MaxLength = 30;
             this.nameChange.Name = "nameChange";
-            this.nameChange.Size = new System.Drawing.Size(256, 20);
+            this.nameChange.Size = new System.Drawing.Size(196, 20);
             this.nameChange.TabIndex = 1;
             // 
             // roomInfoGroupBox
@@ -165,23 +168,26 @@
             this.roomInfoGroupBox.ForeColor = System.Drawing.Color.OliveDrab;
             this.roomInfoGroupBox.Location = new System.Drawing.Point(3, 3);
             this.roomInfoGroupBox.Name = "roomInfoGroupBox";
-            this.roomInfoGroupBox.Size = new System.Drawing.Size(338, 74);
+            this.roomInfoGroupBox.Size = new System.Drawing.Size(278, 74);
             this.roomInfoGroupBox.TabIndex = 14;
             this.roomInfoGroupBox.TabStop = false;
-            this.roomInfoGroupBox.Text = "Room Information";
+            this.roomInfoGroupBox.Text = "Network Information";
             // 
             // roomInfoTable
             // 
-            this.roomInfoTable.ColumnCount = 3;
+            this.roomInfoTable.ColumnCount = 4;
             this.roomInfoTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 110F));
             this.roomInfoTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 85F));
+            this.roomInfoTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 35F));
             this.roomInfoTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.roomInfoTable.Controls.Add(this.textBox1, 2, 0);
-            this.roomInfoTable.Controls.Add(this.textBox2, 2, 1);
+            this.roomInfoTable.Controls.Add(this.localPortTextBox, 3, 0);
+            this.roomInfoTable.Controls.Add(this.remotePortTextBox, 3, 1);
             this.roomInfoTable.Controls.Add(this.ipDisplay, 1, 0);
             this.roomInfoTable.Controls.Add(this.yourIPLabel, 0, 0);
             this.roomInfoTable.Controls.Add(this.connectedIPLabel, 0, 1);
             this.roomInfoTable.Controls.Add(this.ripDisplay, 1, 1);
+            this.roomInfoTable.Controls.Add(this.localPortLabel, 2, 0);
+            this.roomInfoTable.Controls.Add(this.remotePortLabel, 2, 1);
             this.roomInfoTable.Dock = System.Windows.Forms.DockStyle.Fill;
             this.roomInfoTable.Location = new System.Drawing.Point(3, 20);
             this.roomInfoTable.Margin = new System.Windows.Forms.Padding(2);
@@ -190,32 +196,34 @@
             this.roomInfoTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.roomInfoTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.roomInfoTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.roomInfoTable.Size = new System.Drawing.Size(332, 51);
+            this.roomInfoTable.Size = new System.Drawing.Size(272, 51);
             this.roomInfoTable.TabIndex = 6;
             // 
-            // textBox1
+            // localPortTextBox
             // 
-            this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.localPortTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.ForeColor = System.Drawing.Color.Gray;
-            this.textBox1.Location = new System.Drawing.Point(197, 2);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(2);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(133, 20);
-            this.textBox1.TabIndex = 3;
+            this.localPortTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.localPortTextBox.ForeColor = System.Drawing.Color.Gray;
+            this.localPortTextBox.Location = new System.Drawing.Point(232, 2);
+            this.localPortTextBox.Margin = new System.Windows.Forms.Padding(2);
+            this.localPortTextBox.MaxLength = 5;
+            this.localPortTextBox.Name = "localPortTextBox";
+            this.localPortTextBox.Size = new System.Drawing.Size(38, 20);
+            this.localPortTextBox.TabIndex = 3;
             // 
-            // textBox2
+            // remotePortTextBox
             // 
-            this.textBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.remotePortTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.ForeColor = System.Drawing.Color.Gray;
-            this.textBox2.Location = new System.Drawing.Point(197, 22);
-            this.textBox2.Margin = new System.Windows.Forms.Padding(2);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(133, 20);
-            this.textBox2.TabIndex = 4;
+            this.remotePortTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.remotePortTextBox.ForeColor = System.Drawing.Color.Gray;
+            this.remotePortTextBox.Location = new System.Drawing.Point(232, 22);
+            this.remotePortTextBox.Margin = new System.Windows.Forms.Padding(2);
+            this.remotePortTextBox.MaxLength = 5;
+            this.remotePortTextBox.Name = "remotePortTextBox";
+            this.remotePortTextBox.Size = new System.Drawing.Size(38, 20);
+            this.remotePortTextBox.TabIndex = 4;
             // 
             // ipDisplay
             // 
@@ -227,7 +235,8 @@
             this.ipDisplay.Name = "ipDisplay";
             this.ipDisplay.Size = new System.Drawing.Size(81, 13);
             this.ipDisplay.TabIndex = 1;
-            this.ipDisplay.Text = "128.114.52.99";
+            this.ipDisplay.Text = "local IP";
+            this.ipDisplay.Click += new System.EventHandler(this.ipDisplay_Click);
             // 
             // yourIPLabel
             // 
@@ -263,7 +272,8 @@
             this.ripDisplay.Name = "ripDisplay";
             this.ripDisplay.Size = new System.Drawing.Size(81, 13);
             this.ripDisplay.TabIndex = 6;
-            this.ripDisplay.Text = "128.114.52.99";
+            this.ripDisplay.Text = "remote IP";
+            this.ripDisplay.Click += new System.EventHandler(this.ripDisplay_Click);
             // 
             // tableLayoutPanel1
             // 
@@ -278,7 +288,7 @@
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(338, 25);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(278, 25);
             this.tableLayoutPanel1.TabIndex = 15;
             // 
             // updateButton
@@ -290,7 +300,7 @@
             this.updateButton.FlatAppearance.BorderSize = 0;
             this.updateButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.updateButton.ForeColor = System.Drawing.Color.Green;
-            this.updateButton.Location = new System.Drawing.Point(140, 2);
+            this.updateButton.Location = new System.Drawing.Point(80, 2);
             this.updateButton.Margin = new System.Windows.Forms.Padding(2);
             this.updateButton.Name = "updateButton";
             this.updateButton.Size = new System.Drawing.Size(96, 20);
@@ -308,7 +318,7 @@
             this.cancelButton.FlatAppearance.BorderSize = 0;
             this.cancelButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cancelButton.ForeColor = System.Drawing.Color.Gray;
-            this.cancelButton.Location = new System.Drawing.Point(240, 2);
+            this.cancelButton.Location = new System.Drawing.Point(180, 2);
             this.cancelButton.Margin = new System.Windows.Forms.Padding(2);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(96, 20);
@@ -317,19 +327,44 @@
             this.cancelButton.UseVisualStyleBackColor = true;
             this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
             // 
+            // localPortLabel
+            // 
+            this.localPortLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.localPortLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.localPortLabel.ForeColor = System.Drawing.Color.Gray;
+            this.localPortLabel.Location = new System.Drawing.Point(197, 3);
+            this.localPortLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.localPortLabel.Name = "localPortLabel";
+            this.localPortLabel.Size = new System.Drawing.Size(31, 13);
+            this.localPortLabel.TabIndex = 7;
+            this.localPortLabel.Text = "Port:";
+            // 
+            // remotePortLabel
+            // 
+            this.remotePortLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.remotePortLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.remotePortLabel.ForeColor = System.Drawing.Color.Gray;
+            this.remotePortLabel.Location = new System.Drawing.Point(197, 23);
+            this.remotePortLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.remotePortLabel.Name = "remotePortLabel";
+            this.remotePortLabel.Size = new System.Drawing.Size(31, 13);
+            this.remotePortLabel.TabIndex = 8;
+            this.remotePortLabel.Text = "Port:";
+            // 
             // Options
             // 
             this.AcceptButton = this.updateButton;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.cancelButton;
-            this.ClientSize = new System.Drawing.Size(344, 191);
+            this.ClientSize = new System.Drawing.Size(284, 191);
             this.Controls.Add(this.masterTable);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.MinimumSize = new System.Drawing.Size(280, 230);
+            this.MinimumSize = new System.Drawing.Size(300, 230);
             this.Name = "Options";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Options";
@@ -361,10 +396,12 @@
         private System.Windows.Forms.Button updateButton;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.TableLayoutPanel roomInfoTable;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox remotePortTextBox;
+        private System.Windows.Forms.TextBox localPortTextBox;
         private System.Windows.Forms.Label yourIPLabel;
         private System.Windows.Forms.Label connectedIPLabel;
         private System.Windows.Forms.Label ripDisplay;
+        private System.Windows.Forms.Label localPortLabel;
+        private System.Windows.Forms.Label remotePortLabel;
     }
 }

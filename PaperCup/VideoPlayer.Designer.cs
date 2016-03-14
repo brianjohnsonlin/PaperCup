@@ -183,7 +183,7 @@
             this.portInfoGroupBox.Size = new System.Drawing.Size(282, 88);
             this.portInfoGroupBox.TabIndex = 1;
             this.portInfoGroupBox.TabStop = false;
-            this.portInfoGroupBox.Text = "Add Friend IP";
+            this.portInfoGroupBox.Text = "Connect To IP";
             // 
             // enterPortInfoTable
             // 
@@ -206,6 +206,7 @@
             this.friendIP.ForeColor = System.Drawing.Color.Gray;
             this.friendIP.Location = new System.Drawing.Point(5, 5);
             this.friendIP.Margin = new System.Windows.Forms.Padding(5);
+            this.friendIP.MaxLength = 43;
             this.friendIP.Name = "friendIP";
             this.friendIP.Size = new System.Drawing.Size(266, 20);
             this.friendIP.TabIndex = 3;
@@ -243,6 +244,7 @@
             this.clearButton.TabIndex = 3;
             this.clearButton.Text = "Clear";
             this.clearButton.UseVisualStyleBackColor = true;
+            this.clearButton.Click += new System.EventHandler(this.clearButton_Click);
             // 
             // connectButton
             // 
